@@ -1,0 +1,31 @@
+extends layout
+
+mixin times(limit, block)
+  - for (var i = 1; i <= limit; i++) {
+    block
+  - }
+
+mixin imgHeart
+  span A
+
+block content
+  div#container
+    div.whitespace.jumbobox
+      span A
+       button.donate DONATE
+    
+    +times(3)
+      div.heart.epic
+        +imgHeart
+    +times(25)
+      div.heart.large
+        +imgHeart
+    +times(100)
+      div.heart.small
+        +imgHeart
+    +times(30)
+      div.heart.med
+        +imgHeart
+
+      
+        

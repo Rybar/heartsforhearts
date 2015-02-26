@@ -1,0 +1,60 @@
+extends layout
+
+block content
+    h1= title
+    p SACH Wall of Hearts
+
+    // Wrapper
+    #wrapper
+
+        // USER INFO
+        #userInfo
+            h2 Heart Info
+            p
+                strong Name:
+                |  <span id='userInfoChildName'></span>
+                br
+                strong Age:
+                |  <span id='userInfoEmail'></span>
+                br
+                strong Gender:
+                |  <span id='userInfoFullName'></span>
+                br
+                strong Location:
+                |  <span id='userInfoDonationAmount'></span>
+                br
+                strong Location:
+                |  <span id='userInfoInputMessage'></span>
+                br
+                strong Location:
+                |  <span id='userInfoCurrency'></span>
+        // /USER INFO
+
+        // USER LIST
+        h2 Heart List
+        #userList
+            table
+                thead
+                    th UserName
+                    th Email
+                    th Delete?
+                tbody
+        // /USER LIST
+
+        // ADD HEART
+        h2 Add Heart
+        #addHeart
+            fieldset
+                input#inputChildName(type='text', placeholder='Childs Name')
+                input#inputUserEmail(type='text', placeholder='Your Email')
+                br
+                input#inputUserFullname(type='text', placeholder='Full Name')
+                input#inputDonationAmount(type='text', placeholder='Donation Amount')
+                br
+                input#inputMessage(type='text', placeholder='Your custom message')
+                input#inputCurrency(type='text', placeholder='currency')
+                br
+                button#btnAddUser DONATE
+        // /ADD HEART
+
+    // /WRAPPER
