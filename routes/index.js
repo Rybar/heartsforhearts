@@ -3,12 +3,12 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Heart Wall' });
+  res.render('index', { title: 'Save A Childs Heart' }); 
 });
 
 /* GET heartwall page. */
-router.get('/heartwall', function(req, res) {
-  res.render('hearts', { title: 'Heart Wall' });
+router.get('/hearts', function(req, res) {
+  res.render('hearts', { title: 'Save A Childs Heart' });
 });
 
 module.exports = router;
