@@ -3,9 +3,46 @@ extends layout
 block content
     h1= title
     p SACH Hearts for Hearts 
-    div.heartdisplay
-        div.heart.epic.blue
-            span#userHeartstyle A
+    #userHeart
+        div.heart
+            span A
+        
+    // ADD HEART
+    h2 Add Heart
+    #addHeart
+        fieldset
+            input#inputDonationAmount(type='text', placeholder='Donation Amount')
+            input#inputUserEmail(type='text', placeholder='Family Email')
+            input#inputUserFullname(type='text', placeholder='Full Name')
+            input#inputMessage(type='text', placeholder='Your custom message')
+            select#inputCurrency
+                option USD
+                option GBP
+                option AUD
+                option CAD
+                option EUR
+                option HKD
+                option SGD
+            select#inputColor
+                option blue
+                option lightblue
+                option green
+                option gold
+                option orange
+                option red
+                option pink
+                option purple
+            select#inputHeartstyle
+                option A
+                option B
+                option C
+            br
+            button#btnAddUser DONATE
+
+        
+        
+    // /ADD HEART        
+        
         
     // Wrapper
     #wrapper
@@ -50,35 +87,6 @@ block content
                 tbody
         // /USER LIST
 
-        // ADD HEART
-        h2 Add Heart
-        #addHeart
-            fieldset
-                input#inputDonationAmount(type='text', placeholder='Donation Amount')
-                input#inputUserEmail(type='text', placeholder='Family Email')
-                input#inputUserFullname(type='text', placeholder='Full Name')
-                input#inputMessage(type='text', placeholder='Your custom message')
-                select#inputCurrency
-                    option USD
-                    option GBP
-                    option AUD
-                    option CAD
-                    option EUR
-                    option HKD
-                    option SGD
-                select#inputColor
-                    option #ff0000
-                    option #00ff00
-                    option #0000ff
-                select#inputHeartstyle
-                    option A
-                    option B
-                    option C
-                br
-                button#btnAddUser DONATE
 
-            
-            
-        // /ADD HEART
 
     // /WRAPPER

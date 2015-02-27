@@ -14,7 +14,7 @@
 .heart {
   padding: 5px;
   margin: 3px;
-  display: block;
+  display: inline;
   background: lightgrey;
   border-radius: 4px;
   line-height: .75em;
@@ -22,10 +22,12 @@
   font-family: "heartsregular";
 }
 
+
 .small   { font-size: 47px; }
 .med     { font-size: 89px; }
 .large   { font-size: 117px; }
-.epic    { font-size: 139px; }
+.xlarge   { font-size: 139px; }
+.epic    { font-size: 200px; }
 .tiny    { font-size: 19px; }
 
 .blue         { background: rgb(0,145,207); color: rgba(255,255,255, 0.6) }

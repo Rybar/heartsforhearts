@@ -5,6 +5,8 @@ var userListData = [];
 
 // DOM Ready =============================================================
 $(document).ready(function() {
+    
+    //generateRandomSet(10);
 
     // Populate the user table on initial page load
     populateTable();
@@ -38,7 +40,7 @@ function populateTable() {
         // For each item in our JSON, add a table row and cells to the content string
         $.each(data, function(){
             tableContent += '<tr>';
-            tableContent += '<td><a href="#" class="linkshowuser" rel="' + this.fullname + '" title="Show Details">' + this.fullname + '</a></td>';
+            tableContent += '<td><a href="#" class="linkshowuser" rel="' + this._id + '" title="Show Details">' + this.fullname + '</a></td>';
             tableContent += '<td>' + this.email + '</td>';
             tableContent += '<td><a href="#" class="linkdeleteuser" rel="' + this._id + '">delete</a></td>';
             tableContent += '</tr>';
@@ -56,11 +58,11 @@ function showUserInfo(event) {
     event.preventDefault();
 
     // Retrieve username from link rel attribute
-    var thisFullName = $(this).attr('rel');
+    var objectId = $(this).attr('rel');
     console.log($(this).attr('rel'));
 
     // Get Index of object based on id value
-    var arrayPosition = userListData.map(function(arrayItem) { return arrayItem.fullname; }).indexOf(thisFullName);
+    var arrayPosition = userListData.map(function(arrayItem) { return arrayItem._id; }).indexOf(objectId);
 
     // Get our User Object
     var thisUserObject = userListData[arrayPosition];
@@ -73,6 +75,10 @@ function showUserInfo(event) {
     $('#userInfoCurrency').text(thisUserObject.currency);
     $('#userInfoColor').text(thisUserObject.color);
     $('#userInfoHeartstyle').text(thisUserObject.heartstyle);
+    
+    styleHeart(thisUserObject.color, thisUserObject.heartstyle, thisUserObject.donation);
+    
+    
 };
 
 // Add User
@@ -177,3 +183,69 @@ function deleteUser(event) {
     }
 
 };
+
+function styleHeart(color, style, donationAmount){
+    var amount = parseInt(donationAmount, 10);
+    console.log(color + " | " + style + " | " + amount);
+    var heartSize = "small";
+    //set size based on donationAmount
+    if(amount >= 25){
+        heartSize = 'epic';
+    }
+    if(amount <= 20){
+        heartSize = 'large';
+    }
+    if(amount >= 25){
+        heartSize = 'large';
+    }
+
+    console.log(heartSize);
+    $("#userHeart").find(".heart").removeClass();
+    $("#userHeart").find("div").addClass("heart " + color + " " + heartSize);
+    $("#userHeart").find(".heart span").text(style);
+    //$("#userHeart").find(".heart").addClass("large");
+
+}
+
+
+function generateRandomSet(numberOfEntries) {
+    
+    for(var i = 0; i <=numberOfEntries; i++) {
+        var colors = [ 'green', 'gold', 'orange', 'red', 'pink'],
+            styles = [ 'A', 'B', 'C'],
+            randColor = colors[Math.floor(Math.random()*colors.length)],
+            randStyles = styles[Math.floor(Math.random()*styles.length)],
+            newUser = {
+            'email': "johndoe@acme.com",
+            'fullname' : "John Doe",
+            'donation': Math.floor(Math.random()*26),
+            'message': "blah",
+            'currency': "USD",
+            'color': randColor,
+            'heartstyle': randStyles
+        };
+        console.log(randColor);
+        // Use AJAX to post the object to our adduser service
+        $.ajax({
+            type: 'POST',
+            data: newUser,
+            url: '/users/addheart',
+            dataType: 'JSON'
+        }).done(function( response ) {
+        
+            // Check for successful (blank) response
+            if (response.msg === '') {
+            }
+            else {
+        
+                // If something goes wrong, alert the error message that our service returned
+                alert('Error: ' + response.msg);
+        
+            }
+        });
+    // Clear the form inputs
+    }
+
+        // Update the table
+        populateTable();
+}
