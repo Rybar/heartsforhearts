@@ -22,7 +22,7 @@ $(function () {
     // bind Draggabilly events to Packery
     //$container.packery( 'bindDraggabillyEvents', draggie );
   
-  /*$( window ).scroll(function() {
+  $( window ).scroll(function() {
     clearTimeout( $.data( this, "scrollCheck" ) );
     $.data( this, "scrollCheck", setTimeout(function() {
       $container.packery();
@@ -42,7 +42,7 @@ $(function () {
       $.data( this, "scrollCheck", setTimeout(function() {
         $container.packery(); //redo layout around stamped .jumbobox
       }, 100) );      
-    }); */
+    }); 
   
   	$(".heart").on("click", function(){
       $(this).css({zIndex: 1000});

@@ -4,7 +4,7 @@ var router = express.Router();
 /*
  * GET userlist.
  */
-router.get('/userlist', function(req, res) {
+router.get('/heartlist', function(req, res) {
     var db = req.db;
     db.collection('userlist').find().toArray(function (err, items) {
         res.json(items);
@@ -14,7 +14,7 @@ router.get('/userlist', function(req, res) {
 /*
  * POST to adduser.
  */
-router.post('/adduser', function(req, res) {
+router.post('/addheart', function(req, res) {
     var db = req.db;
     db.collection('userlist').insert(req.body, function(err, result){
         res.send(

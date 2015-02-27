@@ -3,18 +3,18 @@ extends layout
 block content
     h1= title
     p SACH Hearts for Hearts 
-
+    div.heartdisplay
+        div.heart.epic.blue
+            span#userHeartstyle A
+        
     // Wrapper
     #wrapper
 
         // USER INFO
-        #userInfo
+        #heartInfo
             h2 Heart Info
             p
-                strong Name:
-                |  <span id='userInfoChildName'></span>
-                br
-                strong Age:
+                strong Email:
                 |  <span id='userInfoEmail'></span>
                 br
                 strong Your Name:
@@ -28,15 +28,24 @@ block content
                 br
                 strong Currency:
                 |  <span id='userInfoCurrency'></span>
+                br
+                strong Color:
+                |  <span id='userInfoColor'></span>
+                br
+                strong Style:
+                |  <span id='userInfoHeartstyle'></span>
         // /USER INFO
 
         // USER LIST
         h2 Heart List
-        #userList
+        #heartList
             table
                 thead
-                    th UserName
+                    th User Name
                     th Email
+                    th Donation Amount
+                    th Heart Color
+                    th Heart Style
                     th Delete?
                 tbody
         // /USER LIST
@@ -45,16 +54,31 @@ block content
         h2 Add Heart
         #addHeart
             fieldset
-                input#inputChildName(type='text', placeholder='Childs Name')
-                input#inputUserEmail(type='text', placeholder='Your Email')
-                br
-                input#inputUserFullname(type='text', placeholder='Full Name')
                 input#inputDonationAmount(type='text', placeholder='Donation Amount')
-                br
+                input#inputUserEmail(type='text', placeholder='Family Email')
+                input#inputUserFullname(type='text', placeholder='Full Name')
                 input#inputMessage(type='text', placeholder='Your custom message')
-                input#inputCurrency(type='text', placeholder='currency')
+                select#inputCurrency
+                    option USD
+                    option GBP
+                    option AUD
+                    option CAD
+                    option EUR
+                    option HKD
+                    option SGD
+                select#inputColor
+                    option #ff0000
+                    option #00ff00
+                    option #0000ff
+                select#inputHeartstyle
+                    option A
+                    option B
+                    option C
                 br
                 button#btnAddUser DONATE
+
+            
+            
         // /ADD HEART
 
     // /WRAPPER
