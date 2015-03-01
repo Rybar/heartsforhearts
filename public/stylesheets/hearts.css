@@ -14,14 +14,13 @@
 .heart {
   padding: 5px;
   margin: 3px;
-  display: inline;
+  display: block;
   background: lightgrey;
   border-radius: 4px;
   line-height: .75em;
   height: .72em;
   font-family: "heartsregular";
 }
-
 
 .small   { font-size: 47px; }
 .med     { font-size: 89px; }
@@ -40,6 +39,7 @@
 .purple       { background: rgb(155,98,166); color: rgba(255,255,255, 0.6); }
 
 #container {
+  position: relative;
   width: 100%;
   height: 100%;
   display: block;
@@ -52,7 +52,7 @@
   background: lightgrey;
   position: absolute;
   text-align: center;
-  margin 5px;
+  margin: 5px;
   height: 30px;
 }
 

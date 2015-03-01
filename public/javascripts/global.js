@@ -6,7 +6,7 @@ var userListData = [];
 // DOM Ready =============================================================
 $(document).ready(function() {
     
-    //generateRandomSet(10);
+   //generateRandomSet(20);
 
     // Populate the user table on initial page load
     populateTable();
@@ -192,11 +192,17 @@ function styleHeart(color, style, donationAmount){
     if(amount >= 25){
         heartSize = 'epic';
     }
-    if(amount <= 20){
+    else if(amount <= 20){
+        heartSize = 'xlarge';
+    }
+    else if(amount >= 15){
         heartSize = 'large';
     }
-    if(amount >= 25){
-        heartSize = 'large';
+     else if(amount >= 10){
+        heartSize = 'med';
+    }
+     else if(amount < 10){
+        heartSize = 'small';
     }
 
     console.log(heartSize);
@@ -211,15 +217,15 @@ function styleHeart(color, style, donationAmount){
 function generateRandomSet(numberOfEntries) {
     
     for(var i = 0; i <=numberOfEntries; i++) {
-        var colors = [ 'green', 'gold', 'orange', 'red', 'pink'],
-            styles = [ 'A', 'B', 'C'],
+        var colors = [ 'green', 'gold', 'orange', 'red', 'pink', 'lightblue', 'blue', ],
+            styles = [ 'A', 'B', 'C', 'D', 'E','F','G', 'H'],
             randColor = colors[Math.floor(Math.random()*colors.length)],
             randStyles = styles[Math.floor(Math.random()*styles.length)],
             newUser = {
-            'email': "johndoe@acme.com",
-            'fullname' : "John Doe",
-            'donation': Math.floor(Math.random()*26),
-            'message': "blah",
+            'email': chance.email(),
+            'fullname' : chance.name(),
+            'donation': chance.integer({min: 1, max: 30}),
+            'message': chance.sentence(),
             'currency': "USD",
             'color': randColor,
             'heartstyle': randStyles

@@ -1,60 +1,55 @@
-$( document ).ready(function() {
-  // Handler for .ready() called.
-var $container = $('#container');
-$(function () {
-  //var colors = ['lightblue', 'green', 'gold', 'orange', 'red', 'pink', 'purple',],
-      var colors = [ 'green', 'gold', 'orange', 'red', 'pink'],
-      randColor = colors[Math.floor(Math.random()*colors.length)],
-  		    parent = $container,
-      divs = parent.children();
-  
-  while (divs.length) {
-    parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
-  }
-  $('.heart').each(function() {
-    $(this).addClass(colors[Math.floor(Math.random()*colors.length)]);
-    //TODO: add random font stretch
-    })
-  parent.packery({ 'selector' : '.heart', 'stamp' : '.whitespace'});
-  //$container.find('.heart').each( function( i, itemElem ) {
-    // make element draggable with Draggabilly
-    //var draggie = new Draggabilly( itemElem );
-    // bind Draggabilly events to Packery
-    //$container.packery( 'bindDraggabillyEvents', draggie );
-  
-  $( window ).scroll(function() {
-    clearTimeout( $.data( this, "scrollCheck" ) );
-    $.data( this, "scrollCheck", setTimeout(function() {
-      $container.packery();
-    }, 250) );
-  }); 
-  
-    var el=$('.jumbobox');
-    var originalelpos=el.offset().top; // take it where it originally is on the page
-
-    $(window).scroll(function(){
-      var el = $('.jumbobox'); 
-      var elpos = el.offset().top; // take current position
-      var windowpos = $(window).scrollTop(); //and the current window top
-      var finaldestination = windowpos+originalelpos; //add them together
-      el.stop().velocity({'top':finaldestination},500); //animate!
-      clearTimeout( $.data( this, "scrollCheck" ) ); //so packery doesn't choke, dont run till stop scrolling
-      $.data( this, "scrollCheck", setTimeout(function() {
-        $container.packery(); //redo layout around stamped .jumbobox
-      }, 100) );      
-    }); 
-  
-  	$(".heart").on("click", function(){
-      $(this).css({zIndex: 1000});
-      $(this).velocity({
-        translateY: "-20px",
-        rotateY: "180deg",
-        scaleX: "1.5",
-        scaleY: "1.5",
+$(document).ready(function() {
+    // Handler for .ready() called.
+        var $container = $('#container');
         
-      });
+          $container.packery({ 'selector' : '.heart', 'stamp' : '.whitespace'});    
+          $container.packery('reloadItems');
+          $container.packery('layout');
+          
+              // Empty content string
+          
+
+    // jQuery AJAX call for JSON
+    $.getJSON('/users/heartlist', function(data) {
+
+        // Stick our user data array into a userlist variable in the global object
+        var userListData = data,
+        //default heart Size
+            heartSize = "small";
+
+        // For each item in our JSON, we assign the user data of size, color, and shape to a heart and add.
+        $.each(data, function() {
+            //set size based on this.donation 
+            if (this.donation >= 25) {
+                heartSize = 'epic';
+            } else if (this.donation <= 20) {
+                heartSize = 'xlarge';
+            } else if (this.donation >= 15) {
+                heartSize = 'large';
+            } else if (this.donation >= 10) {
+                heartSize = 'med';
+            }
+            //create our heart
+            var heart = document.createElement('div');
+            $(heart)
+            //add heart style text and CSS classes per this piece of data
+            .html('<span>' + this.heartstyle + '</span></div>')
+            .addClass('heart ' + this.color + ' ' + heartSize)
+            .appendTo('#container');
+            //add it to the packery instance too..
+            $container.packery('addItems', heart);
+        });
+        $container.packery('layout');
     });
 
-	});
-});	
- 
+    $container.on("click", ".heart", function() {
+        
+      $(this).velocity({
+          zIndex: "1000",
+          translateY: "-20px",
+          rotateY: "180deg",
+          scaleX: "1.5",
+          scaleY: "1.5",
+      });
+    });
+});
