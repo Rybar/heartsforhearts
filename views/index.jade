@@ -12,8 +12,10 @@ block content
     #addHeart
         fieldset
             input#inputDonationAmount(type='text', placeholder='Donation Amount')
-            input#inputUserEmail(type='text', placeholder='Family Email')
+            input#inputUserEmail(type='text', placeholder='Email')
+            input#inputUserEmail(type='text', placeholder='Email')
             input#inputUserFullname(type='text', placeholder='Full Name')
+            input#inputUserInitials(type='text', placeholder='Initials')
             input#inputMessage(type='text', placeholder='Your custom message')
             select#inputCurrency
                 option USD
@@ -51,11 +53,20 @@ block content
         #heartInfo
             h2 Heart Info
             p
+                strong Empty?:
+                |  <span id='userInfoEmpty'></span>
+                br
                 strong Email:
                 |  <span id='userInfoEmail'></span>
                 br
                 strong Your Name:
                 |  <span id='userInfoFullName'></span>
+                br
+                strong Your Initials:
+                |  <span id='userInfoInitials'></span>
+                br
+                strong Anonymous?:
+                |  <span id='userInfoAnonymous'></span>
                 br
                 strong Donation Amount:
                 |  <span id='userInfoDonationAmount'></span>

@@ -1,55 +1,95 @@
+var heartData = []; //global variable for hearts data
+
 $(document).ready(function() {
     // Handler for .ready() called.
         var $container = $('#container');
         
-          $container.packery({ 'selector' : '.heart', 'stamp' : '.whitespace'});    
-          $container.packery('reloadItems');
-          $container.packery('layout');
+        
+   // $container.packery({ 'selector' : '.heart', 'stamp' : '.whitespace'}); 
+     $container.packery({ 'selector' : '.heart', 'stamp' : '.whitespace'});   
           
-              // Empty content string
-          
-
     // jQuery AJAX call for JSON
     $.getJSON('/users/heartlist', function(data) {
+        heartData = data; //store JSON data in global variable.
 
-        // Stick our user data array into a userlist variable in the global object
-        var userListData = data,
         //default heart Size
-            heartSize = "small";
+            var heartSize = "small";
 
         // For each item in our JSON, we assign the user data of size, color, and shape to a heart and add.
         $.each(data, function() {
             //set size based on this.donation 
             if (this.donation >= 25) {
                 heartSize = 'epic';
-            } else if (this.donation <= 20) {
+            } else if (this.donation >= 20) {
                 heartSize = 'xlarge';
             } else if (this.donation >= 15) {
                 heartSize = 'large';
             } else if (this.donation >= 10) {
                 heartSize = 'med';
+            } else if (this.donation >= 1) {
+                heartSize = 'small';
             }
             //create our heart
             var heart = document.createElement('div');
             $(heart)
             //add heart style text and CSS classes per this piece of data
             .html('<span>' + this.heartstyle + '</span></div>')
-            .addClass('heart ' + this.color + ' ' + heartSize)
+            .addClass('heart ' + this.color + ' ' + heartSize + ' ' + "activate")
+            .data("id", this._id)
             .appendTo('#container');
             //add it to the packery instance too..
-            $container.packery('addItems', heart);
+            setTimeout( function() { //for cascading animation, set a tiny delay between adding each one
+             $container.packery('appended', heart);
+             $container.packery('layout');
+            }, 20 );
         });
-        $container.packery('layout');
+        
     });
-
+    
+    // Turned off flip animation. Code preserved.
+    
     $container.on("click", ".heart", function() {
         
-      $(this).velocity({
+      /*$(this).velocity({
           zIndex: "1000",
           translateY: "-20px",
           rotateY: "180deg",
           scaleX: "1.5",
           scaleY: "1.5",
-      });
+      });*/
+
+
+        activateoverlay();
+        populateModal($(this).data('id') );
+        //populateModal( $(this).data('id') );
+        
+        /*if( clickedHeartObject.class === "empty") {
+            activateoverlay();
+         //$('#heartDescriptionText h2').text($(this).data('id'));
+            populateModal( $(this).data('id') );
+         *  
+        };*/
     });
 });
+
+function populateModal(id){
+
+    // Variable equating the index in heartData
+    var clickedHeartIndex = heartData.map(function(arrayItem) { return arrayItem._id; }).indexOf(id);
+
+    // Variable equaling the clicked heart's Json 
+    var clickedHeartObject = heartData[clickedHeartIndex];
+
+    // Heart Object Info
+    $('#heartBelongs').text("This heart belongs to " + clickedHeartObject.fullname);
+    
+    $('#donationAmountCounter').text(" Donation amount: " + clickedHeartObject.donation);
+    $('#donationAmount').text(clickedHeartObject.donation);
+    $('#clickedHeartPic').html('<span class = "heart ' + clickedHeartObject.color + ' epic activate">' + clickedHeartObject.heartstyle + '</span>');
+    
+    //$('#clickedHeartPic').addClass('heart ' + clickedHeartObject.color + " med activate");
+    //$('#userInfoColor').text(clickedHeartObject.color);
+    //$('#userInfoHeartstyle').text(clickedHeartObject.heartstyle);
+    
+    //styleHeart(clickedHeartObject.color, clickedHeartObject.heartstyle, clickedHeartObject.donation);
+}    

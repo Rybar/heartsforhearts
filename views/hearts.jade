@@ -7,17 +7,94 @@ doctype html
 html
     head
         title= title
+        link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
         link(rel='stylesheet', href='/stylesheets/hearts.css')
-    body
+        link(rel='stylesheet', href='/stylesheets/modalForms.css')
+        
+    body.heartsBG
+      
+      nav.navbar.navbar-default.navbar-fixed-top#navigationBar(role="navigation")
+        div.container-fluid
+          div.navbar-header
+          button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#navbar", aria-expanded="false", aria-controls="navbar")
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='change ') Home   
+        div.navbar-collapse.collapse#navbar
+          ul.nav.navbar-nav#navHeaders
+            li
+              a(href="http://www.saveachildsheart.com/") About
+            li
+              a(href="") Contact
       block content
         div#container
           div.whitespace.jumbobox
             span A
-            button.donate DONATE
+            h1 Hearts for Hearts
+            p Hearts for Hearts lorem ipsum sit dolor amet lorem ipsum sit dolor amet lorem ipsum sit dolor amet
+            button.donate#centerDonate DONATE
+      // modal html transfer
+      div#modaloverlay(aria-hidden='true')
+        div#modalcontent
+          button#deactivate X
+          div#donationGreeting(aria-hidden='false')
+            div#heartDescriptionText
+              div#clickedHeartPic
+              h2#heartBelongs Test Belong Field
+              h2#donationAmountCounter Test  Donation amount:
+              h1#donationAmount Test $$
+              p#donationMessage
+                | Our thoughts are with you and your family
+              button#greetingTransfer Donate
+              h3 Claim a heart on the wall by donating
+          // This is the heart designer  
+          div#donationCallToAction(aria-hidden='true')
+            form(name='donation', action='', onsubmit='onSubmit()')
+              input#nameInfo(placeholder='Name', name='recipient')
+              br
+              input#messageInfo(placeholder="Message to child or child's family", name='message')
+              br
+              input#emailInfo(placeholder='Child email', name='email')
+              br
+              input#donationInfo(placeholder='Donation Amt', name='amount')
+              select#currencyInfo
+                option(value='', disabled='', selected='') Currency
+                option(value='GBP') British Pound(GBP)
+                option(value='AUD') Australian Dollar (AUD)
+                option(value='CAD') Canadian dollar (CAD)
+                option(value='EUR') Euro (EUR)
+                option(value='HKD') Hong Kong Dollar  (HKD)
+                option(value='SGD') Singapore Dollar (SGD)
+              input#submit(type='button', value='Continue', onclick='submitForm();')
+            #instructions
+              p
+                | Clicking continue will take you to our JustGiving fundraising page to complete your donation. You will be returned here after completing the transaction
+            #leftShapeSelector
+              p prev. heart style
+            #rightShapeSelector
+              p next heart style
+            #colorselector
+              #blueselector.blue.colorbars
+              #lightblueselector.lightblue.colorbars
+              #greenselector.green.colorbars
+              #goldselector.gold.colorbars
+              #orangeselector.orange.colorbars
+              #redselector.red.colorbars
+              #pinkselector.pink.colorbars
+              #purpleselector.purple.colorbars
+
+      
+      
+      
+      // limit of html transfer      
       script(src='/javascripts/jquery.min.js')
+      script(src='/javascripts/bootstrap.min.js')
       script(src='/javascripts/packery.pkgd.min.js')
       script(src='/javascripts/velocity.min.js')
       script(src='/javascripts/hearts.js')
+      script(src='/javascripts/modalJs.js')
 
   
 

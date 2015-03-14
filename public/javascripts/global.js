@@ -42,6 +42,9 @@ function populateTable() {
             tableContent += '<tr>';
             tableContent += '<td><a href="#" class="linkshowuser" rel="' + this._id + '" title="Show Details">' + this.fullname + '</a></td>';
             tableContent += '<td>' + this.email + '</td>';
+            tableContent += '<td>' + this.donation + '</td>';
+            tableContent += '<td>' + this.color + '</td>';
+            tableContent += '<td>' + this.heartstyle + '</td>';
             tableContent += '<td><a href="#" class="linkdeleteuser" rel="' + this._id + '">delete</a></td>';
             tableContent += '</tr>';
         });
@@ -104,12 +107,16 @@ function addUser(event) {
                 */
         var newUser = {
             'email': $('#addHeart fieldset input#inputUserEmail').val(),
+            'anonymous': $('#addHeart fieldset input#inputUserAnonymous').val(),
             'fullname': $('#addHeart fieldset input#inputUserFullname').val(),
+            'initials': $('#addHeart fieldset input#inputUserInitials').val(),
             'donation': $('#addHeart fieldset input#inputDonationAmount').val(),
             'message': $('#addHeart fieldset input#inputMessage').val(),
             'currency': $('#addHeart fieldset select#inputCurrency').val(),
             'color': $('#addHeart fieldset select#inputColor').val(),
-            'heartstyle': $('#addHeart fieldset select#inputHeartstyle').val()
+            'heartstyle': $('#addHeart fieldset select#inputHeartstyle').val(),
+            'empty': false
+            
         }
 
         // Use AJAX to post the object to our adduser service
@@ -214,21 +221,24 @@ function styleHeart(color, style, donationAmount){
 }
 
 
-function generateRandomSet(numberOfEntries) {
+function generateRandomSet(numberOfEntries, hasEmpties) {
     
     for(var i = 0; i <=numberOfEntries; i++) {
-        var colors = [ 'green', 'gold', 'orange', 'red', 'pink', 'lightblue', 'blue', ],
+        var isEmpty = hasEmpties ? Math.random()>0.5 : false; //random chance of empty heart, or none.
+        var colors = [ 'green', 'gold', 'orange', 'red', 'pink', 'lightblue', 'blue' ],
             styles = [ 'A', 'B', 'C', 'D', 'E','F','G', 'H'],
             randColor = colors[Math.floor(Math.random()*colors.length)],
             randStyles = styles[Math.floor(Math.random()*styles.length)],
             newUser = {
-            'email': chance.email(),
-            'fullname' : chance.name(),
+            'email': isEmpty ? '' : chance.email(),
+            'initials': isEmpty ? '' : 'ABC',
+            'fullname' : isEmpty ? '' : chance.name(),
             'donation': chance.integer({min: 1, max: 30}),
-            'message': chance.sentence(),
+            'message': isEmpty ? '' : chance.sentence(),
             'currency': "USD",
-            'color': randColor,
-            'heartstyle': randStyles
+            'color': isEmpty ? 'emptyGrey' : randColor, 
+            'heartstyle': isEmpty ? 'A' : randStyles,
+            'empty' : isEmpty
         };
         console.log(randColor);
         // Use AJAX to post the object to our adduser service

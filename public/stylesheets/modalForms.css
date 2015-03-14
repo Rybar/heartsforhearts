@@ -1,0 +1,179 @@
+#modaloverlay {
+  background:rgba(0,0,0,.8);
+  height: 100%;
+  width: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  z-index: 1100;
+}
+#clickedHeartPic {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+#clickedHeartPic span{
+	position: absolute;
+  top: 40%;
+  left: 40%;
+
+}
+#modaloverlay[aria-hidden="true"] {
+  display: none;
+}
+#modalcontent {
+  position: absolute;
+  width: 60%;
+  height: 80%;
+  left: 20%;
+  top: 10%;
+  background: #303030;
+	border: 3px solid white;
+	border-radius: 10px;
+}
+#donationGreeting[aria-hidden="true"] {
+	display: none;
+}
+#donationCallToAction[aria-hidden="true"]  {
+	display: none;
+}
+#deactivate {
+  position: absolute;
+  right: 0px;
+	top: 0px;
+	z-index: 1000;
+}
+#heartDescriptionText {
+	color: pink;
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+#heartDescriptionText p {
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+#donationGreeting h3 {
+	color: grey;
+	position: absolute;
+	left: 0;
+	right: 0;
+	text-align: center;
+	top: 60%;
+}
+#greetingTransfer {
+	font-size: 25px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	top: 80%;
+	background-color: orange;
+	border: 2px solid orange;
+	border-radius: 10px;
+}
+input {
+  width: auto;
+	border-radius: 5px;
+}
+#nameInfo {
+	position: absolute;
+	left: 60%;
+	top: 10%;
+}
+#messageInfo {
+	position: absolute;
+	left: 60%;
+	top: 25%;
+	width: 35%;
+	height: 30%;
+}
+#donationInfo {
+	position: absolute;
+	left: 60%;
+	top: 15%;
+	width: 10%;
+}
+#currencyInfo {
+  position: absolute;
+  left: 72%;
+  border-radius: 5px;
+  width: 15%;
+  top: 15%;
+}
+#emailInfo {
+	position: absolute;
+	left: 60%;
+	top: 20%;
+	width: 25%;
+}
+#submit {
+  position: absolute;
+  left: 20%;
+	font-size: 30px;
+	border: orange;
+	border-radius: 10px;
+	background-color: orange;
+	color: white;
+  bottom: 10%;
+}
+.colorbars {
+  position: absolute;
+  width: 5%;
+	border-radius: 50%;
+  height: 30px;
+  top: 40%;
+}
+#blueselector {
+  left: 45%;
+}
+#lightblueselector {
+  left: 39%;
+}
+#greenselector {
+  left: 33%;
+}
+#goldselector {
+  left: 27%;
+}
+#orangeselector {
+  left: 21%;
+}
+#redselector {
+  left: 15%;
+}
+#pinkselector {
+  left: 9%; 
+}
+#purpleselector {
+  left: 3%;
+}
+#instructions {
+	position: absolute;
+	left: 10%;
+	top: 50%;
+	width: 40%;
+}
+#leftShapeSelector {
+	position: absolute;
+	left: 5%;
+	top: 25%;
+}
+#rightShapeSelector {
+	position: absolute;
+	left: 40%;
+	top: 25%;
+}
+.blue         { background: rgb(0,145,207); color: rgba(255,255,255, 0.6) }
+.lightblue    { background: rgb(53,195,222); color: rgba(255,255,255, 0.6); }
+.green        { background: rgb(177,206,76); color: rgba(255,255,255, 0.6); }
+.gold         { background: rgb(255,199,9); color: rgba(255,255,255, 0.6); }
+.orange       { background: rgb(247,146,40); color: rgba(255,255,255, 0.6); }
+.red          { background: rgb(240,83,80); color: rgba(255,255,255, 0.6); }
+.pink         { background: rgb(238,61,133); color: rgba(255,255,255, 0.6);}
+.purple       { background: rgb(155,98,166); color: rgba(255,255,255, 0.6); }

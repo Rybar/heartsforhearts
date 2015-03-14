@@ -1,31 +1,38 @@
 @font-face {
     font-family: 'heartsregular';
-    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/hearts-webfont.eot');
-    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/hearts-webfont.eot?#iefix') format('embedded-opentype'),
-         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/hearts-webfont.woff2') format('woff2'),
-         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/hearts-webfont.woff') format('woff'),
-         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/hearts-webfont.ttf') format('truetype'),
-         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/hearts-webfont.svg#heartsregular') format('svg');
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/Hearts-webfont.eot');
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/Hearts-webfont.eot?#iefix') format('embedded-opentype'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/Hearts-webfont.woff2') format('woff2'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/Hearts-webfont.woff') format('woff'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/Hearts-webfont.ttf') format('truetype'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/Hearts-webfont.svg#heartsregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
 }
 
+.heartsBG{
+  background: #303030;
+}
+
 .heart {
-  padding: 5px;
-  margin: 3px;
-  display: block;
+  position: absolute;
+  top: -300px;
+  left: -300px;
+  padding: 3px;
+  margin: 6px;
+  display: inline;
   background: lightgrey;
-  border-radius: 4px;
+  border-radius: 8px;
   line-height: .75em;
-  height: .72em;
+  height: .75em;
   font-family: "heartsregular";
 }
 
-.small   { font-size: 47px; }
-.med     { font-size: 89px; }
-.large   { font-size: 117px; }
-.xlarge   { font-size: 139px; }
+.small   { font-size: 25px;}
+.med     { font-size: 50px;}
+.large   { font-size: 100px; }
+.xlarge   { font-size: 125px; }
 .epic    { font-size: 200px; }
 .tiny    { font-size: 19px; }
 
@@ -37,14 +44,24 @@
 .red          { background: rgb(240,83,80); color: rgba(255,255,255, 0.6); }
 .pink         { background: rgb(238,61,133); color: rgba(255,255,255, 0.6);}
 .purple       { background: rgb(155,98,166); color: rgba(255,255,255, 0.6); }
+.emptyGrey    { background: rgb(90,90,90); color: rgba(255,255,255, 0.2); }
 
+#navigationBar {
+  background-color: #0591C6;
+} 
+#navHeaders li a{
+  color: red;
+}
+#navHeaders {
+  text-align: right;
+}
 #container {
   position: relative;
+  top: 200px;
   width: 100%;
   height: 100%;
   display: block;
   margin: 0 auto;
-  background: white;
 }
 
 .whitespace {
@@ -57,25 +74,23 @@
 }
 
 .jumbobox {
-  z-index: 1000;
-  width: 300px;
-  height: 300px;
+  width: 40%;
+  min-width: 400px;
+  height: 20em;
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
-  font-size: 300px;
-  font-family: "heartsregular";
+  font-family: sans-serif;
   color: white;
 
   line-height: .8em;
-  top: 100px;
-  left: 35%;
+  top: 300px;
+  left: 30%;
   background-color: rgb(0,145,207)    
 }
 
-button.donate {
+.donate {
   position: relative;
-  top: -180px;
   padding: 0 20px;
   margin: auto;
   font-family: sans-serif;
@@ -86,6 +101,7 @@ button.donate {
   border-radius: 10px;
   background: orange;
 }
+
 
 
 
