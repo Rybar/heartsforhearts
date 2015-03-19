@@ -1,4 +1,5 @@
 var heartData = []; //global variable for hearts data
+var total = 0;
 
 $(document).ready(function() {
     // Handler for .ready() called.
@@ -6,7 +7,7 @@ $(document).ready(function() {
         
         
    // $container.packery({ 'selector' : '.heart', 'stamp' : '.whitespace'}); 
-     $container.packery({ 'selector' : '.heart', 'stamp' : '.whitespace'});   
+     $container.packery({ 'selector' : '.heart'/*, 'stamp' : '.whitespace'*/});   
           
     // jQuery AJAX call for JSON
     $.getJSON('/users/heartlist', function(data) {
@@ -17,6 +18,7 @@ $(document).ready(function() {
 
         // For each item in our JSON, we assign the user data of size, color, and shape to a heart and add.
         $.each(data, function() {
+            var thisHeart = this;
             //set size based on this.donation 
             if (this.donation >= 25) {
                 heartSize = 'epic';
@@ -38,10 +40,14 @@ $(document).ready(function() {
             .data("id", this._id)
             .appendTo('#container');
             //add it to the packery instance too..
-            setTimeout( function() { //for cascading animation, set a tiny delay between adding each one
+             setTimeout( function() { //for cascading animation, set a tiny delay between adding each one
              $container.packery('appended', heart);
              $container.packery('layout');
-            }, 20 );
+             if(thisHeart.empty === "false") { 
+                updateProgressBar(thisHeart.donation);
+                //console.log(thisHeart.donation + " " + thisHeart.empty)
+             }
+             }, 01 );
         });
         
     });
@@ -57,11 +63,8 @@ $(document).ready(function() {
           scaleX: "1.5",
           scaleY: "1.5",
       });*/
-
-
-        activateoverlay();
+        activateModal();
         populateModal($(this).data('id') );
-        //populateModal( $(this).data('id') );
         
         /*if( clickedHeartObject.class === "empty") {
             activateoverlay();
@@ -79,17 +82,26 @@ function populateModal(id){
 
     // Variable equaling the clicked heart's Json 
     var clickedHeartObject = heartData[clickedHeartIndex];
-
-    // Heart Object Info
-    $('#heartBelongs').text("This heart belongs to " + clickedHeartObject.fullname);
-    
-    $('#donationAmountCounter').text(" Donation amount: " + clickedHeartObject.donation);
-    $('#donationAmount').text(clickedHeartObject.donation);
-    $('#clickedHeartPic').html('<span class = "heart ' + clickedHeartObject.color + ' epic activate">' + clickedHeartObject.heartstyle + '</span>');
-    
+    if (clickedHeartObject.empty === "true") {
+        console.log('checking123456');
+    } else {
+        // Heart Object Info
+        $('#heartBelongs').text("This heart belongs to " + clickedHeartObject.fullname);
+        $('#donationAmountCounter').text(" Donation amount: " + clickedHeartObject.donation);
+        $('#donationAmount').text(clickedHeartObject.donation);
+        $('#clickedHeartPic').html('<span id="greetingHeart" class = "heart ' + clickedHeartObject.color + ' epic activate">' + clickedHeartObject.heartstyle + '</span>');
+    }
     //$('#clickedHeartPic').addClass('heart ' + clickedHeartObject.color + " med activate");
     //$('#userInfoColor').text(clickedHeartObject.color);
     //$('#userInfoHeartstyle').text(clickedHeartObject.heartstyle);
     
     //styleHeart(clickedHeartObject.color, clickedHeartObject.heartstyle, clickedHeartObject.donation);
-}    
+}
+
+function updateProgressBar(donation) {
+    total += parseInt(donation);
+    var percent = (total/10000).toFixed(2).toString().slice(2) + "%";
+    //console.log(donation + " " + total + " " + percent);
+    $('.progress-bar').attr("aria-valuenow", total);
+    $('.progress-bar').css("width", percent)
+}

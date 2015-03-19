@@ -1,25 +1,13 @@
-#modaloverlay {
-  background:rgba(0,0,0,.8);
-  height: 100%;
-  width: 100%;
-  left: 0;
-  position: fixed;
-  top: 0;
-  z-index: 1100;
-}
 #clickedHeartPic {
-	position: absolute;
-	height: 100%;
-	width: 100%;
 }
 #clickedHeartPic span{
-	position: absolute;
-  top: 40%;
-  left: 40%;
-
+	font-size: 600px;
 }
-#modaloverlay[aria-hidden="true"] {
-  display: none;
+#instructions {
+	color: white;
+}
+#heartBelongs {
+	
 }
 #modalcontent {
   position: absolute;
@@ -37,26 +25,6 @@
 #donationCallToAction[aria-hidden="true"]  {
 	display: none;
 }
-#deactivate {
-  position: absolute;
-  right: 0px;
-	top: 0px;
-	z-index: 1000;
-}
-#heartDescriptionText {
-	color: pink;
-	position: absolute;
-	left: 0;
-	right: 0;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-}
-#heartDescriptionText p {
-	position: absolute;
-	left: 0;
-	right: 0;
-}
 #donationGreeting h3 {
 	color: grey;
 	position: absolute;
@@ -67,15 +35,12 @@
 }
 #greetingTransfer {
 	font-size: 25px;
-	position: absolute;
-	left: 0;
-	right: 0;
-	margin-left: auto;
-	margin-right: auto;
-	top: 80%;
 	background-color: orange;
 	border: 2px solid orange;
 	border-radius: 10px;
+}
+#greetingHeart {
+	position: static;
 }
 input {
   width: auto;
@@ -98,6 +63,12 @@ input {
 	left: 60%;
 	top: 15%;
 	width: 10%;
+}
+#donationAmount {
+}
+#donationAmountCounter {
+}
+#donationMessage {
 }
 #currencyInfo {
   position: absolute;
@@ -163,12 +134,15 @@ input {
 	position: absolute;
 	left: 5%;
 	top: 25%;
+	color: white;
 }
 #rightShapeSelector {
 	position: absolute;
 	left: 40%;
 	top: 25%;
+	color: white;
 }
+
 .blue         { background: rgb(0,145,207); color: rgba(255,255,255, 0.6) }
 .lightblue    { background: rgb(53,195,222); color: rgba(255,255,255, 0.6); }
 .green        { background: rgb(177,206,76); color: rgba(255,255,255, 0.6); }
@@ -177,3 +151,41 @@ input {
 .red          { background: rgb(240,83,80); color: rgba(255,255,255, 0.6); }
 .pink         { background: rgb(238,61,133); color: rgba(255,255,255, 0.6);}
 .purple       { background: rgb(155,98,166); color: rgba(255,255,255, 0.6); }
+@media screen and (max-width: 736px) {
+	#clickedHeartPic span{
+		font-size: 362px;
+	}  
+	.modal-content {
+		position: absolute;
+		width:100%;
+		height: 500px;
+	}
+	#donationGreeting {
+		position:absolute;
+		height: 100%;
+		width: 100%;
+	}
+	#heartContent {
+		position:absolute;
+		left: 9%;
+	}
+}
+@media screen and (max-width: 970px) {
+  #clickedHeartPic span{
+		font-size: 362px;
+	}  
+	.modal-content {
+			position: absolute;
+			width: 100%;
+			height: 500px;
+	}
+	#donationGreeting {
+		position:absolute;
+		height: 100%;
+		width: 100%;
+	}		
+	#heartContent {
+		position: absolute;
+		left: 24%;
+	}
+}

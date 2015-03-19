@@ -1,28 +1,25 @@
-var overlay = document.getElementById('modaloverlay');
-var closer = document.getElementById('deactivate');
+
 var modalGreeting = document.getElementById('donationGreeting');
 var modalGreetingTransferButton = document.getElementById('greetingTransfer');
 var modalCallToAction = document.getElementById('donationCallToAction');
 var centerDonateButton = document.getElementById('centerDonate');
 
-function activateoverlay() {
-  overlay.setAttribute('aria-hidden', 'false');
-  $("modaloverlay").css('height', '100%');
-}
-function closeoverlay() {
-    modalGreeting.setAttribute('aria-hidden', 'false');
-    modalCallToAction.setAttribute('aria-hidden', 'true');       
-    overlay.setAttribute('aria-hidden', 'true');
-}
-function transferCallToAction() {
-    modalGreeting.setAttribute('aria-hidden', 'true');
-    modalCallToAction.setAttribute('aria-hidden', 'false');
-    overlay.setAttribute('aria-hidden', 'false');
-}
 
-	closer.addEventListener('click', closeoverlay);
-	modalGreetingTransferButton.addEventListener('click', transferCallToAction);
-	centerDonateButton.addEventListener('click', transferCallToAction);
+function activateModal() {
+    $('#myModal').modal('toggle');
+}
+function transferModal() {
+    modalCallToAction.setAttribute('aria-hidden', 'false');
+    modalGreeting.setAttribute('aria-hidden', 'true');
+    
+}
+$('#myModal').on('hidden.bs.modal', function (e) {
+    console.log('checking again');
+    modalCallToAction.setAttribute('aria-hidden', 'true');
+    modalGreeting.setAttribute('aria-hidden', 'false');
+});
+	centerDonateButton.addEventListener('click', activateModal);
+	modalGreetingTransferButton.addEventListener('click', transferModal);
 function recreateHeart() {
     
 }

@@ -6,13 +6,15 @@ mixin times(limit, block)
 doctype html
 html
     head
-        title= title
-        link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-        link(rel='stylesheet', href='/stylesheets/hearts.css')
-        link(rel='stylesheet', href='/stylesheets/modalForms.css')
+      meta(charset='utf-8')
+      meta(http-equiv='X-UA-Compatible', content='IE=edge')
+      meta(name='viewport', content='width=device-width, initial-scale=1')    
+      title= title
+      link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+      link(rel='stylesheet', href='/stylesheets/hearts.css')
+      link(rel='stylesheet', href='/stylesheets/modalForms.css')
         
     body.heartsBG
-      
       nav.navbar.navbar-default.navbar-fixed-top#navigationBar(role="navigation")
         div.container-fluid
           div.navbar-header
@@ -21,37 +23,41 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='change ') Home   
+          a.navbar-brand(href='change ') SACH   
         div.navbar-collapse.collapse#navbar
-          ul.nav.navbar-nav#navHeaders
+          ul.nav.navbar-nav
             li
               a(href="http://www.saveachildsheart.com/") About
             li
               a(href="") Contact
+        div.progress
+          div.progress-bar.progress-bar-success.progress-bar-striped.active(role='progressbar', aria-valuenow='0', aria-valuemin='0', aria-valuemax='10000', style='width: 0%')
+            span.sr-only 
+      div.container
+        div.jumbotron
+            h1 Hearts for Hearts
+            p Heart Donation Text
+            button.donate#centerDonate DONATE
       block content
         div#container
-          div.whitespace.jumbobox
-            span A
-            h1 Hearts for Hearts
-            p Hearts for Hearts lorem ipsum sit dolor amet lorem ipsum sit dolor amet lorem ipsum sit dolor amet
-            button.donate#centerDonate DONATE
-      // modal html transfer
-      div#modaloverlay(aria-hidden='true')
-        div#modalcontent
-          button#deactivate X
-          div#donationGreeting(aria-hidden='false')
-            div#heartDescriptionText
-              div#clickedHeartPic
-              h2#heartBelongs Test Belong Field
-              h2#donationAmountCounter Test  Donation amount:
-              h1#donationAmount Test $$
-              p#donationMessage
-                | Our thoughts are with you and your family
-              button#greetingTransfer Donate
-              h3 Claim a heart on the wall by donating
-          // This is the heart designer  
-          div#donationCallToAction(aria-hidden='true')
-            form(name='donation', action='', onsubmit='onSubmit()')
+      div.modal.fade.bs-example-modal-lg#myModal(tabindex='-1', role='dialog', aria-labelledby='myLargeModalLabel', aria-hidden='true')
+        div.modal-dialog.modal-lg
+          div.modal-content
+            div#donationGreeting(aria-hidden='false')
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×            
+              div#heartContent
+                div#clickedHeartPic
+                //-p#heartBelongs Test Belong Field
+                  p#donationAmountCounter Test  Donation amount:
+                  p#donationAmount Test $$
+                  p#donationMessage Our thoughts are with you and your family
+              //p Claim a heart on the wall by donating
+              //button#greetingTransfer Donate
+            div#donationCallToAction(aria-hidden='true')
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×            
+              form(name='donation', action='', onsubmit='onSubmit()')
               input#nameInfo(placeholder='Name', name='recipient')
               br
               input#messageInfo(placeholder="Message to child or child's family", name='message')
@@ -68,14 +74,14 @@ html
                 option(value='HKD') Hong Kong Dollar  (HKD)
                 option(value='SGD') Singapore Dollar (SGD)
               input#submit(type='button', value='Continue', onclick='submitForm();')
-            #instructions
+              #instructions
               p
                 | Clicking continue will take you to our JustGiving fundraising page to complete your donation. You will be returned here after completing the transaction
-            #leftShapeSelector
+              #leftShapeSelector
               p prev. heart style
-            #rightShapeSelector
+              #rightShapeSelector
               p next heart style
-            #colorselector
+              #colorselector
               #blueselector.blue.colorbars
               #lightblueselector.lightblue.colorbars
               #greenselector.green.colorbars
@@ -88,7 +94,6 @@ html
       
       
       
-      // limit of html transfer      
       script(src='/javascripts/jquery.min.js')
       script(src='/javascripts/bootstrap.min.js')
       script(src='/javascripts/packery.pkgd.min.js')
