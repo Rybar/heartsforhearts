@@ -2,12 +2,28 @@ var heartData = []; //global variable for hearts data
 var total = 0;
 
 $(document).ready(function() {
+    //initialize hiding navbar, only show after scrolling past header
+    $("#navigationBar").autoHidingNavbar({
+        disableAutohide : true,
+        showOnUpscroll: false,
+        showOnBottom: true
+    });
+    $("#navigationBar").autoHidingNavbar('hide');
+    $(window).scroll( function() {
+        var value = $(this).scrollTop();
+        console.log(value)
+        if ( value > 240 )
+           $("#navigationBar").autoHidingNavbar('show');
+        else
+            $("#navigationBar").autoHidingNavbar('hide');
+            });
+    
     // Handler for .ready() called.
         var $container = $('#container');
         
         
    // $container.packery({ 'selector' : '.heart', 'stamp' : '.whitespace'}); 
-     $container.packery({ 'selector' : '.heart'/*, 'stamp' : '.whitespace'*/});   
+     $container.packery({ 'selector' : '.heart'});   
           
     // jQuery AJAX call for JSON
     $.getJSON('/users/heartlist', function(data) {
@@ -39,16 +55,23 @@ $(document).ready(function() {
             .addClass('heart ' + this.color + ' ' + heartSize + ' ' + "activate")
             .data("id", this._id)
             .appendTo('#container');
+            //$container.packery('appended', heart);
+
+            //------------Delayed animation inside the ajax call and creation creates too much of a load delay. Figure out a new way to do this.
             //add it to the packery instance too..
              setTimeout( function() { //for cascading animation, set a tiny delay between adding each one
-             $container.packery('appended', heart);
-             $container.packery('layout');
-             if(thisHeart.empty === "false") { 
-                updateProgressBar(thisHeart.donation);
-                //console.log(thisHeart.donation + " " + thisHeart.empty)
-             }
-             }, 01 );
+                 $container.packery('appended', heart);
+                 $container.packery('layout');
+                 if(thisHeart.empty === "false") { 
+                    updateProgressBar(thisHeart.donation);
+                    //console.log(thisHeart.donation + " " + thisHeart.empty)
+                 }
+             }, 10 ); //delay between showing hearts/adding them to packery instance
+            
         });
+        
+        //$container.packery('layout');
+        
         
     });
     
@@ -83,7 +106,8 @@ function populateModal(id){
     // Variable equaling the clicked heart's Json 
     var clickedHeartObject = heartData[clickedHeartIndex];
     if (clickedHeartObject.empty === "true") {
-        console.log('checking123456');
+        //console.log('checking123456');
+        transferModal();
     } else {
         // Heart Object Info
         $('#heartBelongs').text("This heart belongs to " + clickedHeartObject.fullname);
@@ -104,4 +128,8 @@ function updateProgressBar(donation) {
     //console.log(donation + " " + total + " " + percent);
     $('.progress-bar').attr("aria-valuenow", total);
     $('.progress-bar').css("width", percent)
+}
+
+function addHeart() {
+    
 }

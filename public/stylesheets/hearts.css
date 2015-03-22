@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'heartsregular';
-    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/Hearts-webfont.eot');
-    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/Hearts-webfont.eot?#iefix') format('embedded-opentype'),
-         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/Hearts-webfont.woff2') format('woff2'),
-         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/Hearts-webfont.woff') format('woff'),
-         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/Hearts-webfont.ttf') format('truetype'),
-         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/166569/Hearts-webfont.svg#heartsregular') format('svg');
+    src: url('/font/Hearts-webfont.eot');
+    src: url('/font/Hearts-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/font/Hearts-webfont.woff2') format('woff2'),
+         url('/font/Hearts-webfont.woff') format('woff'),
+         url('/font/Hearts-webfont.ttf') format('truetype'),
+         url('/font/Hearts-webfont.svg#heartsregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -13,9 +13,13 @@
 
 body {
   background: #303030;
-  min-height: 2000px;
+  /*min-height: 2000px;*/
   /*might scrap the one above. */
-  padding-top: 126px;
+  /*padding-top: 126px;*/
+}
+
+.container, .jumbotron {
+  width: 100%;
 }
 
 .heart {
@@ -115,13 +119,27 @@ body {
   border-radius: 10px;
   background: orange;
 }
-@media screen and (max-width: 736px) {
+/* navbar styling ----------- */
+
+.navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
+  color: white;
+}
+/*#navigationBar {*/
+/*  visibility: hidden;*/
+/*}*/
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   body {
     padding-top: 78px;
   }
 }
-@media screen and (max-width: 970px) {
-  
-}
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 
+}
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+/* Styles */
+}
 

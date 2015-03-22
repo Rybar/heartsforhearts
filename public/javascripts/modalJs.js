@@ -20,6 +20,7 @@ $('#myModal').on('hidden.bs.modal', function (e) {
 });
 	centerDonateButton.addEventListener('click', activateModal);
 	modalGreetingTransferButton.addEventListener('click', transferModal);
+	
 function recreateHeart() {
     
 }

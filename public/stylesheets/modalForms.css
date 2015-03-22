@@ -1,4 +1,8 @@
 #clickedHeartPic {
+	text-align: center;
+}
+#donationGreeting {
+	text-align: center;
 }
 #clickedHeartPic span{
 	font-size: 600px;
@@ -47,21 +51,15 @@ input {
 	border-radius: 5px;
 }
 #nameInfo {
-	position: absolute;
-	left: 60%;
-	top: 10%;
+
 }
 #messageInfo {
-	position: absolute;
-	left: 60%;
-	top: 25%;
+
 	width: 35%;
 	height: 30%;
 }
 #donationInfo {
-	position: absolute;
-	left: 60%;
-	top: 15%;
+
 	width: 10%;
 }
 #donationAmount {
@@ -71,78 +69,69 @@ input {
 #donationMessage {
 }
 #currencyInfo {
-  position: absolute;
-  left: 72%;
   border-radius: 5px;
   width: 15%;
-  top: 15%;
 }
 #emailInfo {
-	position: absolute;
-	left: 60%;
-	top: 20%;
-	width: 25%;
+
 }
 #submit {
-  position: absolute;
-  left: 20%;
 	font-size: 30px;
 	border: orange;
 	border-radius: 10px;
 	background-color: orange;
 	color: white;
-  bottom: 10%;
+
 }
 .colorbars {
-  position: absolute;
-  width: 5%;
+  width: 8%;
 	border-radius: 50%;
   height: 30px;
-  top: 40%;
+  position: absolute;
 }
 #blueselector {
-  left: 45%;
+
 }
 #lightblueselector {
-  left: 39%;
+	left: 17%;
 }
 #greenselector {
-  left: 33%;
+	left: 28%;
 }
 #goldselector {
-  left: 27%;
+	left: 39%;
 }
 #orangeselector {
-  left: 21%;
+	left: 50%;
 }
 #redselector {
-  left: 15%;
+	left: 61%;
 }
 #pinkselector {
-  left: 9%; 
+	left: 72%;
 }
 #purpleselector {
-  left: 3%;
+	left: 83%;
 }
 #instructions {
-	position: absolute;
-	left: 10%;
-	top: 50%;
-	width: 40%;
-}
-#leftShapeSelector {
-	position: absolute;
-	left: 5%;
-	top: 25%;
-	color: white;
-}
-#rightShapeSelector {
-	position: absolute;
-	left: 40%;
-	top: 25%;
-	color: white;
-}
 
+}
+#colorselector {
+	height: 35px;
+}
+.leftDesign {
+	float:left;
+}
+.rightDesign {
+	text-align: right;
+}
+#heartPreview {
+	display:block;
+	text-align: center;
+	position:relative;
+	top: 0px;
+	left: 0px;
+}
 .blue         { background: rgb(0,145,207); color: rgba(255,255,255, 0.6) }
 .lightblue    { background: rgb(53,195,222); color: rgba(255,255,255, 0.6); }
 .green        { background: rgb(177,206,76); color: rgba(255,255,255, 0.6); }
@@ -151,41 +140,52 @@ input {
 .red          { background: rgb(240,83,80); color: rgba(255,255,255, 0.6); }
 .pink         { background: rgb(238,61,133); color: rgba(255,255,255, 0.6);}
 .purple       { background: rgb(155,98,166); color: rgba(255,255,255, 0.6); }
-@media screen and (max-width: 736px) {
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 	#clickedHeartPic span{
 		font-size: 362px;
 	}  
+	.colorbars {
+		width: 11%;
+	}
 	.modal-content {
-		position: absolute;
+/*		position: absolute;
 		width:100%;
-		height: 500px;
+		height: 500px; */
 	}
 	#donationGreeting {
-		position:absolute;
+/*		position:absolute;
 		height: 100%;
-		width: 100%;
+		width: 100%; */
 	}
 	#heartContent {
-		position:absolute;
-		left: 9%;
 	}
 }
-@media screen and (max-width: 970px) {
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
   #clickedHeartPic span{
 		font-size: 362px;
 	}  
+	.colorbars {
+		width: 6%;
+	}
 	.modal-content {
-			position: absolute;
+/*			position: absolute;
 			width: 100%;
-			height: 500px;
+			height: 500px; */
 	}
 	#donationGreeting {
-		position:absolute;
+/*		position:absolute;
 		height: 100%;
-		width: 100%;
+		width: 100%; */
 	}		
 	#heartContent {
-		position: absolute;
-		left: 24%;
+/*		position: absolute;
+		left: 33%; */
 	}
+}
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+/* Styles */
 }

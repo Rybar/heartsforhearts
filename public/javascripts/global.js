@@ -33,9 +33,10 @@ function populateTable() {
     // jQuery AJAX call for JSON
     $.getJSON( '/users/heartlist', function( data ) {
 
+
         // Stick our user data array into a userlist variable in the global object
         userListData = data;
-        console.log(userListData);
+        //console.log(userListData);
 
         // For each item in our JSON, add a table row and cells to the content string
         $.each(data, function(){
@@ -62,7 +63,7 @@ function showUserInfo(event) {
 
     // Retrieve username from link rel attribute
     var objectId = $(this).attr('rel');
-    console.log($(this).attr('rel'));
+    //console.log($(this).attr('rel'));
 
     // Get Index of object based on id value
     var arrayPosition = userListData.map(function(arrayItem) { return arrayItem._id; }).indexOf(objectId);
@@ -193,7 +194,7 @@ function deleteUser(event) {
 
 function styleHeart(color, style, donationAmount){
     var amount = parseInt(donationAmount, 10);
-    console.log(color + " | " + style + " | " + amount);
+    //console.log(color + " | " + style + " | " + amount);
     var heartSize = "small";
     //set size based on donationAmount
     if(amount >= 25){
@@ -212,7 +213,7 @@ function styleHeart(color, style, donationAmount){
         heartSize = 'small';
     }
 
-    console.log(heartSize);
+   // console.log(heartSize);
     $("#userHeart").find(".heart").removeClass();
     $("#userHeart").find("div").addClass("heart " + color + " " + heartSize);
     $("#userHeart").find(".heart span").text(style);
@@ -240,7 +241,7 @@ function generateRandomSet(numberOfEntries, hasEmpties) {
             'heartstyle': isEmpty ? 'A' : randStyles,
             'empty' : isEmpty
         };
-        console.log(randColor);
+        //console.log(randColor);
         // Use AJAX to post the object to our adduser service
         $.ajax({
             type: 'POST',
