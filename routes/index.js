@@ -8,7 +8,22 @@ router.get('/', function(req, res) {
 
 /* GET heartwall page. */
 router.get('/hearts', function(req, res) {
-  res.render('hearts', { title: 'Save A Childs Heart' });
+  res.render('hearts', {
+    name: decodeURIComponent(req.query.name) || null,
+    donation: req.query.donation || null,
+    anonymous: req.query.anonymous || null,
+    email: req.query.email || null,
+    initials: req.query.initials || null,
+    message: decodeURIComponent(req.query.message) || null,
+    currency: req.query.currency || null,
+    color: req.query.color || null,
+    style: req.query.style || null,
+    id: req.query.id || null,
+
+    title: 'Save A Childs Heart'
+    });
+    console.log(req.query);
 });
 
 module.exports = router;
+

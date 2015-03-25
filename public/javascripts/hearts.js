@@ -11,7 +11,7 @@ $(document).ready(function() {
     $("#navigationBar").autoHidingNavbar('hide');
     $(window).scroll( function() {
         var value = $(this).scrollTop();
-        console.log(value)
+        //console.log(value)
         if ( value > 240 )
            $("#navigationBar").autoHidingNavbar('show');
         else
@@ -57,8 +57,6 @@ $(document).ready(function() {
             .appendTo('#container');
             //$container.packery('appended', heart);
 
-            //------------Delayed animation inside the ajax call and creation creates too much of a load delay. Figure out a new way to do this.
-            //add it to the packery instance too..
              setTimeout( function() { //for cascading animation, set a tiny delay between adding each one
                  $container.packery('appended', heart);
                  $container.packery('layout');
@@ -66,7 +64,7 @@ $(document).ready(function() {
                     updateProgressBar(thisHeart.donation);
                     //console.log(thisHeart.donation + " " + thisHeart.empty)
                  }
-             }, 10 ); //delay between showing hearts/adding them to packery instance
+             }, 01 ); //delay between showing hearts/adding them to packery instance
             
         });
         
@@ -89,12 +87,7 @@ $(document).ready(function() {
         activateModal();
         populateModal($(this).data('id') );
         
-        /*if( clickedHeartObject.class === "empty") {
-            activateoverlay();
-         //$('#heartDescriptionText h2').text($(this).data('id'));
-            populateModal( $(this).data('id') );
-         *  
-        };*/
+
     });
 });
 
@@ -106,7 +99,6 @@ function populateModal(id){
     // Variable equaling the clicked heart's Json 
     var clickedHeartObject = heartData[clickedHeartIndex];
     if (clickedHeartObject.empty === "true") {
-        //console.log('checking123456');
         transferModal();
     } else {
         // Heart Object Info
@@ -126,8 +118,7 @@ function updateProgressBar(donation) {
     total += parseInt(donation);
     var percent = (total/10000).toFixed(2).toString().slice(2) + "%";
     //console.log(donation + " " + total + " " + percent);
-    $('.progress-bar').attr("aria-valuenow", total);
-    $('.progress-bar').css("width", percent)
+    $('#meter').css("height", percent)
 }
 
 function addHeart() {
