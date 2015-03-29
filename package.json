@@ -1,5 +1,5 @@
 {
-    "name": "application-name",
+    "name": "heartsforhearts",
     "version": "0.0.1",
     "private": true,
     "scripts": {
@@ -15,5 +15,8 @@
         "jade": "*",
         "mongodb": "*",
         "mongoskin": "*"
+    }
+    "engines":{
+        "node": "0.10.35"
     }
 }
