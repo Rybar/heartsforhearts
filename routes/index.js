@@ -9,6 +9,8 @@ router.get('/', function(req, res) {
 /* GET heartwall page. */
 router.get('/hearts', function(req, res) {
   res.render('hearts', {
+    viewHeart: req.query.viewHeart || null,
+    addHeart: req.query.addHeart || null,
     name: decodeURIComponent(req.query.name) || null,
     donation: req.query.donation || null,
     anonymous: req.query.anonymous || null,
@@ -22,7 +24,6 @@ router.get('/hearts', function(req, res) {
 
     title: 'Save A Childs Heart'
     });
-    console.log(req.query);
 });
 
 module.exports = router;

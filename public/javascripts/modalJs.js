@@ -12,11 +12,11 @@ var redPreviewSelector = document.getElementById('redselector');
 var pinkPreviewSelector = document.getElementById('pinkselector');
 var purplePreviewSelector = document.getElementById('purpleselector');
 var heartPreviewSelector = document.getElementById('heartPreview');
-var donationHeartColor = "";
+var donationHeartColor = "blue";
 var donationHeartStyle = "A";
 var styleCounter = 0;
 // Event listeners
-	centerDonateButton.addEventListener('click', activateModal);
+	centerDonateButton.addEventListener('click', centerDonateModalActivation);
 	modalGreetingTransferButton.addEventListener('click', transferModal);
 	// Ask Ryan about the following 2 lines. Something is clicking every element
 	/*bluePreviewSelector.addEventListener('click', console.log("check1"));
@@ -75,6 +75,10 @@ function scrollRight() {
 }
 function activateModal() {
     $('#myModal').modal('toggle');
+}
+function centerDonateModalActivation() {
+    activateModal();
+    transferModal();
 }
 function transferModal() {
     modalCallToAction.setAttribute('aria-hidden', 'false');
@@ -140,14 +144,14 @@ function changePurple() {
 }
 function submitForm() {
     var consistentString = "https://v3-sandbox.justgiving.com/Ryan-Malm/4w350m3/donate/";
-    var exitURL = "&exitURL=" + encodeURIComponent("https://heartsforhearts-rybar.c9.io/hearts/")
-    console.log(document.donation.name.value);
+    var exitURL = "&exitURL=" + /*encodeURIComponent(*/"https://heartsforhearts-rybar.c9.io/hearts/"//)
+    /*console.log(document.donation.name.value);
     console.log(document.donation.message.value);
     console.log(document.donation.email.value);
     console.log(document.donation.amount.value);
     console.log(document.donation.currency.value);
     console.log(document.donation.intials.value);
-    console.log(document.donation.anonymous.value);
+    console.log(document.donation.anonymous.value);*/
     //console.log(document.donation);
     // URL = "justgiving charity page" + simpleDonation query + RedirectURL + our Query
     // SCHEMA from justgiving: http://www.justgiving.com/{shortUrl}/4w350m3/donate/?amount={suggestedAmount}&exitUrl=http%3a%2f%2fwww.myredirecturl.com%2fpath?donationId=JUSTGIVING-DONATION-ID
@@ -155,8 +159,22 @@ function submitForm() {
     		+ document.donation.amount.value
     		+ exitURL
     		//+  "?" + $("form").serialize()
-    		+ "&donationId=JUSTGIVNG-DONATION-ID"
+    		+ "?name=" + encodeURIComponent(document.donation.name.value)
+    		+ "%26initials=" + document.donation.intials.value
+    		// The & might be the tripper. W3 encoding for & is &26. Tested.
+    		+ "%26donation=" + document.donation.amount.value
+    	    + "%26email=" + document.donation.email.value
+    	    + "%26anonymous=" + document.donation.anonymous.value
+    	    + "%26message=" + encodeURIComponent(document.donation.message.value)
+    	    + "%26color=" + donationHeartColor
+    	    + "%26style=" + donationHeartStyle
+    	    + "%26currency=" + document.donation.currency.value 
+    		+ "%26?donationId=JUSTGIVING-DONATION-ID"
+    		// w3 converter link
+    		// http://www.w3schools.com/tags/ref_urlencode.asp
+    		// ?donation is necessary, tested 3/25
     	//	+ "&color=" + donationHeartColor
     	//	+ "&style=" + donationHeartStyle
+    	
     		);
 } 

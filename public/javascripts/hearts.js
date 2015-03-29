@@ -68,10 +68,18 @@ $(document).ready(function() {
             
         });
         
+        
+        
         //$container.packery('layout');
         
         
     });
+    
+    if(qViewHeart) {
+        console.log(qViewHeart + ' this is the qView');
+        activateModal();
+        populateModal(qViewHeart);
+    }
     
     // Turned off flip animation. Code preserved.
     
@@ -85,6 +93,7 @@ $(document).ready(function() {
           scaleY: "1.5",
       });*/
         activateModal();
+        console.log($(this).data('id'));
         populateModal($(this).data('id') );
         
 
@@ -92,14 +101,18 @@ $(document).ready(function() {
 });
 
 function populateModal(id){
-
+    //console.log(typeof id)
+    //console.log(id);
     // Variable equating the index in heartData
+    //console.log(id);
     var clickedHeartIndex = heartData.map(function(arrayItem) { return arrayItem._id; }).indexOf(id);
-
+    //console.log(clickedHeartIndex);
+    // Above went to -1...Strange
     // Variable equaling the clicked heart's Json 
     var clickedHeartObject = heartData[clickedHeartIndex];
+    //console.log(clickedHeartObject);
     if (clickedHeartObject.empty === "true") {
-        transferModal();
+        transferModal(); //go to the heart designer & donation modal instead
     } else {
         // Heart Object Info
         $('#heartBelongs').text("This heart belongs to " + clickedHeartObject.fullname);
@@ -107,20 +120,17 @@ function populateModal(id){
         $('#donationAmount').text(clickedHeartObject.donation);
         $('#clickedHeartPic').html('<span id="greetingHeart" class = "heart ' + clickedHeartObject.color + ' epic activate">' + clickedHeartObject.heartstyle + '</span>');
     }
-    //$('#clickedHeartPic').addClass('heart ' + clickedHeartObject.color + " med activate");
-    //$('#userInfoColor').text(clickedHeartObject.color);
-    //$('#userInfoHeartstyle').text(clickedHeartObject.heartstyle);
-    
-    //styleHeart(clickedHeartObject.color, clickedHeartObject.heartstyle, clickedHeartObject.donation);
+    console.log(clickedHeartObject.fullname)
 }
 
 function updateProgressBar(donation) {
     total += parseInt(donation);
     var percent = (total/10000).toFixed(2).toString().slice(2) + "%";
-    //console.log(donation + " " + total + " " + percent);
     $('#meter').css("height", percent)
 }
 
 function addHeart() {
     
 }
+
+

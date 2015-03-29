@@ -1,0 +1,34 @@
+Start up node
+npm start from terminal. Make sure the terminal is in the workspace and not a specific folder.
+
+Close node
+Ctrl C
+
+Push to bit bucket
+git add-A
+git status
+
+how to get rid of hearts
+start mongo shell: mongo
+use heartsDB
+db.userlist.remove({})
+
+
+add hearts:
+from the / view, bring up browser console.
+run:
+generateRandomSet(numberOfRecords, emptiesBoolean)  //emptiesBoolean true to make empty hearts randomly, false for all 'claimed' hearts
+
+
+results from last query:
+
+{ name: 'Christopher Nguyen',
+  initials: 'CHR',
+  donation: '20.00',
+  email: 'bossparish@gmail.com',
+  anonymous: 'on',
+  message: 'Hello child',
+  color: 'red',
+  style: 'D',
+  currency: 'SGD',
+  '?donationId': 'JUSTGIVNG-DONATION-ID' }

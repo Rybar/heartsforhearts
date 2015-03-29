@@ -66,7 +66,6 @@ html
                 div#clickedHeartPic
                 p#heartBelongs Test Belong Field
                 p#donationAmountCounter Test  Donation amount:
-                //p#donationAmount Test $$
                 p#donationMessage Our thoughts are with you and your family
               p Claim a heart on the wall by donating
               button#greetingTransfer Donate
@@ -126,6 +125,7 @@ html
       
       
       script.
+        var qViewHeart = !{JSON.stringify(viewHeart) || "null"} ;
         var qAnonymous = !{JSON.stringify(anonymous) || "null"} ;
         var qName = !{JSON.stringify(name) || "null"};
         var qEmail = !{JSON.stringify(email) || "null"};
@@ -135,7 +135,6 @@ html
         var qCurrency = !{JSON.stringify(currency) || "null"};
         var qColor = !{JSON.stringify(color) || "null"};
         var qStyle = !{JSON.stringify(style) || "null"};
-        console.log(" " + qName + qAnonymous + qEmail + qDonation + qInitials + qMessage + qCurrency + qColor + qStyle);
       script(src='/javascripts/jquery.min.js')
       script(src='/javascripts/bootstrap.min.js')
       script(src='/javascripts/packery.pkgd.min.js')

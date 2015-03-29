@@ -227,7 +227,7 @@ function generateRandomSet(numberOfEntries, hasEmpties) {
     for(var i = 0; i <=numberOfEntries; i++) {
         var isEmpty = hasEmpties ? Math.random()>0.5 : false; //random chance of empty heart, or none.
         var colors = [ 'green', 'gold', 'orange', 'red', 'pink', 'lightblue', 'blue' ],
-            styles = [ 'A', 'B', 'C', 'D', 'E','F','G', 'H'],
+            styles = [ 'A', 'B', 'C', 'D', 'E','F','G', 'H', 'I', 'J', 'K'],
             randColor = colors[Math.floor(Math.random()*colors.length)],
             randStyles = styles[Math.floor(Math.random()*styles.length)],
             newUser = {
