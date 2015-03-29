@@ -14,8 +14,8 @@
         "body-parser": "~1.0.0",
         "debug": "~0.7.4",
         "jade": "*",
-        "mongodb": "*",
-        "mongoskin": "*"
+        "mongodb": "1.4.4",
+        "mongoskin": "1.4.4"
     },
     
     "engines": {

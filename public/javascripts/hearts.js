@@ -28,6 +28,12 @@ $(document).ready(function() {
     // jQuery AJAX call for JSON
     $.getJSON('/users/heartlist', function(data) {
         heartData = data; //store JSON data in global variable.
+        
+        if(qViewHeart) {
+        console.log(qViewHeart + ' this is the qView');
+        activateModal();
+        populateModal(qViewHeart);
+        }
 
         //default heart Size
             var heartSize = "small";
@@ -75,11 +81,7 @@ $(document).ready(function() {
         
     });
     
-    if(qViewHeart) {
-        console.log(qViewHeart + ' this is the qView');
-        activateModal();
-        populateModal(qViewHeart);
-    }
+
     
     // Turned off flip animation. Code preserved.
     
