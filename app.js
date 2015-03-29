@@ -6,16 +6,23 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 // Database
 var mongo = require('mongoskin');
+// if (process.env.NODE_ENV == "production") {
+//   var db = mongo.db( process.env.MONGOLAB_URI, {native_parser:true} );
+// }
+// else {
+// var db = mongo.db("mongodb://localhost:27017/heartsDB", {native_parser:true});
+// }
 
-if (process.env.NODE_ENV == "production") {
-  var db = ( process.env.DATABASE_URL, {native_parser:true} );
+var db;
+if (process.env.NODE_ENV === "production") {
+  db = mongo.db( process.env.MONGOLAB_URI, {native_parser:true} );
 }
 else {
-var db = mongo.db("mongodb://localhost:27017/heartsDB", {native_parser:true});
+  db = mongo.db("mongodb://localhost:27017/heartsDB", {native_parser:true});
 
 }
 
-var db = mongo.db("mongodb://localhost:27017/heartsDB", {native_parser:true});
+// var db = mongo.db("mongodb://localhost:27017/heartsDB", {native_parser:true});
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
