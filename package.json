@@ -16,7 +16,7 @@
         "mongodb": "*",
         "mongoskin": "*"
     }
-    "engines":{
+    "engines": {
         "node": "0.10.35"
     }
 }
