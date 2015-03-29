@@ -6,6 +6,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 // Database
 var mongo = require('mongoskin');
+
+if (process.env.NODE_ENV == "production") {
+  var db = ( process.env.DATABASE_URL, {native_parser:true} );
+}
+else {
+var db = mongo.db("mongodb://localhost:27017/heartsDB", {native_parser:true});
+
+}
+
 var db = mongo.db("mongodb://localhost:27017/heartsDB", {native_parser:true});
 
 var routes = require('./routes/index');
