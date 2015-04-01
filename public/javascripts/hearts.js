@@ -1,5 +1,6 @@
-var heartData = []; //global variable for hearts data
-var total = 0;
+var H = {}; //namespace for our global stuffs
+H.heartData = []; //global variable for hearts data
+H.total = 0;
 
 $(document).ready(function() {
     //initialize hiding navbar, only show after scrolling past header
@@ -23,18 +24,25 @@ $(document).ready(function() {
         
         
    // $container.packery({ 'selector' : '.heart', 'stamp' : '.whitespace'}); 
-     $container.packery({ 'selector' : '.heart'});   
+     $container.packery({ 'selector' : '.heart'});
+     
+    if(qAddHeart) {
+    console.log("adding a heart called via query")
+    addHeart();
+    }
+
           
     // jQuery AJAX call for JSON
     $.getJSON('/users/heartlist', function(data) {
-        heartData = data; //store JSON data in global variable.
+        H.heartData = data; //store JSON data in global variable.
         
         if(qViewHeart) {
         console.log(qViewHeart + ' this is the qView');
         activateModal();
-        populateModal(qViewHeart);
+        //populateModal(qViewHeart);
+        populateShowCaseModal(qViewHeart);
         }
-
+        
         //default heart Size
             var heartSize = "small";
 
@@ -95,44 +103,96 @@ $(document).ready(function() {
           scaleY: "1.5",
       });*/
         activateModal();
-        console.log($(this).data('id'));
         populateModal($(this).data('id') );
         
 
     });
 });
+function populateShowCaseModal(donationID) {
+    
+    //var showCaseHeartIndex = H.heartData.map(function(arrayItem) { return arrayItem._id; }).indexOf(donationID);
+    
+    //var showCaseHeartObject = H.heartData[showCaseHeartIndex];
+    var showCaseHeartSearch = H.heartData.filter(function (obj) {
+        return obj.justGivingID == donationID;
+    });
+    var showCaseHeartObject = showCaseHeartSearch[0];
+    console.log(showCaseHeartObject);
+    if(showCaseHeartObject === undefined) {
+        alert("Not found")
+        
+    }
+    else {
+        $('#heartBelongs').text("This heart donated on behalf of " + showCaseHeartObject.fullname);
+        $('#donationAmountCounter').text(" Donation amount: " + showCaseHeartObject.donation);
+        $('#donationAmount').text(showCaseHeartObject.donation);
+        $('#donationMessage').text(showCaseHeartObject.message);
+        $('#clickedHeartPic').html('<span id="greetingHeart" class = "heart ' + showCaseHeartObject.color + ' epic activate">' + showCaseHeartObject.heartstyle + '</span>');
+         
+    }
+}
 
 function populateModal(id){
-    //console.log(typeof id)
-    //console.log(id);
-    // Variable equating the index in heartData
-    //console.log(id);
-    var clickedHeartIndex = heartData.map(function(arrayItem) { return arrayItem._id; }).indexOf(id);
-    //console.log(clickedHeartIndex);
-    // Above went to -1...Strange
+
+    // Variable equating the index in H.heartData
+    var clickedHeartIndex = H.heartData.map(function(arrayItem) { return arrayItem._id; }).indexOf(id);
     // Variable equaling the clicked heart's Json 
-    var clickedHeartObject = heartData[clickedHeartIndex];
-    //console.log(clickedHeartObject);
+    var clickedHeartObject = H.heartData[clickedHeartIndex];
     if (clickedHeartObject.empty === "true") {
         transferModal(); //go to the heart designer & donation modal instead
     } else {
         // Heart Object Info
-        $('#heartBelongs').text("This heart belongs to " + clickedHeartObject.fullname);
+        $('#heartBelongs').text("This heart donated on behalf of " + clickedHeartObject.fullname);
         $('#donationAmountCounter').text(" Donation amount: " + clickedHeartObject.donation);
         $('#donationAmount').text(clickedHeartObject.donation);
+        $('#donationMessage').text(clickedHeartObject.message);
         $('#clickedHeartPic').html('<span id="greetingHeart" class = "heart ' + clickedHeartObject.color + ' epic activate">' + clickedHeartObject.heartstyle + '</span>');
     }
-    console.log(clickedHeartObject.fullname)
 }
 
 function updateProgressBar(donation) {
-    total += parseInt(donation);
-    var percent = (total/10000).toFixed(2).toString().slice(2) + "%";
+    H.total += parseInt(donation);
+    var percent = (H.total/10000).toFixed(2).toString().slice(2) + "%";
     $('#meter').css("height", percent)
 }
 
 function addHeart() {
+        // If it is, compile all user info into one object
+        /*
+                input#inputDonationAmount(type='text', placeholder='Donation Amount')
+                input#inputUserEmail(type='text', placeholder='Family Email')
+                input#inputUserFullname(type='text', placeholder='Full Name')
+                input#inputMessage(type='text', placeholder='Your custom message')
+                input#inputCurrency(type='text', placeholder='currency')
+                */
+        var newUser = {
+            'email': qEmail,            //$('#addHeart fieldset input#inputUserEmail').val(),
+            'anonymous': qAnonymous,    //$('#addHeart fieldset input#inputUserAnonymous').val(),
+            'fullname': qName,          //$('#addHeart fieldset input#inputUserFullname').val(),
+            'initials': qInitials,      //$('#addHeart fieldset input#inputUserInitials').val(),
+            'donation': qAmount,      //$('#addHeart fieldset input#inputDonationAmount').val(),
+            'message': qMessage, //$('#addHeart fieldset input#inputMessage').val(),
+            'currency': qCurrency, //$('#addHeart fieldset select#inputCurrency').val(),
+            'color': qColor,  //$('#addHeart fieldset select#inputColor').val(),
+            'heartstyle': qStyle,  //$('#addHeart fieldset select#inputHeartstyle').val(),
+            'justGivingID' : qJustGivingID,
+            'empty': false
+            
+        }
+
+        // Use AJAX to post the object to our adduser service
+        $.ajax({
+            type: 'POST',
+            data: newUser,
+            url: '/users/addheart',
+            dataType: 'JSON'
+        }).done(function( response ) {
+            //window.location.replace("https://heartsforhearts-rybar.c9.io/hearts");
+        });
+    };
     
-}
+/*function mailConfirmation(email) {
+    
+}*/
 
 

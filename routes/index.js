@@ -1,7 +1,19 @@
+//require('dotenv').load();
 var express = require('express');
 var router = express.Router();
+var nodemailer = require('nodemailer');
 
 /* GET home page. */
+
+// set up transporter for nodemail
+var transporter = nodemailer.createTransport("SMTP", {
+            service: 'Mandrill',
+            auth: {
+              user: process.env.MANDRILL_USERNAME,
+              pass: process.env.MANDRILL_API_KEY
+            }
+  });
+      
 router.get('/', function(req, res) {
   res.render('index', { title: 'Save A Childs Heart' });  
 });
@@ -12,7 +24,7 @@ router.get('/hearts', function(req, res) {
     viewHeart: req.query.viewHeart || null,
     addHeart: req.query.addHeart || null,
     name: decodeURIComponent(req.query.name) || null,
-    donation: req.query.donation || null,
+    amount: req.query.amount || null,
     anonymous: req.query.anonymous || null,
     email: req.query.email || null,
     initials: req.query.initials || null,
@@ -20,10 +32,37 @@ router.get('/hearts', function(req, res) {
     currency: req.query.currency || null,
     color: req.query.color || null,
     style: req.query.style || null,
-    id: req.query.id || null,
+    donationId: req.query.donationId || null,
 
     title: 'Save A Childs Heart'
     });
+    
+    // our confirmation email body
+    var mailOptions = {
+      to: req.query.email,
+      from: 'ryan.malm@gmail.com',
+      subject: 'TEST SACH HEART Confirmation!',
+      text: [
+        'Greetings from SACH!\n\n',
+        'Thank you for donating for a heart surgery.\n',
+        'Feel free to email us at this address if you have any questions about SACH.\n',
+        "Your heart is at .\n",
+        'Good luck with the challenges!\n\n',
+        '- the Volunteer Camp Counselor Team'
+      ].join('')
+    };
+    //check for email in URL query string
+    if(req.query.email) {
+      console.log("email in query, sending email..");
+      transporter.sendMail(mailOptions, function(err, response) {
+        if (err) {
+          console.log(err);
+          return err; }
+        else {
+          console.log("successfully sent: " + response.message);
+        }
+      });
+    }
 });
 
 module.exports = router;

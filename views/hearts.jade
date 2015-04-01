@@ -50,9 +50,9 @@ html
                 div#meterContainer
                   div#meterOutside.centered
                     div#meter
-                  button.donate#centerDonate DONATE
+                button.donate#centerDonate DONATE
               div.col-md-4
-                p.centered $10,000 is required to save the life of one child suffering from heart disease. This amount covers the costs of hospitalization plus room & board at the SACH Children's Home. Children stay for an average of 10 weeks at the SACH Children's Home. There are 1000 children on our waiting list. Help save the children. 
+                p.centered#rightJumboCover $10,000 is required to save the life of one child suffering from heart disease. This amount covers the costs of hospitalization plus room & board at the SACH Children's Home. Children stay for an average of 10 weeks at the SACH Children's Home. There are 1000 children on our waiting list. Help save the children. 
 
       block content
         div#container
@@ -104,7 +104,7 @@ html
                         br
                         input#emailInfo(placeholder='email', name='email')
                         br
-                        input#intialsInfo(placeholder='initials', name='intials')
+                        input#intialsInfo(placeholder='initials', name='initials')
                         br
                         input#donationInfo(placeholder='Donation Amt', name='amount')
                         br
@@ -126,15 +126,29 @@ html
       
       script.
         var qViewHeart = !{JSON.stringify(viewHeart) || "null"} ;
+        var qAddHeart = !{JSON.stringify(addHeart) || "null"} ;
         var qAnonymous = !{JSON.stringify(anonymous) || "null"} ;
         var qName = !{JSON.stringify(name) || "null"};
         var qEmail = !{JSON.stringify(email) || "null"};
-        var qDonation = !{JSON.stringify(donation) || "null"};
+        var qAmount = !{JSON.stringify(amount) || "null"};
         var qInitials = !{JSON.stringify(initials) || "null"};
         var qMessage = !{JSON.stringify(message) || "null"};
         var qCurrency = !{JSON.stringify(currency) || "null"};
         var qColor = !{JSON.stringify(color) || "null"};
         var qStyle = !{JSON.stringify(style) || "null"};
+        var qJustGivingID = !{JSON.stringify(donationId) || "null"};
+        console.log("qViewHeart is " +qViewHeart);
+        console.log("qAddHeart is " + qAddHeart);
+        console.log("qAnonymous is " + qAnonymous);
+        console.log("qName is " + qName);
+        console.log("qEmail is " + qEmail);
+        console.log("qAmount is " +qAmount);
+        console.log("qInitials is " + qInitials);
+        console.log("qMessage is " + qMessage);
+        console.log("qCurrency is " + qCurrency);
+        console.log("qColor is " + qColor);
+        console.log("qStyle is " + qStyle);
+        console.log("qJustGivingID is " + qJustGivingID);        
       script(src='/javascripts/jquery.min.js')
       script(src='/javascripts/bootstrap.min.js')
       script(src='/javascripts/packery.pkgd.min.js')

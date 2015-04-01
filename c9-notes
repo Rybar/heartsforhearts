@@ -32,3 +32,6 @@ results from last query:
   style: 'D',
   currency: 'SGD',
   '?donationId': 'JUSTGIVNG-DONATION-ID' }
+  
+  Install npm modules with dependencies updated
+  npm install app --save

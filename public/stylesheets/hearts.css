@@ -1,5 +1,3 @@
-
-
 body {
   background: #303030;
   /*min-height: 2000px;*/
@@ -20,13 +18,16 @@ body {
 #logoContainer {
   display: block;
   max-height: 100%;
-  max-width: 40%;
+  max-width: 85%;
 }
 .centered{
   margin: 0 auto;
 }
 #centerDonate {
-  margin: 15px auto;
+   display:block;
+   width:170px;
+   margin:0 auto;
+   margin-top: 15px;
 }
 #meterOutside{
   position: relative;
@@ -44,8 +45,6 @@ body {
   height: 40%;
   background-color: red;
 }
-
-
 .heart {
   position: absolute;
   top: -300px;
@@ -145,6 +144,9 @@ body {
   border-radius: 10px;
   background: orange;
 }
+#rightJumboCover {
+  font-size: 24px;
+}
 /* navbar styling ----------- */
 
 .navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
@@ -176,12 +178,18 @@ body {
 .epic    { font-size: 14rem; }
 .tiny    { font-size: 1rem; }
 
-
-  
+#logoContainer {
+  max-height: 100%;
+}
 }
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-
+#rightJumboCover {
+  font-size: 17px;
+}
+#logoContainer {
+  max-width:100%;
+}
 }
 /* Desktops and laptops ----------- */
 @media only screen  and (min-width : 1224px) {

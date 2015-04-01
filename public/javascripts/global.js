@@ -227,7 +227,7 @@ function generateRandomSet(numberOfEntries, hasEmpties) {
     for(var i = 0; i <=numberOfEntries; i++) {
         var isEmpty = hasEmpties ? Math.random()>0.5 : false; //random chance of empty heart, or none.
         var colors = [ 'green', 'gold', 'orange', 'red', 'pink', 'lightblue', 'blue' ],
-            styles = [ 'A', 'B', 'C', 'D', 'E','F','G', 'H', 'I', 'J', 'K'],
+            styles = [ 'A', 'B', 'C', 'D', 'E','F','G', 'H', 'I', 'J', 'K', 'L', 'M' ],
             randColor = colors[Math.floor(Math.random()*colors.length)],
             randStyles = styles[Math.floor(Math.random()*styles.length)],
             newUser = {
@@ -239,7 +239,8 @@ function generateRandomSet(numberOfEntries, hasEmpties) {
             'currency': "USD",
             'color': isEmpty ? 'emptyGrey' : randColor, 
             'heartstyle': isEmpty ? 'A' : randStyles,
-            'empty' : isEmpty
+            'empty' : isEmpty,
+            'justGivingID' : "JUSTGIVING-DONATION-ID"
         };
         //console.log(randColor);
         // Use AJAX to post the object to our adduser service

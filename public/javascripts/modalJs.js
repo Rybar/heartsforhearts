@@ -85,7 +85,7 @@ function transferModal() {
     modalGreeting.setAttribute('aria-hidden', 'true');
 }
 // This is the array that changes the letter
-var HeartStyleArray = ["A", "B", "C", "D", "E", "F", "G", "H"];
+var HeartStyleArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"];
 // This is where the heart style is in the form of a letter.
 var previewHeartStyle = $("#heartPreview span").html();
 // This is the array that switches the class of the heart preview
@@ -143,38 +143,25 @@ function changePurple() {
     donationHeartColor = "purple";    
 }
 function submitForm() {
-    var consistentString = "https://v3-sandbox.justgiving.com/Ryan-Malm/4w350m3/donate/";
-    var exitURL = "&exitURL=" + /*encodeURIComponent(*/"https://heartsforhearts-rybar.c9.io/hearts/"//)
-    /*console.log(document.donation.name.value);
-    console.log(document.donation.message.value);
-    console.log(document.donation.email.value);
-    console.log(document.donation.amount.value);
-    console.log(document.donation.currency.value);
-    console.log(document.donation.intials.value);
-    console.log(document.donation.anonymous.value);*/
-    //console.log(document.donation);
+    var outURL = "https://v3-sandbox.justgiving.com/Ryan-Malm/4w350m3/donate/";
+    var exitURL = "&exitURL=" + encodeURIComponent( "https://heartsforhearts-rybar.c9.io/hearts/" )
+    
+    var fullURL = outURL
+            //these first 3 will auto-fill the donation form at justGiving donation page.
+            + "?amount=" + document.donation.amount.value
+            + "&defaultMessage=" + document.donation.message.value
+            + "&amount=" + document.donation.amount.value
+            // next we compose our return URL, which will create a new heart on the page.
+    		+ exitURL
+    		+ encodeURIComponent( "?" + $("form").serialize() 
+    		    + "&addHeart=true" //triggers addHeart() on return
+         	    + "&color=" + donationHeartColor
+         	    + "&style=" + donationHeartStyle
+         		+ "&donationId=JUSTGIVING-DONATION-ID" ) //end encodeURIComponent creation
+    		//end string construction
+
     // URL = "justgiving charity page" + simpleDonation query + RedirectURL + our Query
     // SCHEMA from justgiving: http://www.justgiving.com/{shortUrl}/4w350m3/donate/?amount={suggestedAmount}&exitUrl=http%3a%2f%2fwww.myredirecturl.com%2fpath?donationId=JUSTGIVING-DONATION-ID
-    console.log(consistentString + "?amount="
-    		+ document.donation.amount.value
-    		+ exitURL
-    		//+  "?" + $("form").serialize()
-    		+ "?name=" + encodeURIComponent(document.donation.name.value)
-    		+ "%26initials=" + document.donation.intials.value
-    		// The & might be the tripper. W3 encoding for & is &26. Tested.
-    		+ "%26donation=" + document.donation.amount.value
-    	    + "%26email=" + document.donation.email.value
-    	    + "%26anonymous=" + document.donation.anonymous.value
-    	    + "%26message=" + encodeURIComponent(document.donation.message.value)
-    	    + "%26color=" + donationHeartColor
-    	    + "%26style=" + donationHeartStyle
-    	    + "%26currency=" + document.donation.currency.value 
-    		+ "%26?donationId=JUSTGIVING-DONATION-ID"
-    		// w3 converter link
-    		// http://www.w3schools.com/tags/ref_urlencode.asp
-    		// ?donation is necessary, tested 3/25
-    	//	+ "&color=" + donationHeartColor
-    	//	+ "&style=" + donationHeartStyle
-    	
-    		);
+    console.log(fullURL)
+    window.open(fullURL)
 } 
