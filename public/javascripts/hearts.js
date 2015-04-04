@@ -1,6 +1,8 @@
-var H = {}; //namespace for our global stuffs
-H.heartData = []; //global variable for hearts data
-H.total = 0;
+var H = { 
+    heartData : [], 
+    total : 0
+}
+
 
 $(document).ready(function() {
     //initialize hiding navbar, only show after scrolling past header
@@ -10,22 +12,22 @@ $(document).ready(function() {
         showOnBottom: true
     });
     $("#navigationBar").autoHidingNavbar('hide');
+    
     $(window).scroll( function() {
         var value = $(this).scrollTop();
         //console.log(value)
-        if ( value > 240 )
+        if ( value > 240 ) {
            $("#navigationBar").autoHidingNavbar('show');
-        else
+        }
+        else {
             $("#navigationBar").autoHidingNavbar('hide');
-            });
+        }
+    });
     
-    // Handler for .ready() called.
-        var $container = $('#container');
-        
-        
-   // $container.packery({ 'selector' : '.heart', 'stamp' : '.whitespace'}); 
-     $container.packery({ 'selector' : '.heart'});
-     
+    //cache container and create packery instance
+    H.container = $('#container');
+    //H.container.packery({ 'selector' : '.heart'});
+    
     if(qAddHeart) {
     console.log("adding a heart called via query")
     addHeart();
@@ -34,66 +36,15 @@ $(document).ready(function() {
           
     // jQuery AJAX call for JSON
     $.getJSON('/users/heartlist', function(data) {
-        H.heartData = data; //store JSON data in global variable.
-        
-        if(qViewHeart) {
-        console.log(qViewHeart + ' this is the qView');
-        activateModal();
-        //populateModal(qViewHeart);
-        populateShowCaseModal(qViewHeart);
-        }
-        
-        //default heart Size
-            var heartSize = "small";
-
-        // For each item in our JSON, we assign the user data of size, color, and shape to a heart and add.
-        $.each(data, function() {
-            var thisHeart = this;
-            //set size based on this.donation 
-            if (this.donation >= 25) {
-                heartSize = 'epic';
-            } else if (this.donation >= 20) {
-                heartSize = 'xlarge';
-            } else if (this.donation >= 15) {
-                heartSize = 'large';
-            } else if (this.donation >= 10) {
-                heartSize = 'med';
-            } else if (this.donation >= 1) {
-                heartSize = 'small';
-            }
-            //create our heart
-            var heart = document.createElement('div');
-            $(heart)
-            //add heart style text and CSS classes per this piece of data
-            .html('<span>' + this.heartstyle + '</span></div>')
-            .addClass('heart ' + this.color + ' ' + heartSize + ' ' + "activate")
-            .data("id", this._id)
-            .appendTo('#container');
-            //$container.packery('appended', heart);
-
-             setTimeout( function() { //for cascading animation, set a tiny delay between adding each one
-                 $container.packery('appended', heart);
-                 $container.packery('layout');
-                 if(thisHeart.empty === "false") { 
-                    updateProgressBar(thisHeart.donation);
-                    //console.log(thisHeart.donation + " " + thisHeart.empty)
-                 }
-             }, 01 ); //delay between showing hearts/adding them to packery instance
-            
-        });
-        
-        
-        
-        //$container.packery('layout');
-        
-        
+        onGetHearts(data);
+        animate();
     });
     
 
     
     // Turned off flip animation. Code preserved.
     
-    $container.on("click", ".heart", function() {
+    H.container.on("click", ".heart", function(event) {
         
       /*$(this).velocity({
           zIndex: "1000",
@@ -153,33 +104,72 @@ function populateModal(id){
 function updateProgressBar(donation) {
     H.total += parseInt(donation);
     var percent = (H.total/10000).toFixed(2).toString().slice(2) + "%";
-    $('#meter').css("height", percent)
+    $('#meterOutside span').text("$" + H.total);
+    $('#meter').css("height", percent);
+}
+
+function animate() {
+    H.container.packery({ 'selector' : '.heart'});
+    //H.container.packery('appended', $(".heart"))
+    setTimeout(function(){ H.container.packery('layout');} , 10);
+   
+            
+}
+
+function onGetHearts(data) {
+    H.heartData = data; //store JSON data in global variable.
+    
+    if(qViewHeart) {
+    activateModal();
+    populateShowCaseModal(qViewHeart);
+    }
+    
+    //default heart Size
+        var heartSize = "small";
+    
+    // For each item in our JSON, we assign the user data of size, color, and shape to a heart and add.
+    $.each( data, function() {
+        var thisHeart = this;
+        //set size based on this.donation 
+        if (this.donation >= 25) {
+            heartSize = 'epic';
+        } else if (this.donation >= 20) {
+            heartSize = 'xlarge';
+        } else if (this.donation >= 15) {
+            heartSize = 'large';
+        } else if (this.donation >= 10) {
+            heartSize = 'med';
+        } else if (this.donation >= 1) {
+            heartSize = 'small';
+        }
+        //create our heart
+        var heart = document.createElement('div');
+        $(heart)
+        //add heart style text and CSS classes per this piece of data
+        .html('<span>' + this.heartstyle + '</span></div>')
+        .addClass('heart ' + this.color + ' ' + heartSize + ' ' + "activate")
+        .data("id", this._id)
+        .appendTo('#container');
+        //H.container.packery('appended', heart);
+        }
+    )
 }
 
 function addHeart() {
-        // If it is, compile all user info into one object
-        /*
-                input#inputDonationAmount(type='text', placeholder='Donation Amount')
-                input#inputUserEmail(type='text', placeholder='Family Email')
-                input#inputUserFullname(type='text', placeholder='Full Name')
-                input#inputMessage(type='text', placeholder='Your custom message')
-                input#inputCurrency(type='text', placeholder='currency')
-                */
+       
         var newUser = {
-            'email': qEmail,            //$('#addHeart fieldset input#inputUserEmail').val(),
-            'anonymous': qAnonymous,    //$('#addHeart fieldset input#inputUserAnonymous').val(),
-            'fullname': qName,          //$('#addHeart fieldset input#inputUserFullname').val(),
-            'initials': qInitials,      //$('#addHeart fieldset input#inputUserInitials').val(),
-            'donation': qAmount,      //$('#addHeart fieldset input#inputDonationAmount').val(),
-            'message': qMessage, //$('#addHeart fieldset input#inputMessage').val(),
-            'currency': qCurrency, //$('#addHeart fieldset select#inputCurrency').val(),
-            'color': qColor,  //$('#addHeart fieldset select#inputColor').val(),
-            'heartstyle': qStyle,  //$('#addHeart fieldset select#inputHeartstyle').val(),
-            'justGivingID' : qJustGivingID,
+            'email'         :   qEmail,            
+            'anonymous'     :   qAnonymous,   
+            'fullname'      :   qName,         
+            'initials'      :   qInitials,      
+            'donation'      :   qAmount,      
+            'message'       :   qMessage, 
+            'currency'      :   qCurrency, 
+            'color'         :   qColor,  
+            'heartstyle'    :   qStyle,  
+            'justGivingID'  :   qJustGivingID,
             'empty': false
-            
         }
-
         // Use AJAX to post the object to our adduser service
         $.ajax({
             type: 'POST',

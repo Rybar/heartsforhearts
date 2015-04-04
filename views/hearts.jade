@@ -10,6 +10,8 @@ html
       meta(http-equiv='X-UA-Compatible', content='IE=edge')
       meta(name='viewport', content='width=device-width, initial-scale=1')    
       title= title
+      // Below is the text font for perhaps the entire site
+      // link(href='http://fonts.googleapis.com/css?family=Indie+Flower', rel='stylesheet', type='text/css')
       link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
       link(rel='stylesheet', href='/stylesheets/hearts.css')
       link(rel='stylesheet', href='/stylesheets/modalForms.css')
@@ -33,7 +35,7 @@ html
               li
                 a(href="http://www.saveachildsheart.com/") About
               li
-                a(href="") Contact
+                a(href="https://www.justgiving.com/saveachild/") Contact
         // div.progress
         //   div.progress-bar.progress-bar-success.progress-bar-striped.active(role='progressbar', aria-valuenow='0', aria-valuemin='0', aria-valuemax='10000', style='width: 0%')
         //     span.sr-only 
@@ -47,10 +49,12 @@ html
                     img.img-responsive#sachLogo(src="/SVG/SACHlogo.svg")
                     img.img-responsive#heartsForHearts(src="/SVG/heartsForHearts.svg")
               div.col-md-4
-                div#meterContainer
-                  div#meterOutside.centered
-                    div#meter
-                button.donate#centerDonate DONATE
+                div#meterOutside
+                  div#meter
+                  img.img-responsive#meterOverlay(src="/img/progress-meter-frame.png")
+                  span#meterTotal $2000
+                    
+                button.donate#centerDonate Donate
               div.col-md-4
                 p.centered#rightJumboCover $10,000 is required to save the life of one child suffering from heart disease. This amount covers the costs of hospitalization plus room & board at the SACH Children's Home. Children stay for an average of 10 weeks at the SACH Children's Home. There are 1000 children on our waiting list. Help save the children. 
 
@@ -68,7 +72,7 @@ html
                 p#donationAmountCounter Test  Donation amount:
                 p#donationMessage Our thoughts are with you and your family
               p Claim a heart on the wall by donating
-              button#greetingTransfer Donate
+              button.donate#greetingTransfer Donate
             div#donationCallToAction(aria-hidden='true')
               div.modal-body
                 div.container-fluid
@@ -81,8 +85,8 @@ html
                         //p#heartPreview A
                         div.heart.blue.epic.activate#heartPreview
                           span B
-                        p.leftDesign#leftDesignScroller >
-                        p.rightDesign#rightDesignScroller <
+                        p.leftDesign#leftDesignScroller <
+                        p.rightDesign#rightDesignScroller >
                         p.leftDesign prev. heart style
                         p.rightDesign next heart style
                         p Clicking continue will take you to our JustGiving fundraising page to complete your donation. You will be returned here after completing the transaction
@@ -119,7 +123,8 @@ html
                           option(value='EUR') Euro (EUR)
                           option(value='HKD') Hong Kong Dollar  (HKD)
                           option(value='SGD') Singapore Dollar (SGD)
-                        input#submit(type='button', value='Continue', onclick='submitForm();')
+                        br  
+                        input.donate#submit(type='button', value='Continue', onclick='submitForm();')
 
 
       
@@ -137,18 +142,18 @@ html
         var qColor = !{JSON.stringify(color) || "null"};
         var qStyle = !{JSON.stringify(style) || "null"};
         var qJustGivingID = !{JSON.stringify(donationId) || "null"};
-        console.log("qViewHeart is " +qViewHeart);
-        console.log("qAddHeart is " + qAddHeart);
-        console.log("qAnonymous is " + qAnonymous);
-        console.log("qName is " + qName);
-        console.log("qEmail is " + qEmail);
-        console.log("qAmount is " +qAmount);
-        console.log("qInitials is " + qInitials);
-        console.log("qMessage is " + qMessage);
-        console.log("qCurrency is " + qCurrency);
-        console.log("qColor is " + qColor);
-        console.log("qStyle is " + qStyle);
-        console.log("qJustGivingID is " + qJustGivingID);        
+        // console.log("qViewHeart is " +qViewHeart);
+        // console.log("qAddHeart is " + qAddHeart);
+        // console.log("qAnonymous is " + qAnonymous);
+        // console.log("qName is " + qName);
+        // console.log("qEmail is " + qEmail);
+        // console.log("qAmount is " +qAmount);
+        // console.log("qInitials is " + qInitials);
+        // console.log("qMessage is " + qMessage);
+        // console.log("qCurrency is " + qCurrency);
+        // console.log("qColor is " + qColor);
+        // console.log("qStyle is " + qStyle);
+        // console.log("qJustGivingID is " + qJustGivingID);        
       script(src='/javascripts/jquery.min.js')
       script(src='/javascripts/bootstrap.min.js')
       script(src='/javascripts/packery.pkgd.min.js')
