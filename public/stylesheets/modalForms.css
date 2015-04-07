@@ -10,8 +10,12 @@
 #instructions {
 	color: white;
 }
-#heartBelongs {
-	
+#anonymousInfo {
+	width: auto;
+}
+#heartContent p {
+	font-family: Arial, sans-serif;
+	font-size: 18px;
 }
 #modalcontent {
   position: absolute;
@@ -47,33 +51,14 @@
 	position: static;
 }
 input {
-  width: auto;
+  	width: 50%;
 	border-radius: 5px;
 }
-#nameInfo {
-
-}
 #messageInfo {
-
-	width: 35%;
 	height: 30%;
-}
-#donationInfo {
-
-	width: 10%;
-}
-#donationAmount {
-}
-#donationAmountCounter {
-}
-#donationMessage {
 }
 #currencyInfo {
   border-radius: 5px;
-  width: 15%;
-}
-#emailInfo {
-
 }
 #submit {
 	font-size: 30px;
@@ -128,7 +113,7 @@ input {
 #heartPreview {
 	display:block;
 	text-align: center;
-	width: 150px;
+	width: 280px;
 	position:relative;
 	top: 0px;
 	left: 0px;
@@ -160,8 +145,6 @@ input {
 /*		position:absolute;
 		height: 100%;
 		width: 100%; */
-	}
-	#heartContent {
 	}
 }
 /* iPads (portrait and landscape) ----------- */

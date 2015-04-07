@@ -33,7 +33,8 @@ router.get('/hearts', function(req, res) {
     color: req.query.color || null,
     style: req.query.style || null,
     donationId: req.query.donationId || null,
-
+    dedicatedName: req.query.dedicatedName || null,
+    dedicatedEmail: req.query.dedicatedEmail || null,
     title: 'Save A Childs Heart'
     });
     

@@ -11,7 +11,7 @@ html
       meta(name='viewport', content='width=device-width, initial-scale=1')    
       title= title
       // Below is the text font for perhaps the entire site
-      // link(href='http://fonts.googleapis.com/css?family=Indie+Flower', rel='stylesheet', type='text/css')
+      // link(href='https://fonts.googleapis.com/css?family=Indie+Flower', rel='stylesheet', type='text/css')
       link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
       link(rel='stylesheet', href='/stylesheets/hearts.css')
       link(rel='stylesheet', href='/stylesheets/modalForms.css')
@@ -52,7 +52,7 @@ html
                 div#meterOutside
                   div#meter
                   img.img-responsive#meterOverlay(src="/img/progress-meter-frame.png")
-                  span#meterTotal $2000
+                  span#meterTotal $1
                     
                 button.donate#centerDonate Donate
               div.col-md-4
@@ -89,7 +89,7 @@ html
                         p.rightDesign#rightDesignScroller >
                         p.leftDesign prev. heart style
                         p.rightDesign next heart style
-                        p Clicking continue will take you to our JustGiving fundraising page to complete your donation. You will be returned here after completing the transaction
+                        p Clicking continue will take you to our JustGiving fundraising page to complete your donation. You will be returned here after completing the transaction.
                       #colorselector
                         #blueselector.blue.colorbars
                         #lightblueselector.lightblue.colorbars
@@ -102,17 +102,19 @@ html
                     div.col-md-6
                       p Right Div
                       form(name='donation', action='', onsubmit='onSubmit()')
-                        input#nameInfo(placeholder='Name', name='name')
+                        input#nameInfo(placeholder='Donator Name', name='name')
+                        input#emailInfo(placeholder='Donator email', name='email')                        
+       
                         br
-                        input#messageInfo(placeholder="Message to child or child's family", name='message')
+                        input#intialsInfo(placeholder='Donator initials', name='initials')
                         br
-                        input#emailInfo(placeholder='email', name='email')
-                        br
-                        input#intialsInfo(placeholder='initials', name='initials')
+                        input#dedicatedNamenNameInfo(placeholder='Dedicated Name', name ='dedicatedName')
+                        input#dedicatedEmailInfo(placeholder="Email of Dedicated", name ='dedicatedEmail')
                         br
                         input#donationInfo(placeholder='Donation Amt', name='amount')
                         br
-                        input#anonymousInfo(type='checkbox', name='anonymous')
+                        input#anonymousInfo(type='checkbox', name='anonymous') 
+                        | Anonymous Donation
                         br
                         select#currencyInfo(name='currency')
                           option(value='', disabled='', selected='') Currency
@@ -123,7 +125,9 @@ html
                           option(value='EUR') Euro (EUR)
                           option(value='HKD') Hong Kong Dollar  (HKD)
                           option(value='SGD') Singapore Dollar (SGD)
-                        br  
+                        br
+                        input#messageInfo(placeholder="Message to Dedicated", name='message')                        
+                        br
                         input.donate#submit(type='button', value='Continue', onclick='submitForm();')
 
 
@@ -142,6 +146,10 @@ html
         var qColor = !{JSON.stringify(color) || "null"};
         var qStyle = !{JSON.stringify(style) || "null"};
         var qJustGivingID = !{JSON.stringify(donationId) || "null"};
+        var qdedicatedName = !{JSON.stringify(dedicatedName) || "null"};
+        var qdedicatedEmail = !{JSON.stringify(dedicatedEmail) || "null"};
+        console.log(qdedicatedName);
+        console.log(qdedicatedEmail);
         // console.log("qViewHeart is " +qViewHeart);
         // console.log("qAddHeart is " + qAddHeart);
         // console.log("qAnonymous is " + qAnonymous);

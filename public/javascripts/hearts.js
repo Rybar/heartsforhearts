@@ -26,7 +26,10 @@ $(document).ready(function() {
     
     //cache container and create packery instance
     H.container = $('#container');
-    //H.container.packery({ 'selector' : '.heart'});
+    H.container.packery({
+        'selector' : '.heart'
+        
+    });
     
     if(qAddHeart) {
     console.log("adding a heart called via query")
@@ -37,7 +40,8 @@ $(document).ready(function() {
     // jQuery AJAX call for JSON
     $.getJSON('/users/heartlist', function(data) {
         onGetHearts(data);
-        animate();
+        //animate(data);
+        updateProgressBar(data);
     });
     
 
@@ -61,9 +65,6 @@ $(document).ready(function() {
 });
 function populateShowCaseModal(donationID) {
     
-    //var showCaseHeartIndex = H.heartData.map(function(arrayItem) { return arrayItem._id; }).indexOf(donationID);
-    
-    //var showCaseHeartObject = H.heartData[showCaseHeartIndex];
     var showCaseHeartSearch = H.heartData.filter(function (obj) {
         return obj.justGivingID == donationID;
     });
@@ -101,20 +102,50 @@ function populateModal(id){
     }
 }
 
-function updateProgressBar(donation) {
-    H.total += parseInt(donation);
-    var percent = (H.total/10000).toFixed(2).toString().slice(2) + "%";
-    $('#meterOutside span').text("$" + H.total);
-    $('#meter').css("height", percent);
+function updateProgressBar(data) {
+        
+    var total = data.filter(function(obj){
+        return obj.empty === "false";
+    }).reduce(function(a,b){
+        return { donation: parseInt(a.donation) + parseInt(b.donation) }; 
+    }).donation;
+    
+    if(total >= 10000){
+        percent = "100%";
+    }
+    else {
+       var percent = (total/10000).toFixed(2).toString().slice(2) + "%"; 
+    }
+    $('#meterOutside span').text("$" + total);
+    console.log(percent);
+    setTimeout(function(){
+        $('#meter').velocity({
+          height: percent
+         }, {duration: 2000});
+        
+    },0)
+    
 }
 
-function animate() {
-    H.container.packery({ 'selector' : '.heart'});
-    //H.container.packery('appended', $(".heart"))
-    setTimeout(function(){ H.container.packery('layout');} , 10);
-   
-            
-}
+function animate(data) {
+    // $.each($('.heart'), function( index, value ){
+    //     //console.log(index);
+    //     //console.log(value);
+    //     //setTimeout(function(){
+    //         H.container.packery('appended', value );
+    //         console.log('hit');
+        
+    //     //}, 3) 
+    // })
+    //         H.container.packery('layout');
+    //     //H.container.packery('appended', $('.heart') );
+    //     //H.container.packery('layout');
+    setTimeout( function(){
+        H.container.packery('appended', $('#container .heart') );
+        H.container.packery('layout');
+    }, 100)
+};
+
 
 function onGetHearts(data) {
     H.heartData = data; //store JSON data in global variable.
@@ -153,6 +184,7 @@ function onGetHearts(data) {
         //H.container.packery('appended', heart);
         }
     )
+    animate(data);
 }
 
 function addHeart() {

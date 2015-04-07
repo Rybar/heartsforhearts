@@ -60,7 +60,7 @@ body {
   /*margin: 4px;*/
   bottom: 0px;
   width: 100%;
-  height: 80%;
+  height: 10%;
   background-color: red;
 }
 
@@ -76,8 +76,6 @@ body {
   font-size: 3rem;
   color: grey;
   cursor: pointer;
-  
-
 }
 .heart {
   position: absolute;
@@ -94,12 +92,12 @@ body {
   cursor: pointer;
 }
 
-.small   { font-size: 3rem;}
-.med     { font-size: 5rem;}
-.large   { font-size: 10rem; }
-.xlarge   { font-size: 15rem; }
-.epic    { font-size: 20rem; }
-.tiny    { font-size: 1rem; }
+.small   { font-size: 10rem;}
+.med     { font-size: 15rem;}
+.large   { font-size: 21rem; }
+.xlarge   { font-size: 29rem; }
+.epic    { font-size: 37rem; }
+.tiny    { font-size: 7rem; }
 
 .blue         { background: rgb(0,145,207); color: rgba(255,255,255, 0.6) }
 .lightblue    { background: rgb(53,195,222); color: rgba(255,255,255, 0.6); }
@@ -211,11 +209,11 @@ body {
   height: .75em;
   font-family: "heartsregular";
 }
-.small   { font-size: 2rem;}
-.med     { font-size: 4rem;}
-.large   { font-size: 7rem; }
-.xlarge   { font-size: 9rem; }
-.epic    { font-size: 14rem; }
+.small   { font-size: 9rem;}
+.med     { font-size: 13rem;}
+.large   { font-size: 17rem; }
+.xlarge   { font-size: 23rem; }
+.epic    { font-size: 29rem; }
 .tiny    { font-size: 1rem; }
 #logoContainer {
   max-width: 100%;
