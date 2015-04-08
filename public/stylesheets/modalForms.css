@@ -98,8 +98,9 @@ input {
 #purpleselector {
 	left: 83%;
 }
-#instructions {
-
+.directionText {
+	font-family: Arial, sans-serif;
+	font-size: 18px;
 }
 #colorselector {
 	height: 35px;

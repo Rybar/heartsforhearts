@@ -12,6 +12,7 @@ var redPreviewSelector = document.getElementById('redselector');
 var pinkPreviewSelector = document.getElementById('pinkselector');
 var purplePreviewSelector = document.getElementById('purpleselector');
 var heartPreviewSelector = document.getElementById('heartPreview');
+var anonymousToggle = document.getElementById('anonymousInfo');
 var donationHeartColor = "blue";
 var donationHeartStyle = "A";
 var styleCounter = 0;
@@ -45,7 +46,10 @@ var styleCounter = 0;
 	$('#purpleselector').on('click', function() {
 	   changePurple();
 	});
-	
+	$('#anonymousInfo').on('click', function() {
+	   console.log('hitting');
+	   console.log(anonymousToggle.attr);
+	});	
 	// Don't mind this yet.
 	/*greenPreviewSelector.addEventListener('click', changeGreen());
 	goldPreviewSelector.addEventListener('click', changeGold());

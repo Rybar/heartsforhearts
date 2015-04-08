@@ -214,7 +214,7 @@ body {
 .large   { font-size: 17rem; }
 .xlarge   { font-size: 23rem; }
 .epic    { font-size: 29rem; }
-.tiny    { font-size: 1rem; }
+.tiny    { font-size: 7rem; }
 #logoContainer {
   max-width: 100%;
 }

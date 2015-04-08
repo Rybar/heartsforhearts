@@ -78,18 +78,15 @@ html
                 div.container-fluid
                   div.row
                     div.col-md-6
-                      button.close(type='button', data-dismiss='modal', aria-label='Close')
-                        span(aria-hidden='true') ×                      
-                      p Left Div
+                      p 
                       div#heartScrollers
                         //p#heartPreview A
                         div.heart.blue.epic.activate#heartPreview
                           span B
                         p.leftDesign#leftDesignScroller <
                         p.rightDesign#rightDesignScroller >
-                        p.leftDesign prev. heart style
-                        p.rightDesign next heart style
-                        p Clicking continue will take you to our JustGiving fundraising page to complete your donation. You will be returned here after completing the transaction.
+                        p.leftDesign.directionText prev. heart style
+                        p.rightDesign.directionText next heart style
                       #colorselector
                         #blueselector.blue.colorbars
                         #lightblueselector.lightblue.colorbars
@@ -100,13 +97,14 @@ html
                         #pinkselector.pink.colorbars
                         #purpleselector.purple.colorbars
                     div.col-md-6
-                      p Right Div
+                      
+                      p 
                       form(name='donation', action='', onsubmit='onSubmit()')
                         input#nameInfo(placeholder='Donator Name', name='name')
                         input#emailInfo(placeholder='Donator email', name='email')                        
        
-                        br
-                        input#intialsInfo(placeholder='Donator initials', name='initials')
+                        //br
+                        //input#intialsInfo(placeholder='Donator initials', name='initials')
                         br
                         input#dedicatedNamenNameInfo(placeholder='Dedicated Name', name ='dedicatedName')
                         input#dedicatedEmailInfo(placeholder="Email of Dedicated", name ='dedicatedEmail')
@@ -128,6 +126,8 @@ html
                         br
                         input#messageInfo(placeholder="Message to Dedicated", name='message')                        
                         br
+                        p Clicking continue will take you to our JustGiving fundraising page to complete your donation. You will be returned here after completing the transaction.                        
+                        br
                         input.donate#submit(type='button', value='Continue', onclick='submitForm();')
 
 
@@ -140,7 +140,7 @@ html
         var qName = !{JSON.stringify(name) || "null"};
         var qEmail = !{JSON.stringify(email) || "null"};
         var qAmount = !{JSON.stringify(amount) || "null"};
-        var qInitials = !{JSON.stringify(initials) || "null"};
+        //var qInitials = !{JSON.stringify(initials) || "null"};
         var qMessage = !{JSON.stringify(message) || "null"};
         var qCurrency = !{JSON.stringify(currency) || "null"};
         var qColor = !{JSON.stringify(color) || "null"};

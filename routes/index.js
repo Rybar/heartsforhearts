@@ -14,12 +14,12 @@ var transporter = nodemailer.createTransport({
             }
   });
       
-router.get('/', function(req, res) {
+router.get('/data', function(req, res) {
   res.render('index', { title: 'Save A Childs Heart' });  
 });
 
 /* GET heartwall page. */
-router.get('/hearts', function(req, res) {
+router.get('/', function(req, res) {
   res.render('hearts', {
     viewHeart: req.query.viewHeart || null,
     addHeart: req.query.addHeart || null,
@@ -27,7 +27,7 @@ router.get('/hearts', function(req, res) {
     amount: req.query.amount || null,
     anonymous: req.query.anonymous || null,
     email: req.query.email || null,
-    initials: req.query.initials || null,
+    //initials: req.query.initials || null,
     message: decodeURIComponent(req.query.message) || null,
     currency: req.query.currency || null,
     color: req.query.color || null,
