@@ -85,8 +85,8 @@ html
                           span B
                         p.leftDesign#leftDesignScroller <
                         p.rightDesign#rightDesignScroller >
-                        p.leftDesign.directionText prev. heart style
-                        p.rightDesign.directionText next heart style
+                        //p.leftDesign.directionText prev. heart style
+                        //p.rightDesign.directionText next heart style
                       #colorselector
                         #blueselector.blue.colorbars
                         #lightblueselector.lightblue.colorbars
@@ -97,7 +97,8 @@ html
                         #pinkselector.pink.colorbars
                         #purpleselector.purple.colorbars
                     div.col-md-6
-                      
+                      button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        span(aria-hidden='true') × 
                       p 
                       form(name='donation', action='', onsubmit='onSubmit()')
                         input#nameInfo(placeholder='Donator Name', name='name')
@@ -106,7 +107,7 @@ html
                         //br
                         //input#intialsInfo(placeholder='Donator initials', name='initials')
                         br
-                        input#dedicatedNamenNameInfo(placeholder='Dedicated Name', name ='dedicatedName')
+                        input#dedicatedNameInfo(placeholder='Dedicated Name', name ='dedicatedName')
                         input#dedicatedEmailInfo(placeholder="Email of Dedicated", name ='dedicatedEmail')
                         br
                         input#donationInfo(placeholder='Donation Amt', name='amount')
@@ -148,8 +149,8 @@ html
         var qJustGivingID = !{JSON.stringify(donationId) || "null"};
         var qdedicatedName = !{JSON.stringify(dedicatedName) || "null"};
         var qdedicatedEmail = !{JSON.stringify(dedicatedEmail) || "null"};
-        console.log(qdedicatedName);
-        console.log(qdedicatedEmail);
+        //console.log(qdedicatedName);
+        //console.log(qdedicatedEmail);
         // console.log("qViewHeart is " +qViewHeart);
         // console.log("qAddHeart is " + qAddHeart);
         // console.log("qAnonymous is " + qAnonymous);

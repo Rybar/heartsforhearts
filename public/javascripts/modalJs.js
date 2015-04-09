@@ -3,6 +3,7 @@ var modalGreeting = document.getElementById('donationGreeting');
 var modalGreetingTransferButton = document.getElementById('greetingTransfer');
 var modalCallToAction = document.getElementById('donationCallToAction');
 var centerDonateButton = document.getElementById('centerDonate');
+/*
 var bluePreviewSelector = document.getElementById('blueselector');
 var lightBluePreviewSelector = document.getElementById('lightblueselector');
 var greenPreviewSelector = document.getElementById('greenselector');
@@ -10,7 +11,7 @@ var goldPreviewSelector = document.getElementById('goldselector');
 var orangePreviewSelector = document.getElementById('orangeselector');
 var redPreviewSelector = document.getElementById('redselector');
 var pinkPreviewSelector = document.getElementById('pinkselector');
-var purplePreviewSelector = document.getElementById('purpleselector');
+var purplePreviewSelector = document.getElementById('purpleselector'); */
 var heartPreviewSelector = document.getElementById('heartPreview');
 var anonymousToggle = document.getElementById('anonymousInfo');
 var donationHeartColor = "blue";
@@ -46,10 +47,32 @@ var styleCounter = 0;
 	$('#purpleselector').on('click', function() {
 	   changePurple();
 	});
-	$('#anonymousInfo').on('click', function() {
+	// Below is the jquery way of doing the anonymouse checkbox disabling
+	/*$('#anonymousInfo').on('click', function() {
 	   console.log('hitting');
-	   console.log(anonymousToggle.attr);
-	});	
+	   console.log(anonymousToggle.val());
+	});*/	
+	anonymousToggle.addEventListener('click', function(){
+	   //console.log(anonymousToggle.checked);
+	   if(anonymousToggle.checked === true) {
+	       //onsole.log('true');
+	       document.getElementById('nameInfo').disabled = true;
+	       document.getElementById('emailInfo').disabled = true;
+	       document.getElementById('dedicatedNameInfo').disabled = true;
+	       document.getElementById('dedicatedEmailInfo').disabled = true;	       
+	       document.getElementById('messageInfo').disabled = true;
+	   } else {
+	       //console.log('false');
+	       document.getElementById('nameInfo').disabled = false;
+	       document.getElementById('emailInfo').disabled = false;
+	       document.getElementById('dedicatedNameInfo').disabled = false;
+	       document.getElementById('dedicatedEmailInfo').disabled = false;	       
+	       document.getElementById('messageInfo').disabled = false;	       
+	   }
+	});
+	function clearInputFields() {
+	    
+	}
 	// Don't mind this yet.
 	/*greenPreviewSelector.addEventListener('click', changeGreen());
 	goldPreviewSelector.addEventListener('click', changeGold());

@@ -39,23 +39,46 @@ router.get('/', function(req, res) {
     });
     
     // our confirmation email body
-    var mailOptions = {
+    var confirmationMailOptions = {
       to: req.query.email,
-      from: 'ryan.malm@gmail.com',
+      from: 'devteam@freecodecamp.com',
       subject: 'TEST SACH HEART Confirmation!',
       text: [
         'Greetings from SACH!\n\n',
         'Thank you for donating for a heart surgery.\n',
         'Feel free to email us at this address if you have any questions about SACH.\n',
-        "Your heart is at .\n",
-        'Good luck with the challenges!\n\n',
-        '- the Volunteer Camp Counselor Team'
+        "Your can view your heart here.\n",
       ].join('')
     };
     //check for email in URL query string
-    if(req.query.email) {
+    if(dedicatedEmail) {
+      console.log("dedication email in query, sending email..");
+      transporter.sendMail(confirmationMailOptions, function(err, response) {
+        if (err) {
+          console.log(err);
+          return err; }
+        else {
+          console.log("successfully sent: " + response.message);
+        }
+      });
+    }
+    
+    //dedication email body
+    var dedicationMailOptions = {
+      to: req.query.dedicatedEmail,
+      from: 'devteam@freecodecamp.com',
+      subject: 'TEST SACH HEART Confirmation!',
+      text: [
+        'Greetings from SACH!\n\n',
+        req.query.name + " has made a donation to the Save A Child's Heart foundation and dedicated it to you.\n",
+        'Feel free to email us at this address if you have any questions about SACH.\n',
+        "Your can view the heart they purchased here (link) \n",
+      ].join('')
+    };
+    //check for email in URL query string
+    if(req.query.dedicatedEmail) {
       console.log("email in query, sending email..");
-      transporter.sendMail(mailOptions, function(err, response) {
+      transporter.sendMail(confirmationMailOptions, function(err, response) {
         if (err) {
           console.log(err);
           return err; }
