@@ -172,7 +172,7 @@ function changePurple() {
 function submitForm() {
     var outURL = "https://v3-sandbox.justgiving.com/Ryan-Malm/4w350m3/donate/";
     //var exitURL = "&exitURL=" + encodeURIComponent( "https://heartsforhearts-rybar.c9.io/hearts/" )
-    var exitURL = "&exitURL=" + encodeURIComponent( "https://cryptic-tundra-5274.herokuapp.com/hearts" )
+    var exitURL = "&exitURL=" + encodeURIComponent( "https://cryptic-tundra-5274.herokuapp.com/" )
     
     var fullURL = outURL
             //these first 3 will auto-fill the donation form at justGiving donation page.
