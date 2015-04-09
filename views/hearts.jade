@@ -12,10 +12,12 @@ html
       title= title
       // Below is the text font for perhaps the entire site
       // link(href='https://fonts.googleapis.com/css?family=Indie+Flower', rel='stylesheet', type='text/css')
-      link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-      link(rel='stylesheet', href='/stylesheets/hearts.css')
-      link(rel='stylesheet', href='/stylesheets/modalForms.css')
       link(rel='stylesheet', href='/stylesheets/heartfont.css')
+      link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+      link(rel='stylesheet', href='/stylesheets/modalForms.css')
+      link(rel='stylesheet', href='/stylesheets/hearts.css')
+      
+      
         
         
     body.heartsBG
@@ -56,7 +58,7 @@ html
                     
                 button.donate#centerDonate Donate
               div.col-md-4
-                p.centered#rightJumboCover $10,000 is required to save the life of one child suffering from heart disease. This amount covers the costs of hospitalization plus room & board at the SACH Children's Home. Children stay for an average of 10 weeks at the SACH Children's Home. There are 1000 children on our waiting list. Help save the children. 
+                p.centered#rightJumboCover $10,000 is required for Save a Child's Heart (SACH) to save the life of one child dying from heart disease. Hearts for Hearts is a new donation platform aiming to raise this amount to help SACH save a life. The site allows you to create a virtual heart to save a real heart, just click Donate to get started. The heart will be personalised to your taste and can even be donated on behalf of someone you love. Donate, Create, and Save a Child's Heart. 
 
       block content
         div#container
@@ -81,9 +83,10 @@ html
                       p 
                       div#heartScrollers
                         //p#heartPreview A
-                        div.heart.blue.epic.activate#heartPreview
-                          span B
                         p.leftDesign#leftDesignScroller <
+                        div#previewContainer
+                          div.heart.blue.epic.activate#heartPreview
+                            span B
                         p.rightDesign#rightDesignScroller >
                         //p.leftDesign.directionText prev. heart style
                         //p.rightDesign.directionText next heart style
@@ -96,6 +99,7 @@ html
                         #redselector.red.colorbars
                         #pinkselector.pink.colorbars
                         #purpleselector.purple.colorbars
+                        span.stretch
                     div.col-md-6
                       button.close(type='button', data-dismiss='modal', aria-label='Close')
                         span(aria-hidden='true') × 
@@ -127,7 +131,7 @@ html
                         br
                         input#messageInfo(placeholder="Message to Dedicated", name='message')                        
                         br
-                        p Clicking continue will take you to our JustGiving fundraising page to complete your donation. You will be returned here after completing the transaction.                        
+                        p Below you can personalise your heart. When you're happy with your design and message, just click continue to be redirected to JustGiving where your donation details will be processed. You will then be redirected here after completing the transaction to see your finished heart!                        
                         br
                         input.donate#submit(type='button', value='Continue', onclick='submitForm();')
 

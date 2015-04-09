@@ -60,59 +60,70 @@ input {
 #currencyInfo {
   border-radius: 5px;
 }
-#submit {
-	font-size: 30px;
-	border: orange;
-	border-radius: 10px;
-	background-color: orange;
-	color: white;
 
+#colorselector {
+	width: 100%;
+	height: 35px;
+	text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute;
 }
+
 .colorbars {
-  width: 8%;
+	width: 4rem;
+	height: 4rem;
+	margin: .5rem;
 	border-radius: 50%;
-  height: 30px;
-  position: absolute;
-}
-#blueselector {
 
+	vertical-align: top;
+    display: inline-block;
 }
-#lightblueselector {
-	left: 17%;
+
+.stretch {
+	width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
 }
-#greenselector {
-	left: 28%;
-}
-#goldselector {
-	left: 39%;
-}
-#orangeselector {
-	left: 50%;
-}
-#redselector {
-	left: 61%;
-}
-#pinkselector {
-	left: 72%;
-}
-#purpleselector {
-	left: 83%;
-}
+/*#blueselector {*/
+
+/*}*/
+/*#lightblueselector {*/
+/*	left: 17%;*/
+/*}*/
+/*#greenselector {*/
+/*	left: 28%;*/
+/*}*/
+/*#goldselector {*/
+/*	left: 39%;*/
+/*}*/
+/*#orangeselector {*/
+/*	left: 50%;*/
+/*}*/
+/*#redselector {*/
+/*	left: 61%;*/
+/*}*/
+/*#pinkselector {*/
+/*	left: 72%;*/
+/*}*/
+/*#purpleselector {*/
+/*	left: 83%;*/
+/*}*/
 .directionText {
 	font-family: Arial, sans-serif;
 	font-size: 18px;
 }
-#colorselector {
-	height: 35px;
-}
+
 .leftDesign {
+	position: relative;
 	float:left;
+	top: -50%;
 }
 .rightDesign {
-	text-align: right;
+	float: right;
 }
 #heartPreview {
-	display:block;
+	display:float;
 	text-align: center;
 	width: 280px;
 	position:relative;

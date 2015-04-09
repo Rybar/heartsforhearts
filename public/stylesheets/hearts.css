@@ -10,8 +10,6 @@ body {
   border-radius: 0;
   margin: 0;
   background-color: #0591C6;
-}
-.container {
   color: white;
 }
 
@@ -79,8 +77,8 @@ body {
 }
 .heart {
   position: absolute;
-  top: -300px;
-  left: -300px;
+  top: -50rem;
+  left: -50rem;
   padding: 3px;
   margin: 6px;
   display: inline;
