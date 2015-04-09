@@ -51,7 +51,7 @@ router.get('/', function(req, res) {
       ].join('')
     };
     //check for email in URL query string
-    if(dedicatedEmail) {
+    if(req.query.email) {
       console.log("dedication email in query, sending email..");
       transporter.sendMail(confirmationMailOptions, function(err, response) {
         if (err) {
