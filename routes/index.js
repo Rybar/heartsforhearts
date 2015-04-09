@@ -78,7 +78,7 @@ router.get('/', function(req, res) {
     //check for email in URL query string
     if(req.query.dedicatedEmail) {
       console.log("email in query, sending email..");
-      transporter.sendMail(confirmationMailOptions, function(err, response) {
+      transporter.sendMail(dedicationMailOptions, function(err, response) {
         if (err) {
           console.log(err);
           return err; }
