@@ -27,7 +27,6 @@ router.get('/', function(req, res) {
     amount: req.query.amount || null,
     anonymous: req.query.anonymous || null,
     email: req.query.email || null,
-    //initials: req.query.initials || null,
     message: decodeURIComponent(req.query.message) || null,
     currency: req.query.currency || null,
     color: req.query.color || null,

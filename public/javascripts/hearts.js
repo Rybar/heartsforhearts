@@ -193,7 +193,6 @@ function addHeart() {
             'email'         :   qEmail,            
             'anonymous'     :   qAnonymous,   
             'fullname'      :   qName,         
-            'initials'      :   qInitials,      
             'donation'      :   qAmount,      
             'message'       :   qMessage, 
             'currency'      :   qCurrency, 
