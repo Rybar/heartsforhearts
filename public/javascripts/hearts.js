@@ -198,7 +198,9 @@ function addHeart() {
             'message'       :   qMessage, 
             'currency'      :   qCurrency, 
             'color'         :   qColor,  
-            'heartstyle'    :   qStyle,  
+            'heartstyle'    :   qStyle,
+            'dedicatedEmail':   qdedicatedEmail,
+            'dedicatedName' :   qdedicatedName,
             'justGivingID'  :   qJustGivingID,
             'empty': false
         }

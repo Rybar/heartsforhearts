@@ -234,12 +234,15 @@ function generateRandomSet(numberOfEntries, hasEmpties) {
             'email': isEmpty ? '' : chance.email(),
             'initials': isEmpty ? '' : 'ABC',
             'fullname' : isEmpty ? '' : chance.name(),
-            'donation': chance.integer({min: 1, max: 30}),
+            'donation': chance.integer({min: 3, max: 40}),
             'message': isEmpty ? '' : chance.sentence(),
             'currency': "USD",
             'color': isEmpty ? 'emptyGrey' : randColor, 
             'heartstyle': isEmpty ? 'A' : randStyles,
             'empty' : isEmpty,
+            'anonymous' : false,
+            'dedicatedName' : chance.name(),
+            'dedicatedEmail' : chance.email(),
             'justGivingID' : "JUSTGIVING-DONATION-ID"
         };
         //console.log(randColor);
