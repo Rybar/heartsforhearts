@@ -59,12 +59,11 @@ html
                 button.donate#centerDonate Donate
               div.col-md-4
                 p.centered#rightJumboCover $10,000 is required for Save a Child's Heart (SACH) to save the life of one child dying from heart disease. Hearts for Hearts is a new donation platform aiming to raise this amount to help SACH save a life. The site allows you to create a virtual heart to save a real heart, just click Donate to get started. The heart will be personalised to your taste and can even be donated on behalf of someone you love. Donate, Create, and Save a Child's Heart. 
-
       block content
         div#container
       div.modal.fade.bs-example-modal-lg#myModal(tabindex='-1', role='dialog', aria-labelledby='myLargeModalLabel', aria-hidden='true')
         div.modal-dialog.modal-lg
-          div.modal-content
+          div.modal-content#modalcanvas
             div#donationGreeting(aria-hidden='false')
               button.close(type='button', data-dismiss='modal', aria-label='Close')
                 span(aria-hidden='true') ×            
@@ -76,34 +75,33 @@ html
               p Claim a heart on the wall by donating
               button.donate#greetingTransfer Donate
             div#donationCallToAction(aria-hidden='true')
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×               
               div.modal-body
+                //button.close(type='button', data-dismiss='modal', aria-label='Close')
+                  //span(aria-hidden='true') ×               
                 div.container-fluid
                   div.row
                     div.col-md-6
-                      p 
-                      div#heartScrollers
-                        //p#heartPreview A
-                        p.leftDesign#leftDesignScroller <
-                        div#previewContainer
-                          div.heart.blue.epic.activate#heartPreview
-                            span B
-                        p.rightDesign#rightDesignScroller >
-                        //p.leftDesign.directionText prev. heart style
-                        //p.rightDesign.directionText next heart style
-                      #colorselector
-                        #blueselector.blue.colorbars
-                        #lightblueselector.lightblue.colorbars
-                        #greenselector.green.colorbars
-                        #goldselector.gold.colorbars
-                        #orangeselector.orange.colorbars
-                        #redselector.red.colorbars
-                        #pinkselector.pink.colorbars
-                        #purpleselector.purple.colorbars
-                        span.stretch
+                      div.row 
+                        div#heartScrollers
+                          div#previewContainer
+                            div.heart.blue.large.activate#heartPreview B
+                          p.rightDesign#rightDesignScroller >
+                          p.leftDesign#leftDesignScroller <
+                      div.row  
+                        #colorselector
+                          #blueselector.blue.colorbars
+                          #lightblueselector.lightblue.colorbars
+                          #greenselector.green.colorbars
+                          #goldselector.gold.colorbars
+                          #orangeselector.orange.colorbars
+                          #redselector.red.colorbars
+                          #pinkselector.pink.colorbars
+                          #purpleselector.purple.colorbars
                     div.col-md-6
-                      button.close(type='button', data-dismiss='modal', aria-label='Close')
-                        span(aria-hidden='true') × 
-                      p 
+                      //button.close(type='button', data-dismiss='modal', aria-label='Close')
+                        //span(aria-hidden='true') × 
                       form(name='donation', action='', onsubmit='onSubmit()')
                         input#nameInfo(placeholder='Donator Name', name='name')
                         input#emailInfo(placeholder='Donator email', name='email')                        
@@ -129,12 +127,13 @@ html
                           option(value='HKD') Hong Kong Dollar  (HKD)
                           option(value='SGD') Singapore Dollar (SGD)
                         br
-                        input#messageInfo(placeholder="Message to Dedicated", name='message')                        
+                        textarea#messageInfo(placeholder="Message to Dedicated", name='message', rows="5", cols="25")                        
                         br
                         p Below you can personalise your heart. When you're happy with your design and message, just click continue to be redirected to JustGiving where your donation details will be processed. You will then be redirected here after completing the transaction to see your finished heart!                        
                         br
                         input.donate#submit(type='button', value='Continue', onclick='submitForm();')
-
+            div#ThankYouModal(aria-hidden='true')
+              p Testing
 
       
       

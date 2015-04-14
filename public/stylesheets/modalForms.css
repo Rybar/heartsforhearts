@@ -18,14 +18,17 @@
 	font-size: 18px;
 }
 #modalcontent {
-  position: absolute;
-  width: 60%;
-  height: 80%;
-  left: 20%;
-  top: 10%;
-  background: #303030;
+  	position: absolute;
+  	width: 60%;
+  	height: 80%;
+  	left: 20%;
+	top: 10%;
+  	background: #303030;
 	border: 3px solid white;
 	border-radius: 10px;
+}
+#ThankYouModal[aria-hidden="true"] {
+	display:none;
 }
 #donationGreeting[aria-hidden="true"] {
 	display: none;
@@ -53,62 +56,36 @@
 input {
   	width: 50%;
 	border-radius: 5px;
+	margin-bottom: 10px;
 }
 #messageInfo {
-	height: 30%;
+	height: 10rem;
 }
 #currencyInfo {
-  border-radius: 5px;
+	border-radius: 5px;
 }
-
+#previewContainer{
+	text-align: center;
+}
+#heartPreview {
+	position: relative;
+	display: inline-block;
+	text-align: center;
+}
 #colorselector {
-	width: 100%;
-	height: 35px;
-	text-align: justify;
-    -ms-text-justify: distribute-all-lines;
-    text-justify: distribute;
+	width: 80%;
+	display: block;
+	height: 4rem;
+	margin: 0 auto;
 }
 
 .colorbars {
-	width: 4rem;
-	height: 4rem;
+	width: 3rem;
+	height: 3rem;
 	margin: .5rem;
 	border-radius: 50%;
-
-	vertical-align: top;
-    display: inline-block;
+	display: inline-block;
 }
-
-.stretch {
-	width: 100%;
-    display: inline-block;
-    font-size: 0;
-    line-height: 0
-}
-/*#blueselector {*/
-
-/*}*/
-/*#lightblueselector {*/
-/*	left: 17%;*/
-/*}*/
-/*#greenselector {*/
-/*	left: 28%;*/
-/*}*/
-/*#goldselector {*/
-/*	left: 39%;*/
-/*}*/
-/*#orangeselector {*/
-/*	left: 50%;*/
-/*}*/
-/*#redselector {*/
-/*	left: 61%;*/
-/*}*/
-/*#pinkselector {*/
-/*	left: 72%;*/
-/*}*/
-/*#purpleselector {*/
-/*	left: 83%;*/
-/*}*/
 .directionText {
 	font-family: Arial, sans-serif;
 	font-size: 18px;
@@ -122,15 +99,7 @@ input {
 .rightDesign {
 	float: right;
 }
-#heartPreview {
-	display:float;
-	text-align: center;
-	width: 280px;
-	position:relative;
-	top: 0px;
-	left: 0px;
-	margin: 0 auto;
-}
+
 .blue         { background: rgb(0,145,207); color: rgba(255,255,255, 0.6) }
 .lightblue    { background: rgb(53,195,222); color: rgba(255,255,255, 0.6); }
 .green        { background: rgb(177,206,76); color: rgba(255,255,255, 0.6); }
@@ -143,21 +112,14 @@ input {
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 	#clickedHeartPic span{
-		font-size: 362px;
+		font-size: 20rem;
 	}  
 	.colorbars {
 		width: 11%;
 	}
-	.modal-content {
-/*		position: absolute;
-		width:100%;
-		height: 500px; */
-	}
-	#donationGreeting {
-/*		position:absolute;
-		height: 100%;
-		width: 100%; */
-	}
+	/*#modalcanvas {
+		width:35.5rem;
+	} */	
 }
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
@@ -172,15 +134,7 @@ input {
 			width: 100%;
 			height: 500px; */
 	}
-	#donationGreeting {
-/*		position:absolute;
-		height: 100%;
-		width: 100%; */
-	}		
-	#heartContent {
-/*		position: absolute;
-		left: 33%; */
-	}
+
 }
 /* Desktops and laptops ----------- */
 @media only screen  and (min-width : 1224px) {

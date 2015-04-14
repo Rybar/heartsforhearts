@@ -76,7 +76,7 @@ function populateShowCaseModal(donationID) {
     }
     else {
         $('#heartBelongs').text("This heart donated on behalf of " + showCaseHeartObject.fullname);
-        $('#donationAmountCounter').text(" Donation amount: " + showCaseHeartObject.donation);
+        $('#donationAmountCounter').text(" Donation amount: $" + showCaseHeartObject.donation);
         $('#donationAmount').text(showCaseHeartObject.donation);
         $('#donationMessage').text(showCaseHeartObject.message);
         $('#clickedHeartPic').html('<span id="greetingHeart" class = "heart ' + showCaseHeartObject.color + ' epic activate">' + showCaseHeartObject.heartstyle + '</span>');
@@ -95,7 +95,7 @@ function populateModal(id){
     } else {
         // Heart Object Info
         $('#heartBelongs').text("This heart donated on behalf of " + clickedHeartObject.fullname);
-        $('#donationAmountCounter').text(" Donation amount: " + clickedHeartObject.donation);
+        $('#donationAmountCounter').text(" Donation amount: $" + clickedHeartObject.donation);
         $('#donationAmount').text(clickedHeartObject.donation);
         $('#donationMessage').text(clickedHeartObject.message);
         $('#clickedHeartPic').html('<span id="greetingHeart" class = "heart ' + clickedHeartObject.color + ' epic activate">' + clickedHeartObject.heartstyle + '</span>');
@@ -117,7 +117,7 @@ function updateProgressBar(data) {
        var percent = (total/10000).toFixed(2).toString().slice(2) + "%"; 
     }
     $('#meterOutside span').text("$" + total);
-    console.log(percent);
+    //console.log(percent);
     setTimeout(function(){
         $('#meter').velocity({
           height: percent

@@ -77,11 +77,9 @@ body {
 }
 .heart {
   position: absolute;
-  top: -50rem;
-  left: -50rem;
   padding: 3px;
   margin: 6px;
-  display: inline;
+  display: hidden;
   background: rgb(90,90,90);
   border-radius: 1rem;
   line-height: .75em;
