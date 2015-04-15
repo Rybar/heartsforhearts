@@ -133,9 +133,10 @@ function thankYou() {
 
 function thankYouTransition(qJustGivingID) {
     //activateModal();
-    modalCallToAction.setAttribute('aria-hidden', 'false');
-    modalGreeting.setAttribute('aria-hidden', 'true');     
+    modalCallToAction.setAttribute('aria-hidden', 'true');
+    modalGreeting.setAttribute('aria-hidden', 'false');     
     ThankYouModalWindow.setAttribute('aria-hidden', 'true');
+    populateShowCaseModal(qJustGivingID);
 }
 
 function activateModal() {
