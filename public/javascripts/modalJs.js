@@ -132,11 +132,12 @@ function thankYou() {
 }
 
 function thankYouTransition(qJustGivingID) {
-    //activateModal();
+    activateModal();
     modalCallToAction.setAttribute('aria-hidden', 'true');
     modalGreeting.setAttribute('aria-hidden', 'false');     
     ThankYouModalWindow.setAttribute('aria-hidden', 'true');
     populateShowCaseModal(qJustGivingID);
+    activateModal();
 }
 
 function activateModal() {

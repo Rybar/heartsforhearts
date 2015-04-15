@@ -77,7 +77,6 @@ function populateShowCaseModal(donationID) {
     }
     else {
         populateModal(showCaseHeartObject._id);
-         
     }
 }
 
