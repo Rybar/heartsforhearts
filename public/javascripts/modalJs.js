@@ -124,12 +124,20 @@ function ResizeHeartPreview() {
         heartPreviewSelector.style.fontSize = smallsize;        
     }  
 }
-function ThankYou() {
+function thankYou() {
     activateModal();
     modalCallToAction.setAttribute('aria-hidden', 'true');
     modalGreeting.setAttribute('aria-hidden', 'true');     
-    ThankYouModalWindow.setAttribute('aria-hidden', 'false');    
-} 
+    ThankYouModalWindow.setAttribute('aria-hidden', 'false');
+}
+
+function thankYouTransition(qJustGivingID) {
+    activateModal();
+    modalCallToAction.setAttribute('aria-hidden', 'false');
+    modalGreeting.setAttribute('aria-hidden', 'true');     
+    ThankYouModalWindow.setAttribute('aria-hidden', 'true');
+}
+
 function activateModal() {
     $('#myModal').modal('toggle');
 }

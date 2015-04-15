@@ -133,8 +133,11 @@ html
                         br
                         input.donate#submit(type='button', value='Continue', onclick='submitForm();')
             div#ThankYouModal(aria-hidden='true')
-              p Testing
-
+              h1 Thank you for your donation!
+              p
+              | You can view your heart
+              a#thankYouLink(href='http://www.google') here.
+              button#thankYouButton(type='button', value='Click to go to your heart', onclick='thankYouTransition(qJustGivingID);') Click to go to your heart
       
       
       script.

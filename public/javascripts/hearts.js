@@ -31,9 +31,10 @@ $(document).ready(function() {
         
     });
     
-    if(qAddHeart) {
-    console.log("adding a heart called via query")
+    if(qJustGivingID) {
+    console.log("adding a heart called via query");
     addHeart();
+    thankYou();
     }
 
           
@@ -96,17 +97,17 @@ function populateModal(id){
         
         if(clickedHeartObject.dedicatedName){
             //anonymous donation, with dedication
-            $('#heartBelongs').text("ANONYMOUS WITH DEDICATION");
+            $('#heartBelongs').text("This heart was donated anonymously for " + clickedHeartObject.dedicatedName);
             $('#donationAmountCounter').text(" Donation amount: $" + clickedHeartObject.donation);
-            $('#donationAmount').text(" ");
-            $('#donationMessage').text(" ");
+            $('#donationAmount').text(clickedHeartObject.donation);
+            $('#donationMessage').text(clickedHeartObject.message);
             $('#clickedHeartPic').html('<span id="greetingHeart" class = "heart ' + clickedHeartObject.color + ' epic activate">' + clickedHeartObject.heartstyle + '</span>');
         } else {
             //completely anonymous
-            $('#heartBelongs').text("COMPLETELY ANONYMOUS");
+            $('#heartBelongs').text("This heart was donated anonymously.");
             $('#donationAmountCounter').text(" Donation amount: $" + clickedHeartObject.donation);
-            $('#donationAmount').text(" ");
-            $('#donationMessage').text(" ");
+            $('#donationAmount').text(clickedHeartObject.donation);
+            $('#donationMessage').text("Great work SACH! Let's help save some more children!  :)");
             $('#clickedHeartPic').html('<span id="greetingHeart" class = "heart ' + clickedHeartObject.color + ' epic activate">' + clickedHeartObject.heartstyle + '</span>');
         }
 
