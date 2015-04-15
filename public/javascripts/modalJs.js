@@ -99,6 +99,7 @@ $('#myModal').on('hidden.bs.modal', function (e) {
     modalCallToAction.setAttribute('aria-hidden', 'true');
     ThankYouModalWindow.setAttribute('aria-hidden', 'true');    
     modalGreeting.setAttribute('aria-hidden', 'false');
+    //$("#donationGreeting").toggle("slow");    
     clearInputFields();
     document.getElementById('currencyInfo').value = "";
 	document.getElementById('donationInfo').value = "";    
@@ -132,12 +133,10 @@ function thankYou() {
 }
 
 function thankYouTransition(qJustGivingID) {
-    activateModal();
     modalCallToAction.setAttribute('aria-hidden', 'true');
     modalGreeting.setAttribute('aria-hidden', 'false');     
     ThankYouModalWindow.setAttribute('aria-hidden', 'true');
     populateShowCaseModal(qJustGivingID);
-    activateModal();
 }
 
 function activateModal() {
@@ -149,7 +148,11 @@ function centerDonateModalActivation() {
 }
 function transferModal() {
     modalCallToAction.setAttribute('aria-hidden', 'false');
+    //$('#myModal').modal('toggle');    
     modalGreeting.setAttribute('aria-hidden', 'true');
+    //$('#myModal').modal('toggle');
+    //$("#donationGreeting").toggle("slow");
+    
 }
 // This is the array that changes the letter
 var HeartStyleArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"];

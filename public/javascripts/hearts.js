@@ -36,8 +36,7 @@ $(document).ready(function() {
     addHeart();
     thankYou();
     }
-
-          
+    
     // jQuery AJAX call for JSON
     $.getJSON('/users/heartlist', function(data) {
         onGetHearts(data);
@@ -232,6 +231,6 @@ function addHeart() {
     
 /*function mailConfirmation(email) {
     
-}*/
+}*/ 
 
 
