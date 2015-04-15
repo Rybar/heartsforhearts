@@ -132,7 +132,7 @@ function thankYou() {
 }
 
 function thankYouTransition(qJustGivingID) {
-    activateModal();
+    //activateModal();
     modalCallToAction.setAttribute('aria-hidden', 'false');
     modalGreeting.setAttribute('aria-hidden', 'true');     
     ThankYouModalWindow.setAttribute('aria-hidden', 'true');
