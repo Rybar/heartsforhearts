@@ -92,9 +92,30 @@ function populateModal(id){
     var clickedHeartObject = H.heartData[clickedHeartIndex];
     if (clickedHeartObject.empty === "true") {
         transferModal(); //go to the heart designer & donation modal instead
-    } else {
+    } else if(clickedHeartObject.anonymous === "on") {
+        
+        if(clickedHeartObject.dedicatedName){
+            //anonymous donation, with dedication
+            $('#heartBelongs').text("ANONYMOUS WITH DEDICATION");
+            $('#donationAmountCounter').text(" Donation amount: $" + clickedHeartObject.donation);
+            $('#donationAmount').text(" ");
+            $('#donationMessage').text(" ");
+            $('#clickedHeartPic').html('<span id="greetingHeart" class = "heart ' + clickedHeartObject.color + ' epic activate">' + clickedHeartObject.heartstyle + '</span>');
+        } else {
+            //completely anonymous
+            $('#heartBelongs').text("COMPLETELY ANONYMOUS");
+            $('#donationAmountCounter').text(" Donation amount: $" + clickedHeartObject.donation);
+            $('#donationAmount').text(" ");
+            $('#donationMessage').text(" ");
+            $('#clickedHeartPic').html('<span id="greetingHeart" class = "heart ' + clickedHeartObject.color + ' epic activate">' + clickedHeartObject.heartstyle + '</span>');
+        }
+
+    }
+    
+    else {
+        //normal donation, all fields filled
         // Heart Object Info
-        $('#heartBelongs').text("This heart donated on behalf of " + clickedHeartObject.fullname);
+        $('#heartBelongs').text("This heart belongs to " + clickedHeartObject.dedicatedName + "and was donated by " + clickedHeartObject.fullname);
         $('#donationAmountCounter').text(" Donation amount: $" + clickedHeartObject.donation);
         $('#donationAmount').text(clickedHeartObject.donation);
         $('#donationMessage').text(clickedHeartObject.message);

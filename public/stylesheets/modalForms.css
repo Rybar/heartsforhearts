@@ -53,16 +53,23 @@
 #greetingHeart {
 	position: static;
 }
+#modalbody {
+	position: static;
+}
 input {
   	width: 50%;
 	border-radius: 5px;
 	margin-bottom: 10px;
+}
+#submit{
+	float:right;
 }
 #messageInfo {
 	height: 10rem;
 }
 #currencyInfo {
 	border-radius: 5px;
+	margin-top: 10px;
 }
 #previewContainer{
 	text-align: center;

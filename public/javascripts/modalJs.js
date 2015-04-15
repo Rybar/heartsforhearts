@@ -58,8 +58,8 @@ anonymousToggle.addEventListener('click', function(){
    if(anonymousToggle.checked === true) {
        document.getElementById('nameInfo').disabled = true;
        document.getElementById('emailInfo').disabled = true;
-       document.getElementById('dedicatedNameInfo').disabled = true;
-       document.getElementById('dedicatedEmailInfo').disabled = true;	       
+       //document.getElementById('dedicatedNameInfo').disabled = true;
+       //document.getElementById('dedicatedEmailInfo').disabled = true;	       
        document.getElementById('messageInfo').disabled = true;
        clearInputFields();
    } else {
@@ -103,7 +103,29 @@ $('#myModal').on('hidden.bs.modal', function (e) {
     document.getElementById('currencyInfo').value = "";
 	document.getElementById('donationInfo').value = "";    
 });	
+var HeartPreviewRefresher = setInterval(function() {ResizeHeartPreview()}, 60);
+function ResizeHeartPreview() {
+    var CurrentDonationAmount = document.getElementById('donationInfo').value;    
+    //document.getElementById('heartPreview').style.fontSize = "30rem";
+    var smallsize = "10rem";
+    var mediumsize = "13rem";
+    var largesize = "17rem";
+    var xlargesize = "23rem";
+    var epicsize = "29rem";
+    if (CurrentDonationAmount >= 25) {
+        heartPreviewSelector.style.fontSize = epicsize;        
+    } else if (CurrentDonationAmount >= 20) {
+        heartPreviewSelector.style.fontSize = xlargesize;
+    } else if (CurrentDonationAmount >= 15) {
+        heartPreviewSelector.style.fontSize = largesize;
+    } else if (CurrentDonationAmount >= 10) {
+        heartPreviewSelector.style.fontSize = mediumsize;
+    } else {
+        heartPreviewSelector.style.fontSize = smallsize;        
+    }  
+}
 function ThankYou() {
+    activateModal();
     modalCallToAction.setAttribute('aria-hidden', 'true');
     modalGreeting.setAttribute('aria-hidden', 'true');     
     ThankYouModalWindow.setAttribute('aria-hidden', 'false');    
@@ -127,14 +149,14 @@ var previewHeartStyle = $("#heartPreview span").html();
 var previewHeartColor = ["blue", "lightblue", "green", "gold", "orange", "red", "pink", "purple"];
 // Remove Color class of preview
 function removeColorPreview() {
-    $("#heartPreview").removeClass("blue");
-    $("#heartPreview").removeClass("lightblue");
+    $("#heartPreview").removeClass("blue lightblue green gold orange red pink purple");
+    /*$("#heartPreview").removeClass("lightblue");
     $("#heartPreview").removeClass("green");
     $("#heartPreview").removeClass("gold");
     $("#heartPreview").removeClass("orange");
     $("#heartPreview").removeClass("red");
     $("#heartPreview").removeClass("pink");
-    $("#heartPreview").removeClass("purple");
+    $("#heartPreview").removeClass("purple");*/
 }
 // Following functions add the selected color class to preview and assign the color class in a js variable
 function changeBlue () {
