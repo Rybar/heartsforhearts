@@ -76,11 +76,7 @@ function populateShowCaseModal(donationID) {
         
     }
     else {
-        $('#heartBelongs').text("This heart donated on behalf of " + showCaseHeartObject.fullname);
-        $('#donationAmountCounter').text(" Donation amount: $" + showCaseHeartObject.donation);
-        $('#donationAmount').text(showCaseHeartObject.donation);
-        $('#donationMessage').text(showCaseHeartObject.message);
-        $('#clickedHeartPic').html('<span id="greetingHeart" class = "heart ' + showCaseHeartObject.color + ' epic activate">' + showCaseHeartObject.heartstyle + '</span>');
+        populateModal(showCaseHeartObject._id);
          
     }
 }
@@ -176,7 +172,6 @@ function onGetHearts(data) {
     activateModal();
     populateShowCaseModal(qViewHeart);
     }
-    
     //default heart Size
         var heartSize = "small";
     
