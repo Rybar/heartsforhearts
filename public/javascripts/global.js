@@ -110,7 +110,7 @@ function addUser(event) {
             'email': $('#addHeart fieldset input#inputUserEmail').val(),
             'anonymous': $('#addHeart fieldset input#inputUserAnonymous').val(),
             'fullname': $('#addHeart fieldset input#inputUserFullname').val(),
-            'initials': $('#addHeart fieldset input#inputUserInitials').val(),
+             'initials': $('#addHeart fieldset input#inputUserInitials').val(),
             'donation': $('#addHeart fieldset input#inputDonationAmount').val(),
             'message': $('#addHeart fieldset input#inputMessage').val(),
             'currency': $('#addHeart fieldset select#inputCurrency').val(),

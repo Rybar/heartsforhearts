@@ -10,16 +10,14 @@ html
       meta(http-equiv='X-UA-Compatible', content='IE=edge')
       meta(name='viewport', content='width=device-width, initial-scale=1')    
       title= title
-      // Below is the text font for perhaps the entire site
-      // link(href='https://fonts.googleapis.com/css?family=Indie+Flower', rel='stylesheet', type='text/css')
+      // Below is the Indie Flower Google Font
+      //link(href='https://fonts.googleapis.com/css?family=Indie+Flower', rel='stylesheet', type='text/css')
       link(rel='stylesheet', href='/stylesheets/heartfont.css')
       link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
       link(rel='stylesheet', href='/stylesheets/modalForms.css')
       link(rel='stylesheet', href='/stylesheets/hearts.css')
       
       
-        
-        
     body.heartsBG
       nav.navbar.navbar-default.navbar-fixed-top#navigationBar(role="navigation")
         div.container-fluid
@@ -62,35 +60,36 @@ html
       block content
         div#container
       div.modal.fade.bs-example-modal-lg#myModal(tabindex='-1', role='dialog', aria-labelledby='myLargeModalLabel', aria-hidden='true')
-        div.modal-dialog.modal-lg
+        div.modal-dialog.modal-lg#ModalCanvasSizer
           div.modal-content#modalcanvas
             div#donationGreeting(aria-hidden='false')
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×            
+              button.close.ModalCloser(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
               div#heartContent
+                h2#heartBelongs Test Belong Field              
                 div#clickedHeartPic
-                p#heartBelongs Test Belong Field
-                p#donationAmountCounter Test  Donation amount:
-                p#donationMessage Our thoughts are with you and your family
+                h2#donationAmountCounter Test  Donation amount:
+                p2#donationMessage Our thoughts are with you and your family
               p Claim a heart on the wall by donating
               button.donate#greetingTransfer Donate
             div#donationCallToAction(aria-hidden='true')
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
+              button.close.ModalCloser(type='button', data-dismiss='modal', aria-label='Close')
                 span(aria-hidden='true') ×               
               div.modal-body#modalbody
                 //button.close(type='button', data-dismiss='modal', aria-label='Close')
                   //span(aria-hidden='true') ×               
                 div.container-fluid
                   div.row
-                    div.col-md-6
+                    div.col-md-6#LeftDesignModal
+                      h2(style="text-align:center") Customize Your Heart!
                       div.row 
                         div#heartScrollers
                           div#previewContainer
                             div.heart.blue.large.activate#heartPreview B
+                          h3#heartOptionsCounter 1 out of 13  
                           p.rightDesign#rightDesignScroller >
                           p.leftDesign#leftDesignScroller <
-                      div.row  
-                        #colorselector
+                        div#colorselector
                           #blueselector.blue.colorbars
                           #lightblueselector.lightblue.colorbars
                           #greenselector.green.colorbars
@@ -99,12 +98,12 @@ html
                           #redselector.red.colorbars
                           #pinkselector.pink.colorbars
                           #purpleselector.purple.colorbars
-                    div.col-md-6
+                    div.col-md-6#RightDesignModal
                       //button.close(type='button', data-dismiss='modal', aria-label='Close')
                         //span(aria-hidden='true') × 
                       form(name='donation', action='', onsubmit='onSubmit()')
                         input#nameInfo(placeholder='Donator Name', name='name')
-                        input#emailInfo(placeholder='Donator email', name='email')                        
+                        input#emailInfo(placeholder='Donator Email', name='email')                        
        
                         //br
                         //input#intialsInfo(placeholder='Donator initials', name='initials')
@@ -127,17 +126,16 @@ html
                           option(value='HKD') Hong Kong Dollar  (HKD)
                           option(value='SGD') Singapore Dollar (SGD)
                         br
-                        textarea#messageInfo(placeholder="Message to Dedicated", name='message', rows="5", cols="25")                        
+                        textarea#messageInfo(placeholder="Message to Dedicated", name='message', rows="3", cols="50" )
                         br
-                        p Below you can personalise your heart. When you're happy with your design and message, just click continue to be redirected to JustGiving where your donation details will be processed. You will then be redirected here after completing the transaction to see your finished heart!                        
+                        p#HeartDesignerText Here you can personalise your heart. When you're happy with your design and message, just click continue to be redirected to JustGiving where your donation details will be processed. You will then be redirected here after completing the transaction to see your finished heart!                        
                         br
                         input.donate#submit(type='button', value='Continue', onclick='submitForm();')
-            div#ThankYouModal(aria-hidden='true')
+            div#ThankYouModal(aria-hidden='true' style="text-align: center")
               h1 Thank you for your donation!
-              p
-              | You can view your heart
-              a#thankYouLink(href='http://www.google') here.
-              button#thankYouButton(type='button', value='Click to go to your heart', onclick='thankYouTransition(qJustGivingID);') Click to go to your heart
+              p  Thank you for donating to Save a Child's Heart! Your donation will help save the life of a child suffering from heart disease.
+              br
+              button#thankYouButton.donate(type='button', value='Click to see your heart', onclick='thankYouTransition(qJustGivingID);') Click to go to your heart
       
       
       script.
@@ -147,7 +145,6 @@ html
         var qName = !{JSON.stringify(name) || "null"};
         var qEmail = !{JSON.stringify(email) || "null"};
         var qAmount = !{JSON.stringify(amount) || "null"};
-        //var qInitials = !{JSON.stringify(initials) || "null"};
         var qMessage = !{JSON.stringify(message) || "null"};
         var qCurrency = !{JSON.stringify(currency) || "null"};
         var qColor = !{JSON.stringify(color) || "null"};
@@ -155,26 +152,12 @@ html
         var qJustGivingID = !{JSON.stringify(donationId) || "null"};
         var qdedicatedName = !{JSON.stringify(dedicatedName) || "null"};
         var qdedicatedEmail = !{JSON.stringify(dedicatedEmail) || "null"};
-        //console.log(qdedicatedName);
-        //console.log(qdedicatedEmail);
-        // console.log("qViewHeart is " +qViewHeart);
-        // console.log("qAddHeart is " + qAddHeart);
-        // console.log("qAnonymous is " + qAnonymous);
-        // console.log("qName is " + qName);
-        // console.log("qEmail is " + qEmail);
-        // console.log("qAmount is " +qAmount);
-        // console.log("qInitials is " + qInitials);
-        // console.log("qMessage is " + qMessage);
-        // console.log("qCurrency is " + qCurrency);
-        // console.log("qColor is " + qColor);
-        // console.log("qStyle is " + qStyle);
-        // console.log("qJustGivingID is " + qJustGivingID);        
+ 
       script(src='/javascripts/jquery.min.js')
       script(src='/javascripts/bootstrap.min.js')
       script(src='/javascripts/packery.pkgd.min.js')
       script(src='/javascripts/velocity.min.js')
       script(src='/javascripts/jquery.bootstrap-autohidingnavbar.min.js')
-      // script(src='/javascripts/global.js')
       script(src='/javascripts/hearts.js')
       script(src='/javascripts/modalJs.js')
 

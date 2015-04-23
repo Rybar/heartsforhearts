@@ -15,9 +15,16 @@ var pinkPreviewSelector = document.getElementById('pinkselector');
 var purplePreviewSelector = document.getElementById('purpleselector'); */
 var heartPreviewSelector = document.getElementById('heartPreview');
 var anonymousToggle = document.getElementById('anonymousInfo');
+var heartOptions = document.getElementById('heartOptionsCounter');
 var donationHeartColor = "blue";
 var donationHeartStyle = "B";
-var styleCounter = 1;
+var styleCounter = 0;
+// This is the array that changes the letter
+var HeartStyleArray = ["B", "A", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"];
+// This is where the heart style is in the form of a letter.
+var previewHeartStyle = $("#heartPreview span").html();
+// This is the array that switches the class of the heart preview
+var previewHeartColor = ["blue", "lightblue", "green", "gold", "orange", "red", "pink", "purple"];
 // Event listeners
 centerDonateButton.addEventListener('click', centerDonateModalActivation);
 modalGreetingTransferButton.addEventListener('click', transferModal);
@@ -85,14 +92,17 @@ pinkPreviewSelector.addEventListener('click', changePink());
 purplePreviewSelector.addEventListener('click', changePurple());*/	
 // The following change the heart style.
 $('#leftDesignScroller').on('click', function() {
-    styleCounter++;
+    styleCounter--;
     donationHeartStyle = HeartStyleArray [ Math.abs(styleCounter) % HeartStyleArray.length ];
     $("#heartPreview").html( donationHeartStyle );
+    $("#heartOptionsCounter").text(HeartStyleArray.indexOf(donationHeartStyle)+1 + " out of 13" );
+    
 })
 $('#rightDesignScroller').on('click', function() {
-    styleCounter--;
+    styleCounter++;
 	donationHeartStyle = HeartStyleArray [ Math.abs(styleCounter) % HeartStyleArray.length ];
     $("#heartPreview").html( donationHeartStyle );
+    $("#heartOptionsCounter").text(HeartStyleArray.indexOf(donationHeartStyle)+1 + " out of 13" );    
 })
 // The following reset order of modals after a modal is turned off. Later, it will reset preview and form values.
 $('#myModal').on('hidden.bs.modal', function (e) {
@@ -102,7 +112,15 @@ $('#myModal').on('hidden.bs.modal', function (e) {
     //$("#donationGreeting").toggle("slow");    
     clearInputFields();
     document.getElementById('currencyInfo').value = "";
-	document.getElementById('donationInfo').value = "";    
+	document.getElementById('donationInfo').value = ""; 
+	$("#heartPreview").html( "B" );
+    donationHeartColor = "blue";
+    donationHeartStyle = "B";
+    styleCounter = 0;
+    $("#heartOptionsCounter").text("1 out of 13" );
+    removeColorPreview();
+    $("#heartPreview").addClass("blue");
+    
 });	
 var HeartPreviewRefresher = setInterval(function() {ResizeHeartPreview()}, 60);
 function ResizeHeartPreview() {
@@ -154,12 +172,6 @@ function transferModal() {
     //$("#donationGreeting").toggle("slow");
     
 }
-// This is the array that changes the letter
-var HeartStyleArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"];
-// This is where the heart style is in the form of a letter.
-var previewHeartStyle = $("#heartPreview span").html();
-// This is the array that switches the class of the heart preview
-var previewHeartColor = ["blue", "lightblue", "green", "gold", "orange", "red", "pink", "purple"];
 // Remove Color class of preview
 function removeColorPreview() {
     $("#heartPreview").removeClass("blue lightblue green gold orange red pink purple");

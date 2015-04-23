@@ -17,7 +17,7 @@ var transporter = nodemailer.createTransport({
 router.get('/data', function(req, res) {
   res.render('index', { title: 'Save A Childs Heart' });  
 });
-
+1
 /* GET heartwall page. */
 router.get('/', function(req, res) {
   res.render('hearts', {
@@ -43,10 +43,30 @@ router.get('/', function(req, res) {
       from: 'devteam@freecodecamp.com',
       subject: 'TEST SACH HEART Confirmation!',
       text: [
-        'Greetings from SACH!\n\n',
-        'Thank you for donating for a heart surgery.\n',
-        'Feel free to email us at this address if you have any questions about SACH.\n',
-        "Your can view your heart here.\n",
+                'Dear ' + req.query.name + ',\n\n',
+        "Thank you for donating to Save a Child's Heart (SACH) via Hearts for Hearts, your donation ",
+        "will help save the life of a child suffering from heart disease. To view your personalised heartwall",
+        "click the link below:",
+        //construct link here
+        "https://cryptic-tundra-5274.herokuapp.com/?viewHeart=" + req.query.donationId, 
+
+        "SACH is a non-profit organization committed to saving lives by improving the quality of",
+        "cardiac care for children from developing countries and creating centers of medical competence",
+        "in these countries. They have saved the lives of over 3000 children in desperate need of heart",
+        "surgery and trained dozens of medical professionals in the field.\n\n",
+
+        "Hearts for Hearts is a fundraising platform formed through collaboration between SACH and",
+        "CodeCamp, a non-profit educational organization that gives students from all over the world",
+        "the tools they need to code and creates tech solutions for other non-profits in the process.\n\n",
+
+        "Hearts for Heart's mission is to raise enough money to help SACH save the life of one child",
+        "in desperate need of heart surgery. Thank you for being part of this mission with us.\n\n",
+
+        "The Hearts for Hearts Team,\n\n",
+        
+        "Christopher Nguyen,\n",
+        "Ryan Malm\n",
+        "Shier Ziser"
       ].join('')
     };
     //check for email in URL query string
@@ -66,14 +86,36 @@ router.get('/', function(req, res) {
     var dedicationMailOptions = {
       to: req.query.dedicatedEmail,
       from: 'devteam@freecodecamp.com',
-      subject: 'TEST SACH HEART Confirmation!',
+      subject: 'A donation has been made in your honour.',
       text: [
-        'Greetings from SACH!\n\n',
-        req.query.name + " has made a donation to the Save A Child's Heart foundation and dedicated it to you.\n",
-        'Feel free to email us at this address if you have any questions about SACH.\n',
-        "Your can view the heart they purchased here (link) \n",
+        'Dear ' + req.query.dedicatedName + ',\n\n',
+        req.query.name + "has donated to Save a Child's Heart (SACH) in your honour.",
+        "Not only that, they have created a personalised heart with a message for you",
+        " here at Hearts for Hearts!\n\n",
+        //construct link here
+        "Click the link below or copy paste into your browser's address bar:",
+        "https://cryptic-tundra-5274.herokuapp.com/?viewHeart=" + req.query.donationId, 
+
+        "SACH is a non-profit organization committed to saving lives by improving the quality of",
+        "cardiac care for children from developing countries and creating centers of medical competence",
+        "in these countries. They have saved the lives of over 3000 children in desperate need of heart",
+        "surgery and trained dozens of medical professionals in the field.\n\n",
+
+        "Hearts for Hearts is a fundraising platform formed through collaboration between SACH and",
+        "CodeCamp, a non-profit educational organization that gives students from all over the world",
+        "the tools they need to code and creates tech solutions for other non-profits in the process.\n\n",
+
+        "Hearts for Heart's mission is to raise enough money to help SACH save the life of one child",
+        "in desperate need of heart surgery. Thank you for being part of this mission with us.\n\n",
+
+        "The Hearts for Hearts Team,\n\n",
+        
+        "Christopher Nguyen,\n",
+        "Ryan Malm\n",
+        "Shier Ziser"
       ].join('')
     };
+    
     //check for email in URL query string
     if(req.query.dedicatedEmail) {
       console.log("email in query, sending email..");

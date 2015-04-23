@@ -3,9 +3,10 @@
 }
 #donationGreeting {
 	text-align: center;
+	padding-top: .5rem;
 }
 #clickedHeartPic span{
-	font-size: 600px;
+	font-size: 550px;
 }
 #instructions {
 	color: white;
@@ -13,9 +14,16 @@
 #anonymousInfo {
 	width: auto;
 }
+#heartContent {
+	margin-bottom: 1.5rem;	
+}
+#heartContent h2 {
+	font-family: Arial, sans-serif;
+	font-size: 20px;
+}
 #heartContent p {
 	font-family: Arial, sans-serif;
-	font-size: 18px;
+	font-size: 15px;
 }
 #modalcontent {
   	position: absolute;
@@ -49,6 +57,7 @@
 	background-color: orange;
 	border: 2px solid orange;
 	border-radius: 10px;
+	margin-bottom: 1rem;
 }
 #greetingHeart {
 	position: static;
@@ -57,12 +66,13 @@
 	position: static;
 }
 input {
-  	width: 50%;
+  	width: 40%;
 	border-radius: 5px;
 	margin-bottom: 10px;
+	margin-right:1rem;
 }
 #submit{
-	float:right;
+	margin-left: 12.5rem;
 }
 #messageInfo {
 	height: 10rem;
@@ -70,6 +80,10 @@ input {
 #currencyInfo {
 	border-radius: 5px;
 	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#heartOptionsCounter {
+	text-align: center;
 }
 #previewContainer{
 	text-align: center;
@@ -84,8 +98,23 @@ input {
 	display: block;
 	height: 4rem;
 	margin: 0 auto;
+	position: fixed;
+	bottom:2rem;
+	left: 6.5rem;
+}
+#leftDesignScroller {
+  font-family: "heartsregular";
+  font-size: 4rem;
+  color: grey;
+  cursor: pointer;
 }
 
+#rightDesignScroller {
+  font-family: "heartsregular";
+  font-size: 4rem;
+  color: grey;
+  cursor: pointer;
+}
 .colorbars {
 	width: 3rem;
 	height: 3rem;
@@ -106,6 +135,10 @@ input {
 .rightDesign {
 	float: right;
 }
+.ModalCloser {
+	font-size: 38px;
+	margin-right: 1rem;
+}
 
 .blue         { background: rgb(0,145,207); color: rgba(255,255,255, 0.6) }
 .lightblue    { background: rgb(53,195,222); color: rgba(255,255,255, 0.6); }
@@ -118,15 +151,35 @@ input {
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	#heartBelongs {
+		padding-top: 2rem;
+	}
 	#clickedHeartPic span{
 		font-size: 20rem;
 	}  
 	.colorbars {
-		width: 11%;
+		width: 7.75%;
+		height: 2.3rem;
+		
 	}
-	/*#modalcanvas {
-		width:35.5rem;
-	} */	
+	#colorselector {
+		position: absolute;
+		left:11%;
+		bottom: 0rem;
+	}
+	.ModalCloser {
+	font-size: 34px;
+	margin-right: 0rem;
+	}	
+	#submit {
+		width: 16rem;
+		margin-left: 4rem;
+	}
+	input {
+		width: 48%;
+		margin-right: .3rem;
+	}
+	/* Not sure about last tag, the mobile devices just don't zoom out correctly.*/	
 }
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
@@ -134,16 +187,15 @@ input {
 		font-size: 362px;
 	}  
 	.colorbars {
-		width: 6%;
-	}
-	.modal-content {
-/*			position: absolute;
-			width: 100%;
-			height: 500px; */
+		width: 4%;
 	}
 
 }
 /* Desktops and laptops ----------- */
 @media only screen  and (min-width : 1224px) {
 /* Styles */
+/*	#LeftDesignModal {
+	padding-top: 4.5rem;
+	} */
+
 }
