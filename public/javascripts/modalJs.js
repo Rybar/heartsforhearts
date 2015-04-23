@@ -144,6 +144,7 @@ function ResizeHeartPreview() {
     }  
 }
 function thankYou() {
+    console.log('Thank You Modal is activated');
     activateModal();
     modalCallToAction.setAttribute('aria-hidden', 'true');
     modalGreeting.setAttribute('aria-hidden', 'true');     
