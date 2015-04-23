@@ -48,7 +48,6 @@ $(document).ready(function() {
     if(qJustGivingID) {
     console.log("adding a heart called via query");
     addHeart();
-    thankYou();
     }
     
     // jQuery AJAX call for JSON
@@ -229,7 +228,7 @@ function addHeart() {
             'donation'      :   qAmount,      
             'message'       :   qMessage, 
             'currency'      :   qCurrency, 
-            'color'         :   qColor,  
+            'color'         :   qColor,
             'heartstyle'    :   qStyle,
             'dedicatedEmail':   qdedicatedEmail,
             'dedicatedName' :   qdedicatedName,
