@@ -226,7 +226,7 @@ function addHeart() {
             'email'         :   qEmail,            
             'anonymous'     :   qAnonymous,   
             'fullname'      :   qName,         
-            'donation'      :   qAmount,      noe,
+            'donation'      :   qAmount,      
             'message'       :   qMessage, 
             'currency'      :   qCurrency, 
             'color'         :   qColor,  
@@ -244,7 +244,7 @@ function addHeart() {
             dataType: 'JSON'
         }).done(function( response ) {
             thankYou();
-            //window.location.replace("https://heartsforhearts-rybar.c9.io/hearts");
+            ("https://heartsforhearts-rybar.c9.io/hearts");
         });
     };
     
