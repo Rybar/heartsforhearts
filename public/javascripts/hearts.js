@@ -3,23 +3,20 @@ var H = {
     total : 0
 }
 
+WebFont.load({
+    google: {
+      families: ['Shadows Into Light Two']
+    },
+    
+    custom: {
+    families: ['heartsregular'],
+  }
+  });
+
 
 $(document).ready(function() {
-//     //webfont loader
-//     WebFontConfig = {
-//       custom: {
-//         families: ['heartsregular'],
-//         urls: ['/stylesheets/heartfont.css']
-//       }
-//     };
-//     WebFont.load({
-//     custom: {
-//       families: ['heartsregular']
-//     }
-//   });
-    
-    
-    //initialize hiding navbar, only show after scrolling past header
+
+   //initialize hiding navbar, only show after scrolling past header
     $("#navigationBar").autoHidingNavbar({
         disableAutohide : true,
         showOnUpscroll: false,
@@ -46,36 +43,21 @@ $(document).ready(function() {
     });
     
     if(qJustGivingID) {
-    console.log("adding a heart called via query");
     addHeart();
     }
     
     // jQuery AJAX call for JSON
     $.getJSON('/users/heartlist', function(data) {
         onGetHearts(data);
-        //animate(data);
         updateProgressBar(data);
     });
-    
 
-    
-    // Turned off flip animation. Code preserved.
-    
     H.container.on("click", ".heart", function(event) {
-        
-      /*$(this).velocity({
-          zIndex: "1000",
-          translateY: "-20px",
-          rotateY: "180deg",
-          scaleX: "1.5",
-          scaleY: "1.5",
-      });*/
         activateModal();
         populateModal($(this).data('id') );
-        
-
     });
 });
+
 function populateShowCaseModal(donationID) {
     
     var showCaseHeartSearch = H.heartData.filter(function (obj) {
@@ -156,27 +138,6 @@ function updateProgressBar(data) {
     
 }
 
-function animate(data) {
-    // $.each($('.heart'), function( index, value ){
-    //     //console.log(index);
-    //     //console.log(value);
-    //     //setTimeout(function(){
-    //         H.container.packery('appended', value );
-    //         console.log('hit');
-        
-    //     //}, 3) 
-    // })
-    //         H.container.packery('layout');
-    //     //H.container.packery('appended', $('.heart') );
-    //     //H.container.packery('layout');
-
-        
-        H.container.packery('appended', $('#container .heart') );
-        H.container.packery('layout');
-
-};
-
-
 function onGetHearts(data) {
     H.heartData = data; //store JSON data in global variable.
     
@@ -247,6 +208,26 @@ function addHeart() {
         });
     };
     
+function animate(data) {
+    // $.each($('.heart'), function( index, value ){
+    //     //console.log(index);
+    //     //console.log(value);
+    //     //setTimeout(function(){
+    //         H.container.packery('appended', value );
+    //         console.log('hit');
+        
+    //     //}, 3) 
+    // })
+    //         H.container.packery('layout');
+    //     //H.container.packery('appended', $('.heart') );
+    //     //H.container.packery('layout');
+
+        
+        H.container.packery('appended', $('#container .heart') );
+        H.container.packery('layout');
+
+};
+    
 function waitForWebfonts(fonts, callback) {
     var loadedFonts = 0;
     for(var i = 0, l = fonts.length; i < l; ++i) {
@@ -295,7 +276,7 @@ function waitForWebfonts(fonts, callback) {
             };
 
             if(!checkFont()) {
-                interval = setInterval(checkFont, 50);
+                interval = setInterval(checkFont, 100);
             }
         })(fonts[i]);
     }

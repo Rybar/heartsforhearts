@@ -10,14 +10,12 @@ html
       meta(http-equiv='X-UA-Compatible', content='IE=edge')
       meta(name='viewport', content='width=device-width, initial-scale=1')    
       title= title
-      // Below is the Indie Flower Google Font
-      //link(href='https://fonts.googleapis.com/css?family=Indie+Flower', rel='stylesheet', type='text/css')
+
       link(rel='stylesheet', href='/stylesheets/heartfont.css')
       link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
       link(rel='stylesheet', href='/stylesheets/modalForms.css')
       link(rel='stylesheet', href='/stylesheets/hearts.css')
-      
-      
+
     body.heartsBG
       nav.navbar.navbar-default.navbar-fixed-top#navigationBar(role="navigation")
         div.container-fluid
@@ -36,9 +34,7 @@ html
                 a(href="http://www.saveachildsheart.com/") About
               li
                 a(href="https://www.justgiving.com/saveachild/") Contact
-        // div.progress
-        //   div.progress-bar.progress-bar-success.progress-bar-striped.active(role='progressbar', aria-valuenow='0', aria-valuemin='0', aria-valuemax='10000', style='width: 0%')
-        //     span.sr-only 
+                
       div.container
         div.jumbotron
           div.container-fluid
@@ -53,7 +49,6 @@ html
                   div#meter
                   img.img-responsive#meterOverlay(src="/img/progress-meter-frame.png")
                   span#meterTotal $1
-                    
                 button.donate#centerDonate Donate
               div.col-md-4
                 p.centered#rightJumboCover $10,000 is required for Save a Child's Heart (SACH) to save the life of one child dying from heart disease. Hearts for Hearts is a new donation platform aiming to raise this amount to help SACH save a life. The site allows you to create a virtual heart to save a real heart, just click Donate to get started. The heart will be personalised to your taste and can even be donated on behalf of someone you love. Donate, Create, and Save a Child's Heart. 
@@ -66,22 +61,21 @@ html
               button.close.ModalCloser(type='button', data-dismiss='modal', aria-label='Close')
                 span(aria-hidden='true') ×
               div#heartContent
-                h2#heartBelongs Test Belong Field              
+                h2#heartBelongs Oops! Something went wrong.              
                 div#clickedHeartPic
-                h2#donationAmountCounter Test  Donation amount:
-                p2#donationMessage Our thoughts are with you and your family
+                h2#donationAmountCounter &nbsp
+                p2#donationMessage &nbsp
               p Claim a heart on the wall by donating
               button.donate#greetingTransfer Donate
             div#donationCallToAction(aria-hidden='true')
               button.close.ModalCloser(type='button', data-dismiss='modal', aria-label='Close')
                 span(aria-hidden='true') ×               
               div.modal-body#modalbody
-                //button.close(type='button', data-dismiss='modal', aria-label='Close')
-                  //span(aria-hidden='true') ×               
                 div.container-fluid
                   div.row
                     div.col-md-6#LeftDesignModal
-                      h2(style="text-align:center") Customize Your Heart!
+                      h1#designertitle(style="text-align:center") Customize Your Heart!
+                      h5#designersubhead(style="text-align:center") The more your donate, the bigger your heart will be!
                       div.row 
                         div#heartScrollers
                           div#previewContainer
@@ -99,14 +93,9 @@ html
                           #pinkselector.pink.colorbars
                           #purpleselector.purple.colorbars
                     div.col-md-6#RightDesignModal
-                      //button.close(type='button', data-dismiss='modal', aria-label='Close')
-                        //span(aria-hidden='true') × 
                       form(name='donation', action='', onsubmit='onSubmit()')
                         input#nameInfo(placeholder='Your name', name='name')
                         input#emailInfo(placeholder='Your Email', name='email')                        
-       
-                        //br
-                        //input#intialsInfo(placeholder='Donator initials', name='initials')
                         br
                         input#dedicatedNameInfo(placeholder='Dedicated To', name ='dedicatedName')
                         input#dedicatedEmailInfo(placeholder="Their Email", name ='dedicatedEmail')
@@ -136,8 +125,7 @@ html
               p  Thank you for donating to Save a Child's Heart! Your donation will help save the life of a child suffering from heart disease.
               br
               button#thankYouButton.donate(type='button', value='Click to see your heart', onclick='thankYouTransition(qJustGivingID);') Click to go to your heart
-      
-      
+
       script.
         var qViewHeart = !{JSON.stringify(viewHeart) || "null"} ;
         var qAddHeart = !{JSON.stringify(addHeart) || "null"} ;
@@ -156,6 +144,7 @@ html
       script(src='/javascripts/jquery.min.js')
       script(src='/javascripts/bootstrap.min.js')
       script(src='/javascripts/packery.pkgd.min.js')
+      script(src="//ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js")
       script(src='/javascripts/velocity.min.js')
       script(src='/javascripts/jquery.bootstrap-autohidingnavbar.min.js')
       script(src='/javascripts/hearts.js')

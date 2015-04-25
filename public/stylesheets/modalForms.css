@@ -107,6 +107,9 @@ input {
   font-size: 4rem;
   color: grey;
   cursor: pointer;
+  -webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none;
 }
 
 #rightDesignScroller {
@@ -114,6 +117,9 @@ input {
   font-size: 4rem;
   color: grey;
   cursor: pointer;
+  -webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none;  
 }
 .colorbars {
 	width: 3rem;
