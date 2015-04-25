@@ -183,17 +183,17 @@ function onGetHearts(data) {
 function addHeart() {
        
         var newUser = {
-            'email'         :   qEmail,            
-            'anonymous'     :   qAnonymous,   
-            'fullname'      :   qName,         
-            'donation'      :   qAmount,      
-            'message'       :   qMessage, 
-            'currency'      :   qCurrency, 
-            'color'         :   qColor,
-            'heartstyle'    :   qStyle,
-            'dedicatedEmail':   qdedicatedEmail,
-            'dedicatedName' :   qdedicatedName,
-            'justGivingID'  :   qJustGivingID,
+            'email'         :   qEmail || null,    
+            'anonymous'     :   qAnonymous || null,    
+            'fullname'      :   qName || null,    
+            'donation'      :   qAmount || null,    
+            'message'       :   qMessage || null,    
+            'currency'      :   qCurrency || null,    
+            'color'         :   qColor || null,    
+            'heartstyle'    :   qStyle || null,    
+            'dedicatedEmail':   qdedicatedEmail || null,    
+            'dedicatedName' :   qdedicatedName || null,    
+            'justGivingID'  :   qJustGivingID || null,    
             'empty': false
         }
         // Use AJAX to post the object to our adduser service
