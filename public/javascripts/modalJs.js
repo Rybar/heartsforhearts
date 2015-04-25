@@ -1,36 +1,29 @@
-// variables
+
 var modalGreeting = document.getElementById('donationGreeting');
 var modalGreetingTransferButton = document.getElementById('greetingTransfer');
 var modalCallToAction = document.getElementById('donationCallToAction');
 var centerDonateButton = document.getElementById('centerDonate');
 var ThankYouModalWindow = document.getElementById('ThankYouModal');
-/*
-var bluePreviewSelector = document.getElementById('blueselector');
-var lightBluePreviewSelector = document.getElementById('lightblueselector');
-var greenPreviewSelector = document.getElementById('greenselector');
-var goldPreviewSelector = document.getElementById('goldselector');
-var orangePreviewSelector = document.getElementById('orangeselector');
-var redPreviewSelector = document.getElementById('redselector');
-var pinkPreviewSelector = document.getElementById('pinkselector');
-var purplePreviewSelector = document.getElementById('purpleselector'); */
 var heartPreviewSelector = document.getElementById('heartPreview');
 var anonymousToggle = document.getElementById('anonymousInfo');
 var heartOptions = document.getElementById('heartOptionsCounter');
 var donationHeartColor = "blue";
 var donationHeartStyle = "B";
 var styleCounter = 0;
+
 // This is the array that changes the letter
 var HeartStyleArray = ["B", "A", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"];
+
 // This is where the heart style is in the form of a letter.
 var previewHeartStyle = $("#heartPreview span").html();
+
 // This is the array that switches the class of the heart preview
 var previewHeartColor = ["blue", "lightblue", "green", "gold", "orange", "red", "pink", "purple"];
+
 // Event listeners
 centerDonateButton.addEventListener('click', centerDonateModalActivation);
 modalGreetingTransferButton.addEventListener('click', transferModal);
-// Ask Ryan about the following 2 lines. Something is clicking every element
-/*bluePreviewSelector.addEventListener('click', console.log("check1"));
-lightBluePreviewSelector.addEventListener('click', console.log('check2')); */
+
 $('#blueselector').on('click', function() {
    changeBlue();
 });
@@ -55,11 +48,7 @@ $('#pinkselector').on('click', function() {
 $('#purpleselector').on('click', function() {
    changePurple();
 });
-// Below is the jquery way of doing the anonymouse checkbox disabling
-/*$('#anonymousInfo').on('click', function() {
-   console.log('hitting');
-   console.log(anonymousToggle.val());
-});*/	
+
 anonymousToggle.addEventListener('click', function(){
    //console.log(anonymousToggle.checked);
    if(anonymousToggle.checked === true) {
@@ -84,13 +73,7 @@ function clearInputFields() {
        document.getElementById('dedicatedEmailInfo').value = "";	       
        document.getElementById('messageInfo').value = "";
 }
-// Don't mind this yet.
-/*greenPreviewSelector.addEventListener('click', changeGreen());
-goldPreviewSelector.addEventListener('click', changeGold());
-orangePreviewSelector.addEventListener('click', changeOrange());
-pinkPreviewSelector.addEventListener('click', changePink());
-purplePreviewSelector.addEventListener('click', changePurple());*/	
-// The following change the heart style.
+
 $('#leftDesignScroller').on('click', function() {
     styleCounter--;
     donationHeartStyle = HeartStyleArray [ Math.abs(styleCounter) % HeartStyleArray.length ];
@@ -104,6 +87,7 @@ $('#rightDesignScroller').on('click', function() {
     $("#heartPreview").html( donationHeartStyle );
     $("#heartOptionsCounter").text(HeartStyleArray.indexOf(donationHeartStyle)+1 + " out of 13" );    
 })
+
 // The following reset order of modals after a modal is turned off. Later, it will reset preview and form values.
 $('#myModal').on('hidden.bs.modal', function (e) {
     modalCallToAction.setAttribute('aria-hidden', 'true');
@@ -156,7 +140,7 @@ function thankYouTransition(qJustGivingID) {
     modalCallToAction.setAttribute('aria-hidden', 'true');
     modalGreeting.setAttribute('aria-hidden', 'false');     
     ThankYouModalWindow.setAttribute('aria-hidden', 'true');
-    populateShowCaseModal(qJustGivingID);
+    window.location.replace(process.env.APP_URL + "?viewHeart="+ qJustGivingID);
 }
 
 function activateModal() {
