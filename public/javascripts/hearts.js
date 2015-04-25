@@ -61,7 +61,7 @@ $(document).ready(function() {
 function populateShowCaseModal(donationID) {
     
     var showCaseHeartSearch = H.heartData.filter(function (obj) {
-        return obj.justGivingID == donationID;
+        return obj.justGivingID == donationId;
     });
     var showCaseHeartObject = showCaseHeartSearch[0];
     console.log(showCaseHeartObject);

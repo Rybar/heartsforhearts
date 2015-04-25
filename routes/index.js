@@ -41,25 +41,25 @@ router.get('/', function(req, res) {
     var confirmationMailOptions = {
       to: req.query.email,
       from: 'devteam@freecodecamp.com',
-      subject: 'TEST SACH HEART Confirmation!',
+      subject: 'Thank you for your donation to SACH!',
       text: [
                 'Dear ' + req.query.name + ',\n\n',
         "Thank you for donating to Save a Child's Heart (SACH) via Hearts for Hearts, your donation ",
-        "will help save the life of a child suffering from heart disease. To view your personalised heartwall",
+        "will help save the life of a child suffering from heart disease. To view your personalised heartwall ",
         "click the link below:\n\n",
         //construct link here
         "https://cryptic-tundra-5274.herokuapp.com/?viewHeart=" + req.query.donationId + "\n\n", 
 
-        "SACH is a non-profit organization committed to saving lives by improving the quality of",
-        "cardiac care for children from developing countries and creating centers of medical competence",
-        "in these countries. They have saved the lives of over 3000 children in desperate need of heart",
+        "SACH is a non-profit organization committed to saving lives by improving the quality of ",
+        "cardiac care for children from developing countries and creating centers of medical competence ",
+        "in these countries. They have saved the lives of over 3000 children in desperate need of heart ",
         "surgery and trained dozens of medical professionals in the field.\n\n",
 
-        "Hearts for Hearts is a fundraising platform formed through collaboration between SACH and",
-        "CodeCamp, a non-profit educational organization that gives students from all over the world",
+        "Hearts for Hearts is a fundraising platform formed through collaboration between SACH and ",
+        "Free Code Camp, a non-profit educational organization that gives students from all over the world ",
         "the tools they need to code and creates tech solutions for other non-profits in the process.\n\n",
 
-        "Hearts for Heart's mission is to raise enough money to help SACH save the life of one child",
+        "Hearts for Heart's mission is to raise enough money to help SACH save the life of one child ",
         "in desperate need of heart surgery. Thank you for being part of this mission with us.\n\n",
 
         "The Hearts for Hearts Team,\n\n",
@@ -96,16 +96,16 @@ router.get('/', function(req, res) {
         "Click the link below or copy paste into your browser's address bar:\n",
         "https://cryptic-tundra-5274.herokuapp.com/?viewHeart=" + req.query.donationId + "\n\n", 
 
-        "SACH is a non-profit organization committed to saving lives by improving the quality of",
-        "cardiac care for children from developing countries and creating centers of medical competence",
-        "in these countries. They have saved the lives of over 3000 children in desperate need of heart",
+        "SACH is a non-profit organization committed to saving lives by improving the quality of ",
+        "cardiac care for children from developing countries and creating centers of medical competence ",
+        "in these countries. They have saved the lives of over 3000 children in desperate need of heart ",
         "surgery and trained dozens of medical professionals in the field.\n\n",
 
-        "Hearts for Hearts is a fundraising platform formed through collaboration between SACH and",
-        "CodeCamp, a non-profit educational organization that gives students from all over the world",
+        "Hearts for Hearts is a fundraising platform formed through collaboration between SACH and ",
+        "Free Code Camp, a non-profit educational organization that gives students from all over the world ",
         "the tools they need to code and creates tech solutions for other non-profits in the process.\n\n",
 
-        "Hearts for Heart's mission is to raise enough money to help SACH save the life of one child",
+        "Hearts for Heart's mission is to raise enough money to help SACH save the life of one child ",
         "in desperate need of heart surgery. Thank you for being part of this mission with us.\n\n",
 
         "The Hearts for Hearts Team,\n\n",
