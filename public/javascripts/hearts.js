@@ -61,7 +61,7 @@ $(document).ready(function() {
 function populateShowCaseModal(donationID) {
     
     var showCaseHeartSearch = H.heartData.filter(function (obj) {
-        return obj.justGivingID == donationId;
+        return obj.justGivingID == donationID;
     });
     var showCaseHeartObject = showCaseHeartSearch[0];
     console.log(showCaseHeartObject);
@@ -204,7 +204,6 @@ function addHeart() {
             dataType: 'JSON'
         }).done(function( response ) {
             thankYou();
-            ("https://heartsforhearts-rybar.c9.io/hearts");
         });
     };
     
