@@ -137,9 +137,9 @@ function thankYou() {
 
 function thankYouTransition(qJustGivingID) {
     console.log(qJustGivingID);
-    modalCallToAction.setAttribute('aria-hidden', 'true');
-    modalGreeting.setAttribute('aria-hidden', 'false');     
-    ThankYouModalWindow.setAttribute('aria-hidden', 'true');
+    //modalCallToAction.setAttribute('aria-hidden', 'true');
+    //modalGreeting.setAttribute('aria-hidden', 'false');     
+    //ThankYouModalWindow.setAttribute('aria-hidden', 'true');
     window.location.replace(appURL + "?viewHeart="+ qJustGivingID);
 }
 
