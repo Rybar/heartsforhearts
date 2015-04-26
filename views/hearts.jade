@@ -139,6 +139,7 @@ html
         var qJustGivingID = !{JSON.stringify(donationId) || "null"};
         var qdedicatedName = !{JSON.stringify(dedicatedName) || "null"};
         var qdedicatedEmail = !{JSON.stringify(dedicatedEmail) || "null"};
+        var appURL = !{JSON.stringify(process.env.APP_URL)};
  
       script(src='/javascripts/jquery.min.js')
       script(src='/javascripts/bootstrap.min.js')
