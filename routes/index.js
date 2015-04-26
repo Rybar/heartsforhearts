@@ -48,7 +48,7 @@ router.get('/', function(req, res) {
         "will help save the life of a child suffering from heart disease. To view your personalised heartwall ",
         "click the link below:\n\n",
         //construct link here
-        "https://cryptic-tundra-5274.herokuapp.com/?viewHeart=" + req.query.donationId + "\n\n", 
+        process.env.APP_URL + "?viewHeart="  + req.query.donationId + "\n\n", 
 
         "SACH is a non-profit organization committed to saving lives by improving the quality of ",
         "cardiac care for children from developing countries and creating centers of medical competence ",
@@ -94,7 +94,7 @@ router.get('/', function(req, res) {
         " here at Hearts for Hearts!\n\n",
         //construct link here
         "Click the link below or copy paste into your browser's address bar:\n",
-        "https://cryptic-tundra-5274.herokuapp.com/?viewHeart=" + req.query.donationId + "\n\n", 
+        process.env.APP_URL + "?viewHeart="  + req.query.donationId + "\n\n", 
 
         "SACH is a non-profit organization committed to saving lives by improving the quality of ",
         "cardiac care for children from developing countries and creating centers of medical competence ",
