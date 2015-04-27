@@ -15,27 +15,27 @@ html
 
       link(rel='stylesheet', href='/stylesheets/heartfont.css')
       link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-      link(rel='stylesheet', href='/stylesheets/modalForms.css')
+      //link(rel='stylesheet', href='/stylesheets/modalForms.css')
       link(rel='stylesheet', href='/stylesheets/hearts.css')
 
     body.heartsBG
-      nav.navbar.navbar-default.navbar-fixed-top#navigationBar(role="navigation")
-        div.container-fluid
-          div.navbar-header
-            button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#navbar", aria-expanded="false", aria-controls="navbar")
-              span.sr-only Toggle navigation
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
-            a.navbar-brand(href='change ')
-              img#sachLogoNavbar(src="/SVG/SACHlogo.svg" height = "40em" style)
-              img#heartsForHeartsNavbar(src="/SVG/heartsForHearts.svg" height = "40em")
-          div.navbar-collapse.collapse#navbar
-            ul.nav.navbar-nav.navbar-right
-              li
-                a(href="http://www.saveachildsheart.com/") About
-              li
-                a(href="https://www.justgiving.com/saveachild/") Contact
+      // nav.navbar.navbar-default.navbar-fixed-top#navigationBar(role="navigation")
+      //   div.container-fluid
+      //     div.navbar-header
+      //       button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#navbar", aria-expanded="false", aria-controls="navbar")
+      //         span.sr-only Toggle navigation
+      //         span.icon-bar
+      //         span.icon-bar
+      //         span.icon-bar
+      //       a.navbar-brand(href='change ')
+      //         img#sachLogoNavbar(src="/SVG/SACHlogo.svg" height = "40em" style)
+      //         img#heartsForHeartsNavbar(src="/SVG/heartsForHearts.svg" height = "40em")
+      //     div.navbar-collapse.collapse#navbar
+      //       ul.nav.navbar-nav.navbar-right
+      //         li
+      //           a(href="http://www.saveachildsheart.com/") About
+      //         li
+      //           a(href="https://www.justgiving.com/saveachild/") Contact
                 
       div.container
         div.jumbotron
@@ -119,7 +119,7 @@ html
                         br
                         textarea#messageInfo(placeholder="Message to Dedicated", name='message', rows="3", cols="44" )
                         br
-                        p#HeartDesignerText Here you can personalise your heart. When you're happy with your design and message, just click continue to be redirected to JustGiving where your donation details will be processed. You will then be redirected here after completing the transaction to see your finished heart!                        
+                        p#HeartDesignerText Here you can personalise your heart. When you're happy with your design and message, just click continue to be redirected to JustGiving where your donation details will be processed. You will then be redirected here after completing the transaction to see your finished heart!
                         br
                         input.donate#submit(type='button', value='Continue', onclick='submitForm();')
             div#ThankYouModal(aria-hidden='true' style="text-align: center")
@@ -153,8 +153,3 @@ html
       script(src='/javascripts/hearts.js')
       script(src='/javascripts/modalJs.js')
       script(src='/javascripts/jquery.validate.js')
-
-  
-
-      
-        

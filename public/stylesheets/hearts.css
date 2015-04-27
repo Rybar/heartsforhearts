@@ -5,6 +5,158 @@ body {
   /*padding-top: 126px;*/
 }
 
+/*MODAL FORM CSS -------------------- */
+#clickedHeartPic {
+	text-align: center;
+}
+#donationGreeting {
+	text-align: center;
+	padding-top: .5rem;
+}
+#clickedHeartPic span{
+	font-size: 550px;
+}
+#instructions {
+	color: white;
+}
+#anonymousInfo {
+	width: auto;
+}
+#heartContent {
+	margin-bottom: 1.5rem;	
+}
+#heartContent h2 {
+	font-family: Arial, sans-serif;
+	font-size: 20px;
+}
+#heartContent p {
+	font-family: Arial, sans-serif;
+	font-size: 15px;
+}
+#modalcontent {
+  	position: absolute;
+  	width: 60%;
+  	height: 80%;
+  	left: 20%;
+	top: 10%;
+  	background: #303030;
+	border: 3px solid white;
+	border-radius: 10px;
+}
+#ThankYouModal[aria-hidden="true"] {
+	display:none;
+}
+#donationGreeting[aria-hidden="true"] {
+	display: none;
+}
+#donationCallToAction[aria-hidden="true"]  {
+	display: none;
+}
+#donationGreeting h3 {
+	color: grey;
+	position: absolute;
+	left: 0;
+	right: 0;
+	text-align: center;
+	top: 60%;
+}
+#greetingTransfer {
+	font-size: 25px;
+	background-color: orange;
+	border: 2px solid orange;
+	border-radius: 10px;
+	margin-bottom: 1rem;
+}
+#greetingHeart {
+	position: static;
+}
+#modalbody {
+	position: static;
+}
+input {
+  	width: 40%;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	margin-right:1rem;
+}
+#submit{
+	margin-left: 12.5rem;
+}
+#messageInfo {
+	height: 10rem;
+}
+#currencyInfo {
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#heartOptionsCounter {
+	text-align: center;
+}
+#previewContainer{
+	text-align: center;
+}
+#heartPreview {
+	position: relative;
+	display: inline-block;
+	text-align: center;
+}
+#colorselector {
+	width: 80%;
+	display: block;
+	height: 4rem;
+	margin: 0 auto;
+	position: fixed;
+	bottom:2rem;
+	left: 6.5rem;
+}
+#leftDesignScroller {
+  font-family: "heartsregular";
+  font-size: 4rem;
+  color: grey;
+  cursor: pointer;
+  -webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none;
+}
+
+#rightDesignScroller {
+  font-family: "heartsregular";
+  font-size: 4rem;
+  color: grey;
+  cursor: pointer;
+  -webkit-user-select: none; /* Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none;  
+}
+.colorbars {
+	width: 3rem;
+	height: 3rem;
+	margin: .5rem;
+	border-radius: 50%;
+	display: inline-block;
+}
+.directionText {
+	font-family: Arial, sans-serif;
+	font-size: 18px;
+}
+
+.leftDesign {
+	position: relative;
+	float:left;
+	top: -50%;
+}
+.rightDesign {
+	float: right;
+}
+.ModalCloser {
+	font-size: 38px;
+	margin-right: 1rem;
+}
+
+/*-------------------------END MODAL FORMS CSS--------*/
+
+
 .container, .jumbotron {
   width: 100%;
   border-radius: 0;
@@ -101,17 +253,6 @@ body {
   margin-bottom: 0px;
 }
 
-#navigationBar {
-  background-color: #0591C6;
-}
-.icon-bar {
-  color: white;
-}
-#navigationBar img {
-  margin-top: -10px;
-  display: inline;
-}
-
 #navHeaders li a{
   color: white;
 }
@@ -144,6 +285,7 @@ font-family: 'Shadows Into Light Two', cursive;
 font-size: 4rem;
 color: rgb(0,145,207);
 }
+
 .whitespace {
   display: block;
   background: lightgrey;
@@ -186,7 +328,7 @@ color: rgb(0,145,207);
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
 }
 #rightJumboCover {
-  font-size: 24px;
+  font-size: 2rem;
 }
 /* navbar styling ----------- */
 
@@ -224,6 +366,53 @@ color: rgb(0,145,207);
     font-size: 1.5rem;
   }
   
+  .close {
+    margin-right: .5rem;
+  }
+  
+  #designertitle {
+    font-size: 2.5rem;
+  }
+  
+  #heartOptionsCounter {
+    font-size: 1.5rem;
+  }
+  
+  #colorselector {
+
+  }
+  
+  /*---modal stuffs-----------------*/
+  
+  	#heartBelongs {
+		padding-top: 2rem;
+	}
+	#clickedHeartPic span{
+		font-size: 20rem;
+	}  
+	.colorbars {
+		width: 1.75rem;
+		height: 1.75rem;
+		margin: .25rem;
+		
+	}
+	#colorselector {
+		position: absolute;
+		left:11%;
+		bottom: 0rem;
+	}
+	.ModalCloser {
+	font-size: 34px;
+	margin-right: 0rem;
+	}	
+	#submit {
+		width: 16rem;
+		margin-left: 4rem;
+	}
+	input {
+		width: 48%;
+		margin-right: .3rem;
+	}
 }
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
@@ -235,6 +424,14 @@ color: rgb(0,145,207);
   #logoContainer {
     max-width:100%;
   }
+  
+  #clickedHeartPic span{
+		font-size: 362px;
+	}  
+	.colorbars {
+		width: 1rem;
+		height: 1rem;
+	}
 }
 
 /* Desktops and laptops ----------- */

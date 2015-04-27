@@ -21,22 +21,22 @@ WebFont.load({
 $(document).ready(function() {
 
    //initialize hiding navbar, only show after scrolling past header
-    $("#navigationBar").autoHidingNavbar({
-        disableAutohide : true,
-        showOnUpscroll: false,
-        showOnBottom: true
-    });
-    $("#navigationBar").autoHidingNavbar('hide');
+    //$("#navigationBar").autoHidingNavbar({
+        // disableAutohide : true,
+        // showOnUpscroll: false,
+        // showOnBottom: true
+    //});
+   // $("#navigationBar").autoHidingNavbar('hide');
     
     $(window).scroll( function() {
-        var value = $(this).scrollTop();
-        //console.log(value)
-        if ( value > 240 ) {
-           $("#navigationBar").autoHidingNavbar('show');
-        }
-        else {
-            $("#navigationBar").autoHidingNavbar('hide');
-        }
+        // var value = $(this).scrollTop();
+        // //console.log(value)
+        // if ( value > 240 ) {
+        //   $("#navigationBar").autoHidingNavbar('show');
+        // }
+        // else {
+        //     $("#navigationBar").autoHidingNavbar('hide');
+        // }
         //check if we've scrolled to bottom, load more hearts
         if($(window).scrollTop() + $(window).height() + 200 > $(document).height()) {
             onGetHearts();
