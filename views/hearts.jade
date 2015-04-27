@@ -5,7 +5,9 @@ mixin times(limit, block)
 
 doctype html
 html
+    meta(name="viewport" content="width=device-width, height=device-height, initial-scale=1.0")
     head
+      include favicon.html
       meta(charset='utf-8')
       meta(http-equiv='X-UA-Compatible', content='IE=edge')
       meta(name='viewport', content='width=device-width, initial-scale=1')    
@@ -61,11 +63,11 @@ html
               button.close.ModalCloser(type='button', data-dismiss='modal', aria-label='Close')
                 span(aria-hidden='true') ×
               div#heartContent
-                h1#heartBelongs We're finding your heart now.            
+                h2#heartBelongs We're finding your heart now.            
                 div#clickedHeartPic
                 h4#donationAmountCounter 
                 p2#donationMessage &nbsp
-              p Please wait while the page refreshes.
+              p &nbsp
               button.donate#greetingTransfer Donate
             div#donationCallToAction(aria-hidden='true')
               button.close.ModalCloser(type='button', data-dismiss='modal', aria-label='Close')
@@ -93,14 +95,14 @@ html
                           #pinkselector.pink.colorbars
                           #purpleselector.purple.colorbars
                     div.col-md-6#RightDesignModal
-                      form(name='donation', action='', onsubmit='onSubmit()')
-                        input#nameInfo(placeholder='Your name', name='name')
-                        input#emailInfo(placeholder='Your Email', name='email')                        
+                      form#donationform(name='donation', action='', onsubmit='onSubmit()')
+                        input#nameInfo(placeholder='Your name', name='name', type="name", required)
+                        input#emailInfo(placeholder='Your Email', name='email', type="email", required)  
                         br
-                        input#dedicatedNameInfo(placeholder='Dedicated To', name ='dedicatedName')
-                        input#dedicatedEmailInfo(placeholder="Their Email", name ='dedicatedEmail')
+                        input#dedicatedNameInfo(placeholder='Dedicated To', name ='dedicatedName', type="text", required)
+                        input#dedicatedEmailInfo(placeholder="Their Email", name ='dedicatedEmail', type="email", required)
                         br
-                        input#donationInfo(placeholder='Amount', name='amount')
+                        input#donationInfo(placeholder='Amount', name='amount', type="number")
                         br
                         input#anonymousInfo(type='checkbox', name='anonymous') 
                         | Anonymous Donation
@@ -140,6 +142,7 @@ html
         var qdedicatedName = !{JSON.stringify(dedicatedName) || "null"};
         var qdedicatedEmail = !{JSON.stringify(dedicatedEmail) || "null"};
         var appURL = !{JSON.stringify(process.env.APP_URL)};
+        var justGivingURL = !{JSON.stringify(process.env.JUSTGIVING_URL) || "null"};
  
       script(src='/javascripts/jquery.min.js')
       script(src='/javascripts/bootstrap.min.js')
@@ -149,6 +152,7 @@ html
       script(src='/javascripts/jquery.bootstrap-autohidingnavbar.min.js')
       script(src='/javascripts/hearts.js')
       script(src='/javascripts/modalJs.js')
+      script(src='/javascripts/jquery.validate.js')
 
   
 

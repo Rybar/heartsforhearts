@@ -211,8 +211,7 @@ function changePurple() {
     donationHeartColor = "purple";    
 }
 function submitForm() {
-    var outURL = "https://v3-sandbox.justgiving.com/Ryan-Malm/4w350m3/donate/";
-    //var exitURL = "&exitURL=" + encodeURIComponent( "https://heartsforhearts-rybar.c9.io/hearts/" )
+    var outURL = justGivingURL;
     var exitURL = "&exitURL=" + encodeURIComponent( appURL )
     
     var fullURL = outURL

@@ -1,7 +1,11 @@
 var H = { 
-    heartData : [], 
-    total : 0
-}
+    heartData : [],
+    chunkIndex : 0,
+    total : 0,
+    chunk : [],
+    page : 30,
+    heartLimit : false
+};
 
 WebFont.load({
     google: {
@@ -33,14 +37,18 @@ $(document).ready(function() {
         else {
             $("#navigationBar").autoHidingNavbar('hide');
         }
+        //check if we've scrolled to bottom, load more hearts
+        if($(window).scrollTop() + $(window).height() + 200 > $(document).height()) {
+            onGetHearts();
+            }
     });
     
     //cache container and create packery instance
     H.container = $('#container');
     H.container.packery({
         'selector' : '.heart'
-        
     });
+    H.container.packery("layout");
     
     if(qJustGivingID) {
     addHeart();
@@ -48,13 +56,29 @@ $(document).ready(function() {
     
     // jQuery AJAX call for JSON
     $.getJSON('/users/heartlist', function(data) {
-        onGetHearts(data);
-        updateProgressBar(data);
+        H.heartData = data; //store JSON data in global variable.
+        onGetHearts();
+        updateProgressBar(H.heartData);
     });
 
     H.container.on("click", ".heart", function(event) {
         activateModal();
         populateModal($(this).data('id') );
+    });
+    
+    //form validation
+    $('#donationform').validate({
+        rules: {
+            nameInfo: "required",
+            emailInfo: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            nameInfo: "Please enter your name",
+            emailInfo: "Please enter a valid email address"
+        }
     });
 });
 
@@ -66,7 +90,7 @@ function populateShowCaseModal(donationID) {
     var showCaseHeartObject = showCaseHeartSearch[0];
     console.log(showCaseHeartObject);
     if(showCaseHeartObject === undefined) {
-        alert("Not found")
+        alert("Not found");
         
     }
     else {
@@ -138,9 +162,9 @@ function updateProgressBar(data) {
     
 }
 
-function onGetHearts(data) {
-    H.heartData = data; //store JSON data in global variable.
-    
+function onGetHearts() {
+    console.log("onGetHearts called, totalHearts: "+H.heartData.length + "index: " + H.chunkIndex);
+    var data = H.heartData;   
     if(qViewHeart) {
     activateModal();
     populateShowCaseModal(qViewHeart);
@@ -149,8 +173,26 @@ function onGetHearts(data) {
         var heartSize = "small";
     
     // For each item in our JSON, we assign the user data of size, color, and shape to a heart and add.
-    $.each( data, function() {
-        var thisHeart = this;
+    
+    /*
+        modifications needed:
+        take a slice of the data at X number of hearts, render those. store current last-rendered index.
+        check for scrolling to end of page
+        render next set.
+    */
+    if(H.heartLimit) {
+        return;
+    }
+    else {
+         var nextIndex = H.chunkIndex+H.page;
+    }
+    if( H.chunkIndex + H.page >= H.heartData.length ){
+        nextIndex = H.heartData.length;
+        H.heartLimit = true;
+    }
+    H.chunk = data.slice(H.chunkIndex, nextIndex);
+    $.each( H.chunk, function() {
+
         //set size based on this.donation 
         if (this.donation >= 25) {
             heartSize = 'epic';
@@ -171,12 +213,13 @@ function onGetHearts(data) {
         .addClass('heart ' + this.color + ' ' + heartSize + ' ' + "activate")
         .data("id", this._id)
         .appendTo('#container');
-        //H.container.packery('appended', heart);
-        }
-    )
-    setTimeout(function(){
-        waitForWebfonts( ['heartsregular'], function() { animate(data) } );
-    }, 100);
+        H.container.packery('addItems', heart);
+        
+    });
+
+        //H.container.packery('reloadItems');
+        H.container.packery('layout');
+        H.chunkIndex = nextIndex;
     
 }
 
@@ -195,7 +238,7 @@ function addHeart() {
             'dedicatedName' :   qdedicatedName || null,    
             'justGivingID'  :   qJustGivingID || null,    
             'empty': false
-        }
+        };
         // Use AJAX to post the object to our adduser service
         $.ajax({
             type: 'POST',
@@ -205,7 +248,7 @@ function addHeart() {
         }).done(function( response ) {
             thankYou();
         });
-    };
+    }
     
 function animate(data) {
     // $.each($('.heart'), function( index, value ){
