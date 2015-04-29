@@ -99,7 +99,7 @@ router.get('/', function(req, res) {
         "surgery and trained dozens of medical professionals in the field.\n\n",
 
         "Hearts for Hearts is a fundraising platform formed through collaboration between SACH and ",
-        "Free Code Camp,  Free Code Camp – a place where they teach people to code, and put those skills to use by coding pro bono for nonprofit organizations.\n\n",
+        "Free Code Camp – a place where they teach people to code, and put those skills to use by coding pro bono for nonprofit organizations.\n\n",
 
         "Thank you for being part of this mission with us.\n\n",
 
