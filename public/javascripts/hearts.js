@@ -23,7 +23,7 @@ $(document).ready(function() {
     $.getJSON('/users/heartlist', function(data) {
         H.heartData = data; //store JSON data in global object.
         updateProgressBar(H.heartData);
-        onGetHearts();
+        onGetHearts(); //check query and render hearts
     });
 
     $(window).scroll( function() {
@@ -40,15 +40,16 @@ $(document).ready(function() {
     });
     H.container.packery("layout");
     
-    //moving this into onGetHearts()
+    
     if(qJustGivingID) {
      
-        var DuplicateHeartSearch = H.heartData.filter(function(obj) {
+        var duplicateHeartSearch = H.heartData.filter(function(obj) {
             return obj.justGivingID == qJustGivingID;
+                
         }),
-        DuplicateHeartSearchObject = DuplicateHeartSearch[0];
-        console.log(DuplicateHeartSearchObject);
-        if (DuplicateHeartSearchObject === undefined || null) {
+        duplicateHeartSearchObject = duplicateHeartSearch[0];
+        console.log(duplicateHeartSearchObject);
+        if (duplicateHeartSearchObject == undefined) {
             console.log('make a new heart');
             addHeart();
         } else {
