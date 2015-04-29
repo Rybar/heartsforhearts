@@ -113,7 +113,7 @@ function populateModal(id){
             $('#heartBelongs').text("This heart was donated anonymously for " + clickedHeartObject.dedicatedName);
             $('#donationAmountCounter').text(" Donation amount: $" + clickedHeartObject.donation);
             $('#donationAmount').text(clickedHeartObject.donation);
-            $('#donationMessage').text(clickedHeartObject.message);
+            $('#donationMessage').text(clickedHeartObject.message || " ");
             $('#clickedHeartPic').html('<span id="greetingHeart" class = "heart ' + clickedHeartObject.color + ' epic activate">' + clickedHeartObject.heartstyle + '</span>');
         } else {
             //completely anonymous
