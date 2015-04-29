@@ -3,7 +3,7 @@ var H = {
     chunkIndex : 0,
     total : 0,
     chunk : [],
-    page : 30,
+    page : 20,
     heartLimit : false
 };
 
@@ -19,26 +19,16 @@ WebFont.load({
 
 
 $(document).ready(function() {
+    // jQuery AJAX call for JSON
+    $.getJSON('/users/heartlist', function(data) {
+        H.heartData = data; //store JSON data in global object.
+        updateProgressBar(H.heartData);
+        onGetHearts();
+    });
 
-   //initialize hiding navbar, only show after scrolling past header
-    //$("#navigationBar").autoHidingNavbar({
-        // disableAutohide : true,
-        // showOnUpscroll: false,
-        // showOnBottom: true
-    //});
-   // $("#navigationBar").autoHidingNavbar('hide');
-    
     $(window).scroll( function() {
-        // var value = $(this).scrollTop();
-        // //console.log(value)
-        // if ( value > 240 ) {
-        //   $("#navigationBar").autoHidingNavbar('show');
-        // }
-        // else {
-        //     $("#navigationBar").autoHidingNavbar('hide');
-        // }
-        //check if we've scrolled to bottom, load more hearts
-        if($(window).scrollTop() + $(window).height() + 200 > $(document).height()) {
+
+        if($(window).scrollTop() + $(window).height() + 50 > $(document).height()) {
             onGetHearts();
             }
     });
@@ -51,15 +41,21 @@ $(document).ready(function() {
     H.container.packery("layout");
     
     if(qJustGivingID) {
+     
+        var DuplicateHeartSearch = H.heartData.filter(function(obj) {
+            return obj.justGivingID == qJustGivingID;
+        }),
+        DuplicateHeartSearchObject = DuplicateHeartSearch[0];
+        if (DuplicateHeartSearchObject === undefined) {
+            console.log('make a new heart');
+            addHeart();
+        } else {
+            console.log("don't make a new heart");
+        }    
     addHeart();
     }
     
-    // jQuery AJAX call for JSON
-    $.getJSON('/users/heartlist', function(data) {
-        H.heartData = data; //store JSON data in global variable.
-        onGetHearts();
-        updateProgressBar(H.heartData);
-    });
+
 
     H.container.on("click", ".heart", function(event) {
         activateModal();
@@ -74,6 +70,7 @@ $(document).ready(function() {
                 required: true,
                 email: true
             }
+            
         },
         messages: {
             nameInfo: "Please enter your name",
@@ -88,7 +85,7 @@ function populateShowCaseModal(donationID) {
         return obj.justGivingID == donationID;
     });
     var showCaseHeartObject = showCaseHeartSearch[0];
-    console.log(showCaseHeartObject);
+    //console.log(showCaseHeartObject);
     if(showCaseHeartObject === undefined) {
         alert("Not found");
         
@@ -163,6 +160,7 @@ function updateProgressBar(data) {
 }
 
 function onGetHearts() {
+    
     console.log("onGetHearts called, totalHearts: "+H.heartData.length + "index: " + H.chunkIndex);
     var data = H.heartData;   
     if(qViewHeart) {
@@ -172,14 +170,7 @@ function onGetHearts() {
     //default heart Size
         var heartSize = "small";
     
-    // For each item in our JSON, we assign the user data of size, color, and shape to a heart and add.
-    
-    /*
-        modifications needed:
-        take a slice of the data at X number of hearts, render those. store current last-rendered index.
-        check for scrolling to end of page
-        render next set.
-    */
+
     if(H.heartLimit) {
         return;
     }
@@ -213,12 +204,15 @@ function onGetHearts() {
         .addClass('heart ' + this.color + ' ' + heartSize + ' ' + "activate")
         .data("id", this._id)
         .appendTo('#container');
-        H.container.packery('addItems', heart);
+        setTimeout( function() { //for cascading animation, set a tiny delay between adding each one
+             H.container.packery('appended', heart);
+             H.container.packery('layout');
+             }, 10 );
         
     });
 
         //H.container.packery('reloadItems');
-        H.container.packery('layout');
+       // H.container.packery('layout');
         H.chunkIndex = nextIndex;
     
 }

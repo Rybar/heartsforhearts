@@ -78,7 +78,7 @@ html
                     div.col-md-6#LeftDesignModal
                       h1#designertitle(style="text-align:center") Customize Your Heart!
                       h5#designersubhead(style="text-align:center") The more your donate, the bigger your heart will be!
-                      div.row 
+                      div.row#heartInteraction 
                         div#heartScrollers
                           div#previewContainer
                             div.heart.blue.large.activate#heartPreview B
@@ -108,7 +108,7 @@ html
                         | Anonymous Donation
                         br
                         select#currencyInfo(name='currency')
-                          option(value='', disabled='', selected='') Currency
+                          //option(value='', disabled='', selected='') Currency
                           option(value='DOL') American Dollar (USD)
                           option(value='GBP') British Pound(GBP)
                           option(value='AUD') Australian Dollar (AUD)

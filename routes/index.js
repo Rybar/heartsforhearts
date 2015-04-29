@@ -43,30 +43,28 @@ router.get('/', function(req, res) {
       from: 'devteam@freecodecamp.com',
       subject: 'Thank you for your donation to SACH!',
       text: [
-                'Dear ' + req.query.name + ',\n\n',
-        "Thank you for donating to Save a Child's Heart (SACH) via Hearts for Hearts, your donation ",
-        "will help save the life of a child suffering from heart disease. To view your personalised heartwall ",
-        "click the link below:\n\n",
-        //construct link here
+        'Dear ' + req.query.dedicatedName + ',\n\n',
+        "Thank you for donating to Save a Child's Heart via Hearts for Hearts. Your valued donation is going to help save the life of a child suffering from heart disease.\n\n",
+
+        "To view your personalized heart on the Hearts for Hearts wall, click the link below:\n\n",
+        
         process.env.APP_URL + "?viewHeart="  + req.query.donationId + "\n\n", 
 
-        "SACH is a non-profit organization committed to saving lives by improving the quality of ",
+        "Save A Child's Heart is a non-profit organization committed to saving lives by improving the quality of ",
         "cardiac care for children from developing countries and creating centers of medical competence ",
         "in these countries. They have saved the lives of over 3000 children in desperate need of heart ",
         "surgery and trained dozens of medical professionals in the field.\n\n",
 
         "Hearts for Hearts is a fundraising platform formed through collaboration between SACH and ",
-        "Free Code Camp, a non-profit educational organization that gives students from all over the world ",
-        "the tools they need to code and creates tech solutions for other non-profits in the process.\n\n",
+        "Free Code Camp,  Free Code Camp – a place where they teach people to code, and put those skills to use by coding pro bono for nonprofit organizations.\n\n",
 
-        "Hearts for Heart's mission is to raise enough money to help SACH save the life of one child ",
-        "in desperate need of heart surgery. Thank you for being part of this mission with us.\n\n",
+        "Thank you for being part of this mission with us.\n\n",
 
         "The Hearts for Hearts Team,\n\n",
         
-        "Christopher Nguyen,\n",
-        "Ryan Malm\n",
-        "Shier Ziser"
+        "Shier Ziser - Save a Child's Heart,\n",
+        "Christopher Nguyen, - Free Code Camp\n",
+        "Ryan Malm - Free Code Camp\n"
       ].join('')
     };
     //check for email in URL query string
@@ -89,30 +87,28 @@ router.get('/', function(req, res) {
       subject: 'A donation has been made in your honour.',
       text: [
         'Dear ' + req.query.dedicatedName + ',\n\n',
-        req.query.name + "has donated to Save a Child's Heart (SACH) in your honour.",
-        "Not only that, they have created a personalised heart with a message for you",
-        " here at Hearts for Hearts!\n\n",
-        //construct link here
-        "Click the link below or copy paste into your browser's address bar:\n",
+        "Thank you for donating to Save a Child's Heart via Hearts for Hearts. Your valued donation is going to help save the life of a child suffering from heart disease.\n\n",
+
+        "To view your personalized heart on the Hearts for Hearts wall, click the link below:\n\n",
+        
         process.env.APP_URL + "?viewHeart="  + req.query.donationId + "\n\n", 
 
-        "SACH is a non-profit organization committed to saving lives by improving the quality of ",
+        "Save A Child's Heart is a non-profit organization committed to saving lives by improving the quality of ",
         "cardiac care for children from developing countries and creating centers of medical competence ",
         "in these countries. They have saved the lives of over 3000 children in desperate need of heart ",
         "surgery and trained dozens of medical professionals in the field.\n\n",
 
         "Hearts for Hearts is a fundraising platform formed through collaboration between SACH and ",
-        "Free Code Camp, a non-profit educational organization that gives students from all over the world ",
-        "the tools they need to code and creates tech solutions for other non-profits in the process.\n\n",
+        "Free Code Camp,  Free Code Camp – a place where they teach people to code, and put those skills to use by coding pro bono for nonprofit organizations.\n\n",
 
-        "Hearts for Heart's mission is to raise enough money to help SACH save the life of one child ",
-        "in desperate need of heart surgery. Thank you for being part of this mission with us.\n\n",
+        "Thank you for being part of this mission with us.\n\n",
 
         "The Hearts for Hearts Team,\n\n",
         
-        "Christopher Nguyen,\n",
-        "Ryan Malm\n",
-        "Shier Ziser"
+        "Shier Ziser - Save a Child's Heart,\n",
+        "Christopher Nguyen, - Free Code Camp\n",
+        "Ryan Malm - Free Code Camp\n"
+        
       ].join('')
     };
     
