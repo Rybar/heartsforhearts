@@ -40,6 +40,7 @@ $(document).ready(function() {
     });
     H.container.packery("layout");
     
+    //moving this into onGetHearts()
     if(qJustGivingID) {
      
         var DuplicateHeartSearch = H.heartData.filter(function(obj) {
@@ -53,7 +54,6 @@ $(document).ready(function() {
         } else {
             console.log("don't make a new heart");
         }    
-    addHeart();
     }
     
     H.container.on("click", ".heart", function(event) {
