@@ -42,7 +42,8 @@ $(document).ready(function() {
     
     
     if(qJustGivingID) {
-     
+        
+        console.log(H.heartData);
         var duplicateHeartSearch = H.heartData.filter(function(obj) {
             return obj.justGivingID == qJustGivingID;
                 
