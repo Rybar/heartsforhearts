@@ -56,7 +56,7 @@ anonymousToggle.addEventListener('click', function(){
        document.getElementById('emailInfo').disabled = true;
        //document.getElementById('dedicatedNameInfo').disabled = true;
        //document.getElementById('dedicatedEmailInfo').disabled = true;	       
-       document.getElementById('messageInfo').disabled = true;
+       //document.getElementById('messageInfo').disabled = true;
        clearInputFields();
    } else {
        document.getElementById('nameInfo').disabled = false;
