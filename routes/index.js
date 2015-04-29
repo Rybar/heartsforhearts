@@ -44,8 +44,8 @@ router.get('/', function(req, res) {
       subject: 'Thank you for your donation to SACH!',
       text: [
         'Dear ' + req.query.dedicatedName + ',\n\n',
-        "Thank you for donating to Save a Child's Heart via Hearts for Hearts. Your valued donation is going to help save the life of a child suffering from heart disease.\n\n",
-
+        req.query.name + " has donated to Save a Child's Heart in your honour. Not only that, they have created a personalised heart with a message for you at Hearts for Hearts!\n\n",
+        
         "To view your personalized heart on the Hearts for Hearts wall, click the link below:\n\n",
         
         process.env.APP_URL + "?viewHeart="  + req.query.donationId + "\n\n", 
