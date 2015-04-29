@@ -46,7 +46,8 @@ $(document).ready(function() {
             return obj.justGivingID == qJustGivingID;
         }),
         DuplicateHeartSearchObject = DuplicateHeartSearch[0];
-        if (DuplicateHeartSearchObject === undefined) {
+        console.log(DuplicateHeartSearchObject);
+        if (DuplicateHeartSearchObject === undefined || null) {
             console.log('make a new heart');
             addHeart();
         } else {
@@ -55,8 +56,6 @@ $(document).ready(function() {
     addHeart();
     }
     
-
-
     H.container.on("click", ".heart", function(event) {
         activateModal();
         populateModal($(this).data('id') );
