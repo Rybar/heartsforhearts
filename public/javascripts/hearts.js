@@ -24,22 +24,7 @@ $(document).ready(function() {
         H.heartData = data; //store JSON data in global object.
         updateProgressBar(H.heartData);
         onGetHearts(); //check query and render hearts
-    });
-
-    $(window).scroll( function() {
-
-        if($(window).scrollTop() + $(window).height() + 50 > $(document).height()) {
-            onGetHearts();
-            }
-    });
-    
-    //cache container and create packery instance
-    H.container = $('#container');
-    H.container.packery({
-        'selector' : '.heart'
-    });
-    H.container.packery("layout");
-    
+            
     
     if(qJustGivingID) {
         
@@ -57,6 +42,23 @@ $(document).ready(function() {
             console.log("don't make a new heart");
         }    
     }
+    
+    });
+
+    $(window).scroll( function() {
+
+        if($(window).scrollTop() + $(window).height() + 50 > $(document).height()) {
+            onGetHearts();
+            }
+    });
+    
+    //cache container and create packery instance
+    H.container = $('#container');
+    H.container.packery({
+        'selector' : '.heart'
+    });
+    H.container.packery("layout");
+
     
     H.container.on("click", ".heart", function(event) {
         activateModal();
