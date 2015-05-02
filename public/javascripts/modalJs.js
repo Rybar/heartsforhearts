@@ -54,12 +54,14 @@ anonymousToggle.addEventListener('click', function(){
    if(anonymousToggle.checked === true) {
        document.getElementById('nameInfo').disabled = true;
        document.getElementById('emailInfo').disabled = true;
+       document.getElementById('nameInfo').style.backgroundColor = '#EBEAE5';
        //document.getElementById('dedicatedNameInfo').disabled = true;
        //document.getElementById('dedicatedEmailInfo').disabled = true;	       
        //document.getElementById('messageInfo').disabled = true;
        clearInputFields();
    } else {
        document.getElementById('nameInfo').disabled = false;
+       document.getElementById('nameInfo').style.backgroundColor = "transparent";       
        document.getElementById('emailInfo').disabled = false;
        document.getElementById('dedicatedNameInfo').disabled = false;
        document.getElementById('dedicatedEmailInfo').disabled = false;	       
@@ -128,7 +130,7 @@ function ResizeHeartPreview() {
     }  
 }
 function thankYou() {
-    console.log('Thank You Modal is activated');
+    //console.log('Thank You Modal is activated');
     activateModal();
     modalCallToAction.setAttribute('aria-hidden', 'true');
     modalGreeting.setAttribute('aria-hidden', 'true');     
@@ -136,7 +138,7 @@ function thankYou() {
 }
 
 function thankYouTransition(qJustGivingID) {
-    console.log(qJustGivingID);
+    //console.log(qJustGivingID);
     //modalCallToAction.setAttribute('aria-hidden', 'true');
     //modalGreeting.setAttribute('aria-hidden', 'false');     
     //ThankYouModalWindow.setAttribute('aria-hidden', 'true');
@@ -210,9 +212,11 @@ function changePurple() {
     $("#heartPreview").addClass("purple");
     donationHeartColor = "purple";    
 }
+
 function submitForm() {
+    if( $("#donationform").valid() ){
     var outURL = justGivingURL;
-    var exitURL = "&exitURL=" + encodeURIComponent( appURL )
+    var exitURL = "&exitURL=" + encodeURIComponent( appURL );
     
     var fullURL = outURL
             //these first 3 will auto-fill the donation form at justGiving donation page.
@@ -230,6 +234,8 @@ function submitForm() {
 
     // URL = "justgiving charity page" + simpleDonation query + RedirectURL + our Query
     // SCHEMA from justgiving: http://www.justgiving.com/{shortUrl}/4w350m3/donate/?amount={suggestedAmount}&exitUrl=http%3a%2f%2fwww.myredirecturl.com%2fpath?donationId=JUSTGIVING-DONATION-ID
-    console.log(fullURL)
+    //console.log(fullURL)
     window.open(fullURL)
+    }
+    
 } 

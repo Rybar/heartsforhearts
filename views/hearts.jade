@@ -77,33 +77,35 @@ html
                           #pinkselector.pink.colorbars
                           #purpleselector.purple.colorbars
                     div.col-md-6#RightDesignModal
-                      form#donationform(name='donation', action='', onsubmit='onSubmit()')
-                        input#nameInfo(placeholder='Your name', name='name', type="name", required)
-                        input#emailInfo(placeholder='Your Email', name='email', type="email", required)  
+                      div#formOuter
+                        div#formInner
+                          form#donationform(name='donation', action='', onsubmit='onSubmit()')
+                            input#nameInfo(placeholder='Your name', name='name', type="name", required)
+                            input#emailInfo(placeholder='Your Email', name='email', type="email", required)
+                            br
+                            input#dedicatedNameInfo(placeholder='Dedicated To', name ='dedicatedName', type="text", required)
+                            input#dedicatedEmailInfo(placeholder="Their Email", name ='dedicatedEmail', type="email", required)
+                            br
+                            input#donationInfo(placeholder='Amount', name='amount', type="number")
+                            br
+                            input#anonymousInfo(type='checkbox', name='anonymous') 
+                            | Anonymous Donation
+                            br
+                            select#currencyInfo(name='currency')
+                              //option(value='', disabled='', selected='') Currency
+                              option(value='DOL') American Dollar (USD)
+                              option(value='GBP') British Pound(GBP)
+                              option(value='AUD') Australian Dollar (AUD)
+                              option(value='CAD') Canadian dollar (CAD)
+                              option(value='EUR') Euro (EUR)
+                              option(value='HKD') Hong Kong Dollar  (HKD)
+                              option(value='SGD') Singapore Dollar (SGD)
+                            br
+                            textarea#messageInfo(placeholder="Message to Dedicated", name='message', rows="3", cols="44" )
+                          br
+                          p#HeartDesignerText Here you can personalise your heart. When you're happy with your design and message, just click continue to be redirected to JustGiving where your donation details will be processed. You will then be redirected here after completing the transaction to see your finished heart!
                         br
-                        input#dedicatedNameInfo(placeholder='Dedicated To', name ='dedicatedName', type="text", required)
-                        input#dedicatedEmailInfo(placeholder="Their Email", name ='dedicatedEmail', type="email", required)
-                        br
-                        input#donationInfo(placeholder='Amount', name='amount', type="number")
-                        br
-                        input#anonymousInfo(type='checkbox', name='anonymous') 
-                        | Anonymous Donation
-                        br
-                        select#currencyInfo(name='currency')
-                          //option(value='', disabled='', selected='') Currency
-                          option(value='DOL') American Dollar (USD)
-                          option(value='GBP') British Pound(GBP)
-                          option(value='AUD') Australian Dollar (AUD)
-                          option(value='CAD') Canadian dollar (CAD)
-                          option(value='EUR') Euro (EUR)
-                          option(value='HKD') Hong Kong Dollar  (HKD)
-                          option(value='SGD') Singapore Dollar (SGD)
-                        br
-                        textarea#messageInfo(placeholder="Message to Dedicated", name='message', rows="3", cols="44" )
-                        br
-                        p#HeartDesignerText Here you can personalise your heart. When you're happy with your design and message, just click continue to be redirected to JustGiving where your donation details will be processed. You will then be redirected here after completing the transaction to see your finished heart!
-                        br
-                        input.donate#submit(type='button', value='Continue', onclick='submitForm();')
+                        input.donate#submit(type='submit', value='Continue', onclick='submitForm();')
             div#ThankYouModal(aria-hidden='true' style="text-align: center")
               h1 Thank you for your donation!
               p  Thank you for donating to Save a Child's Heart! Your donation will help save the life of a child suffering from heart disease.
